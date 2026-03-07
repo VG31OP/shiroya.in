@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>shiroya.in</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f5f4f0;
+      --ink: #0f0f0e;
+      --sub: #6b6b65;
+      --line: rgba(15,15,14,0.1);
+      --surface: #ffffff;
+      --green: #1a7a4a;
+      --green-bg: #e8f5ee;
+      --blue: #1a4a7a;
+      --blue-bg: #e8eef5;
+      --red: #7a1a1a;
+      --red-bg: #f5e8e8;
+      --toggle-bg: rgba(15,15,14,0.06);
+    }
+
+    html.dark {
+      --bg: #0f0f0e;
+      --ink: #f0efe9;
+      --sub: #888880;
+      --line: rgba(240,239,233,0.1);
+      --surface: #1a1a18;
+      --green: #4ade80;
+      --green-bg: rgba(74,222,128,0.1);
+      --blue: #60a5fa;
+      --blue-bg: rgba(96,165,250,0.1);
+      --red: #f87171;
+      --red-bg: rgba(248,113,113,0.1);
+      --toggle-bg: rgba(240,239,233,0.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Epilogue', sans-serif;
+      overflow-x: hidden;
+      cursor: none;
+      transition: background .35s, color .35s;
+    }
+
+    /* CURSOR */
+    #cur {
+      width: 8px; height: 8px;
+      background: var(--ink);
+      border-radius: 50%;
+      position: fixed; pointer-events: none; z-index: 9999;
+      transform: translate(-50%,-50%);
+      transition: width .2s, height .2s, background .2s;
+    }
+    #curR {
+      width: 28px; height: 28px;
+      border: 1px solid rgba(15,15,14,.25);
+      border-radius: 50%;
+      position: fixed; pointer-events: none; z-index: 9998;
+      transform: translate(-50%,-50%);
+      transition: all .12s ease-out;
+    }
+    body:has(a:hover) #cur, body:has(button:hover) #cur { width: 14px; height: 14px; background: var(--green); }
+    body:has(a:hover) #curR, body:has(button:hover) #curR { width: 44px; height: 44px; border-color: var(--green); }
+
+    .theme-toggle {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; color: var(--sub);
+      background: var(--toggle-bg);
+      border: 1px solid var(--line);
+      padding: 6px 12px 6px 8px;
+      cursor: none;
+      font-family: 'Epilogue', sans-serif;
+      font-weight: 500;
+      letter-spacing: .01em;
+      transition: color .2s, border-color .2s, background .2s;
+      white-space: nowrap;
+    }
+
+    .theme-toggle:hover { color: var(--ink); border-color: rgba(15,15,14,.25); }
+    html.dark .theme-toggle:hover { border-color: rgba(240,239,233,.25); }
+
+    .toggle-icon {
+      width: 18px; height: 18px;
+      position: relative; flex-shrink: 0;
+    }
+
+    .toggle-icon .sun, .toggle-icon .moon {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity .3s, transform .3s;
+    }
+
+    .toggle-icon .sun  { opacity: 1; transform: rotate(0deg); }
+    .toggle-icon .moon { opacity: 0; transform: rotate(-90deg); }
+
+    html.dark .toggle-icon .sun  { opacity: 0; transform: rotate(90deg); }
+    html.dark .toggle-icon .moon { opacity: 1; transform: rotate(0deg); }
+
+    .toggle-label-light { display: inline; }
+    .toggle-label-dark  { display: none; }
+    html.dark .toggle-label-light { display: none; }
+    html.dark .toggle-label-dark  { display: inline; }
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 48px 64px;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+
+    .hero-top {
+      position: absolute;
+      top: 40px; left: 48px; right: 48px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .logo-mark {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--sub);
+      letter-spacing: .05em;
+    }
+
+    .hero-nav {
+      display: flex; gap: 32px;
+    }
+
+    .hero-nav a {
+      font-size: 12px;
+      color: var(--sub);
+      text-decoration: none;
+      letter-spacing: .03em;
+      cursor: none;
+      transition: color .2s;
+    }
+
+    .hero-nav a:hover { color: var(--ink); }
+
+    .hero-title {
+      font-size: clamp(72px, 14vw, 180px);
+      font-weight: 900;
+      line-height: .88;
+      letter-spacing: -.04em;
+      margin-bottom: 40px;
+    }
+
+    .hero-title .accent { color: var(--green); }
+
+    .hero-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      color: var(--sub);
+      font-weight: 400;
+      max-width: 360px;
+      line-height: 1.7;
+    }
+
+    .finder-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--ink);
+      color: var(--bg);
+      padding: 14px 24px;
+      font-family: 'Epilogue', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .01em;
+      border: none;
+      cursor: none;
+      transition: background .25s, transform .2s;
+    }
+
+    .finder-btn:hover { background: var(--green); transform: translateY(-2px); }
+
+    .finder-btn .arr { font-size: 16px; transition: transform .2s; }
+    .finder-btn:hover .arr { transform: translateX(3px); }
+
+    /* ── TOOLS SECTION ── */
+    .tools {
+      padding: 0;
+    }
+
+    .tools-head {
+      padding: 80px 48px 56px;
+      display: flex; justify-content: space-between; align-items: flex-end;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .tools-head h2 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 900;
+      letter-spacing: -.03em;
+      line-height: 1;
+    }
+
+    .tools-head-right {
+      text-align: right;
+    }
+
+    .tools-head-right p {
+      font-size: 13px;
+      color: var(--sub);
+      max-width: 280px;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .finder-link {
+      font-size: 12px;
+      color: var(--sub);
+      font-family: 'DM Mono', monospace;
+      display: inline-flex; align-items: center; gap: 6px;
+      cursor: none;
+      background: none; border: none;
+      transition: color .2s;
+      letter-spacing: .03em;
+    }
+
+    .finder-link:hover { color: var(--green); }
+
+    /* TOOL ROWS */
+    .tool-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 1fr auto;
+      align-items: center;
+      gap: 0;
+      padding: 40px 48px;
+      border-bottom: 1px solid var(--line);
+      text-decoration: none;
+      color: inherit;
+      cursor: none;
+      transition: background .2s;
+      position: relative;
+    }
+
+    .tool-row:hover { background: var(--surface); }
+
+    .tool-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--sub);
+      letter-spacing: .05em;
+    }
+
+    .tool-left { padding-right: 32px; }
+
+    .tool-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 2px;
+    }
+
+    .tr-port .tool-tag { background: var(--green-bg); color: var(--green); }
+    .tr-drop .tool-tag { background: var(--blue-bg); color: var(--blue); }
+    .tr-pdf .tool-tag  { background: var(--red-bg); color: var(--red); }
+    .tr-soon .tool-tag { background: rgba(0,0,0,.04); color: var(--sub); }
+
+    .tool-name {
+      font-size: clamp(22px, 3vw, 36px);
+      font-weight: 900;
+      letter-spacing: -.02em;
+      line-height: 1;
+    }
+
+    .tool-middle { padding: 0 32px; }
+
+    .tool-desc {
+      font-size: 14px;
+      color: var(--sub);
+      line-height: 1.7;
+      max-width: 320px;
+    }
+
+    .tool-caps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .cap {
+      font-size: 11px;
+      color: var(--sub);
+      border: 1px solid var(--line);
+      padding: 3px 10px;
+      border-radius: 2px;
+      background: transparent;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: .04em;
+    }
+
+    .tool-right {
+      display: flex; flex-direction: column;
+      align-items: flex-end; gap: 8px;
+    }
+
+    .tool-url {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--sub);
+      letter-spacing: .04em;
+    }
+
+    .tool-open {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 10px 18px;
+      text-decoration: none;
+      cursor: none;
+      transition: transform .2s;
+      white-space: nowrap;
+    }
+
+    .tr-port .tool-open { background: var(--green-bg); color: var(--green); }
+    .tr-drop .tool-open { background: var(--blue-bg); color: var(--blue); }
+    .tr-pdf  .tool-open { background: var(--red-bg); color: var(--red); }
+
+    .tool-open:hover { transform: translateY(-2px); }
+
+    .tool-row-arrow {
+      position: absolute;
+      right: 48px; top: 50%;
+      transform: translateY(-50%);
+      font-size: 24px;
+      opacity: 0;
+      transition: opacity .2s, transform .2s;
+      color: var(--ink);
+    }
+
+    .tool-row:hover .tool-row-arrow { opacity: .12; transform: translateY(-50%) translateX(4px); }
+
+    /* soon */
+    .tr-soon { opacity: .45; cursor: default; pointer-events: none; }
+
+    /* ── HOW SECTION ── */
+    .how {
+      padding: 80px 48px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .how h2 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 900;
+      letter-spacing: -.03em;
+      margin-bottom: 56px;
+    }
+
+    .how-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .step {
+      background: var(--bg);
+      padding: 40px 36px;
+    }
+
+    .step-n {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--sub);
+      letter-spacing: .1em;
+      margin-bottom: 28px;
+    }
+
+    .step-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      margin-bottom: 12px;
+    }
+
+    .step-desc {
+      font-size: 13px;
+      color: var(--sub);
+      line-height: 1.8;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 56px 48px 40px;
+    }
+
+    .f-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 32px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .f-brand {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -.03em;
+    }
+
+    .f-brand .dot { color: var(--green); }
+
+    .f-tagline {
+      font-size: 12px;
+      color: var(--sub);
+      margin-top: 6px;
+      font-family: 'DM Mono', monospace;
+    }
+
+    .soc-row {
+      display: flex; gap: 6px; flex-wrap: wrap;
+    }
+
+    .soc-a {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 12px; color: var(--sub);
+      text-decoration: none;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      cursor: none;
+      transition: color .2s, border-color .2s, background .2s;
+      font-weight: 500;
+    }
+
+    .soc-a svg { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
+    .soc-a:hover { color: var(--ink); border-color: var(--ink); background: var(--bg); }
+
+    .f-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 28px;
+    }
+
+    .f-made {
+      font-size: 12px;
+      color: var(--sub);
+      font-family: 'DM Mono', monospace;
+    }
+
+    .f-made strong { color: var(--ink); }
+
+    .f-live {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 11px; color: var(--sub);
+      font-family: 'DM Mono', monospace;
+    }
+
+    .dot-live {
+      width: 6px; height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(26,122,74,.15);
+      animation: blink 2.5s infinite;
+    }
+
+    @keyframes blink { 0%,100%{opacity:1}50%{opacity:.3} }
+
+    /* ── MODAL ── */
+    .overlay {
+      position: fixed; inset: 0;
+      background: rgba(245,244,240,.85);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+      opacity: 0; pointer-events: none;
+      transition: opacity .25s;
+    }
+
+    html.dark .overlay { background: rgba(15,15,14,.88); }
+
+    .overlay.on { opacity: 1; pointer-events: all; }
+
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      width: 100%; max-width: 580px;
+      padding: 48px;
+      transform: translateY(20px);
+      transition: transform .3s cubic-bezier(.16,1,.3,1), background .35s;
+      max-height: 90vh; overflow-y: auto;
+      position: relative;
+    }
+
+    .overlay.on .modal { transform: translateY(0); }
+
+    .m-close {
+      position: absolute; top: 20px; right: 20px;
+      background: rgba(0,0,0,.04); border: 1px solid var(--line);
+      color: var(--sub); width: 30px; height: 30px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; cursor: none; transition: background .2s;
+    }
+
+    .m-close:hover { background: rgba(0,0,0,.08); color: var(--ink); }
+
+    .m-bar { height: 1px; background: var(--line); margin-bottom: 40px; position: relative; }
+    .m-bar-fill { height: 1px; background: var(--ink); position: absolute; top: 0; left: 0; transition: width .4s ease; }
+
+    .m-step { display: none; }
+    .m-step.on { display: block; }
+
+    .m-q {
+      font-size: 22px; font-weight: 900;
+      letter-spacing: -.02em;
+      margin-bottom: 6px;
+    }
+
+    .m-hint {
+      font-size: 12px; color: var(--sub);
+      font-family: 'DM Mono', monospace;
+      margin-bottom: 32px;
+    }
+
+    .m-choices {
+      display: flex; flex-direction: column; gap: 2px;
+    }
+
+    .m-choice {
+      display: flex; align-items: center; gap: 16px;
+      padding: 18px 20px;
+      background: var(--toggle-bg);
+      border: 1px solid transparent;
+      text-align: left; cursor: none;
+      color: var(--ink); font-family: 'Epilogue', sans-serif;
+      transition: background .2s, border-color .2s;
+    }
+
+    .m-choice:hover { background: var(--surface); border-color: var(--line); }
+
+    .m-ci { font-size: 20px; flex-shrink: 0; }
+
+    .m-ct strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+    .m-ct span { font-size: 11px; color: var(--sub); font-family: 'DM Mono', monospace; }
+
+    .m-choice-arrow { margin-left: auto; color: var(--sub); font-size: 14px; opacity: 0; transition: opacity .2s, transform .2s; }
+    .m-choice:hover .m-choice-arrow { opacity: 1; transform: translateX(3px); }
+
+    /* result */
+    .m-result {
+      border: 1px solid var(--line);
+      padding: 28px;
+      background: var(--toggle-bg);
+      margin-bottom: 24px;
+    }
+
+    .m-r-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+
+    .m-r-name {
+      font-size: 26px; font-weight: 900;
+      letter-spacing: -.02em; margin-bottom: 4px;
+    }
+
+    .m-r-url {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; color: var(--sub); margin-bottom: 14px;
+    }
+
+    .m-r-desc { font-size: 13px; color: var(--sub); line-height: 1.8; margin-bottom: 20px; }
+
+    .m-tips { display: flex; flex-direction: column; gap: 7px; margin-bottom: 28px; }
+
+    .m-tip {
+      font-size: 12px; color: var(--sub);
+      display: flex; align-items: flex-start; gap: 8px;
+    }
+
+    .m-tip::before { content: '—'; color: var(--green); flex-shrink: 0; }
+
+    .go-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--ink); color: white;
+      padding: 13px 22px;
+      font-family: 'Epilogue', sans-serif;
+      font-weight: 700; font-size: 13px;
+      text-decoration: none; cursor: none;
+      transition: background .2s, transform .2s;
+    }
+
+    .go-btn:hover { background: var(--green); transform: translateY(-2px); }
+
+    .m-back {
+      display: block; margin-top: 20px;
+      font-size: 12px; color: var(--sub);
+      font-family: 'DM Mono', monospace;
+      background: none; border: none; cursor: none;
+      letter-spacing: .04em; transition: color .2s;
+    }
+
+    .m-back:hover { color: var(--ink); }
+
+    /* ── ANIMATIONS ── */
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity .6s, transform .6s; }
+    .fade-in.vis { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { padding: 0 24px 48px; }
+      .hero-top { left: 24px; right: 24px; }
+      .tool-row { grid-template-columns: 1fr; padding: 28px 24px; gap: 16px; }
+      .tool-num { display: none; }
+      .tool-right { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+      .tool-row-arrow { display: none; }
+      .how { padding: 60px 24px; }
+      .how-steps { grid-template-columns: 1fr; }
+      .tools-head { padding: 60px 24px 40px; flex-direction: column; align-items: flex-start; gap: 20px; }
+      .tools-head-right { text-align: left; }
+      footer { padding: 48px 24px 32px; }
+      .f-top { flex-direction: column; }
+      .modal { padding: 32px 24px; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-nav { display: none; }
+      .hero-title { font-size: 64px; }
+      .hero-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="curR"></div>
+
+<!-- MODAL -->
+<div class="overlay" id="modal">
+  <div class="modal">
+    <button class="m-close" id="mClose">✕</button>
+    <div class="m-bar"><div class="m-bar-fill" id="mFill" style="width:33%"></div></div>
+
+    <div class="m-step on" id="ms1">
+      <div class="m-q">What brings you here?</div>
+      <div class="m-hint">// pick the closest match</div>
+      <div class="m-choices">
+        <button class="m-choice" onclick="toS2('work')"><div class="m-ci">💼</div><div class="m-ct"><strong>See Vraj's Work</strong><span>Portfolio, projects & background</span></div><span class="m-choice-arrow">→</span></button>
+        <button class="m-choice" onclick="toS2('share')"><div class="m-ci">📤</div><div class="m-ct"><strong>Share a File</strong><span>Send or receive files instantly</span></div><span class="m-choice-arrow">→</span></button>
+        <button class="m-choice" onclick="toS2('pdf')"><div class="m-ci">📄</div><div class="m-ct"><strong>Work with PDFs</strong><span>Convert, merge, compress</span></div><span class="m-choice-arrow">→</span></button>
+        <button class="m-choice" onclick="toS2('explore')"><div class="m-ci">🔍</div><div class="m-ct"><strong>Just Exploring</strong><span>Show me what's available</span></div><span class="m-choice-arrow">→</span></button>
+      </div>
+    </div>
+
+    <div class="m-step" id="ms2">
+      <div class="m-q" id="s2q">—</div>
+      <div class="m-hint" id="s2h">—</div>
+      <div class="m-choices" id="s2c"></div>
+      <button class="m-back" onclick="toStep(1,33)">← back</button>
+    </div>
+
+    <div class="m-step" id="ms3">
+      <div class="m-q">Go here →</div>
+      <div class="m-hint">// best match for what you described</div>
+      <div class="m-result">
+        <div class="m-r-tag" id="rTag">MATCH</div>
+        <div class="m-r-name" id="rName">—</div>
+        <div class="m-r-url" id="rUrl">—</div>
+        <div class="m-r-desc" id="rDesc">—</div>
+        <div class="m-tips" id="rTips"></div>
+        <a id="rLink" href="#" target="_blank" class="go-btn">Open &nbsp;→</a>
+      </div>
+      <button class="m-back" onclick="toStep(1,33)">← start over</button>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-top">
+    <span class="logo-mark">shiroya.in</span>
+    <nav class="hero-nav">
+      <a href="#tools">Tools</a>
+      <a href="https://vraj.shiroya.in" target="_blank">Portfolio</a>
+      <a href="#footer">Contact</a>
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+        <div class="toggle-icon">
+          <span class="sun">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </span>
+          <span class="moon">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          </span>
+        </div>
+        <span class="toggle-label-light">Dark</span>
+        <span class="toggle-label-dark">Light</span>
+      </button>
+    </nav>
+  </div>
+
+  <div class="hero-title">
+    SHIROYA<span class="accent">.</span>IN
+  </div>
+
+  <div class="hero-bottom">
+    <p class="hero-desc">One domain. Three focused tools. Everything Vraj built — in one place.</p>
+    <button class="finder-btn" onclick="openModal()">
+      Not sure where to go? <span class="arr">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="tools" id="tools">
+  <div class="tools-head">
+    <h2>Tools &amp; Spaces</h2>
+    <div class="tools-head-right">
+      <p>Each subdomain does one thing well. Click any row to go there directly.</p>
+      <button class="finder-link" onclick="openModal()">✦ Help me choose</button>
+    </div>
+  </div>
+
+  <!-- Portfolio -->
+  <a href="https://vraj.shiroya.in" target="_blank" class="tool-row tr-port fade-in">
+    <span class="tool-num">01</span>
+    <div class="tool-left">
+      <span class="tool-tag">Portfolio</span>
+      <div class="tool-name">Vraj<br>Shiroya</div>
+    </div>
+    <div class="tool-middle">
+      <div class="tool-desc">Personal portfolio — projects, skills, experience, and everything Vraj. The full picture.</div>
+      <div class="tool-caps">
+        <span class="cap">Projects</span>
+        <span class="cap">Skills</span>
+        <span class="cap">Resume</span>
+        <span class="cap">Contact</span>
+      </div>
+    </div>
+    <div class="tool-right">
+      <span class="tool-url">vraj.shiroya.in</span>
+      <a href="https://vraj.shiroya.in" target="_blank" class="tool-open" onclick="event.stopPropagation()">
+        View Portfolio →
+      </a>
+    </div>
+    <span class="tool-row-arrow">→</span>
+  </a>
+
+  <!-- Drop -->
+  <a href="https://drop.shiroya.in" target="_blank" class="tool-row tr-drop fade-in">
+    <span class="tool-num">02</span>
+    <div class="tool-left">
+      <span class="tool-tag">File Sharing</span>
+      <div class="tool-name">Drop</div>
+    </div>
+    <div class="tool-middle">
+      <div class="tool-desc">Drag a file, get a link, share it. No sign-up, no waiting. The fastest way to move files.</div>
+      <div class="tool-caps">
+        <span class="cap">No Login</span>
+        <span class="cap">Any File</span>
+        <span class="cap">Instant Link</span>
+        <span class="cap">Batch</span>
+      </div>
+    </div>
+    <div class="tool-right">
+      <span class="tool-url">drop.shiroya.in</span>
+      <a href="https://drop.shiroya.in" target="_blank" class="tool-open" onclick="event.stopPropagation()">
+        Open Drop →
+      </a>
+    </div>
+    <span class="tool-row-arrow">→</span>
+  </a>
+
+  <!-- PDF -->
+  <a href="https://pdf.shiroya.in" target="_blank" class="tool-row tr-pdf fade-in">
+    <span class="tool-num">03</span>
+    <div class="tool-left">
+      <span class="tool-tag">PDF Utilities</span>
+      <div class="tool-name">PDF<br>Tools</div>
+    </div>
+    <div class="tool-middle">
+      <div class="tool-desc">Merge, split, compress, or convert PDFs. Browser-based, private, no installs needed.</div>
+      <div class="tool-caps">
+        <span class="cap">Merge</span>
+        <span class="cap">Split</span>
+        <span class="cap">Compress</span>
+        <span class="cap">Convert</span>
+      </div>
+    </div>
+    <div class="tool-right">
+      <span class="tool-url">pdf.shiroya.in</span>
+      <a href="https://pdf.shiroya.in" target="_blank" class="tool-open" onclick="event.stopPropagation()">
+        Open PDF Tools →
+      </a>
+    </div>
+    <span class="tool-row-arrow">→</span>
+  </a>
+
+  <!-- Soon -->
+  <div class="tool-row tr-soon fade-in">
+    <span class="tool-num">—</span>
+    <div class="tool-left">
+      <span class="tool-tag">Coming Soon</span>
+      <div class="tool-name">Next<br>Tool</div>
+    </div>
+    <div class="tool-middle">
+      <div class="tool-desc">Something new is being built. Another focused tool will be added to the family soon.</div>
+    </div>
+    <div class="tool-right">
+      <span class="tool-url">?.shiroya.in</span>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <h2>How it works</h2>
+  <div class="how-steps">
+    <div class="step fade-in">
+      <div class="step-n">01 / 03</div>
+      <div class="step-title">Don't know where to start?</div>
+      <div class="step-desc">Hit "Not sure where to go?" — answer two quick questions and we'll point you directly to the right tool.</div>
+    </div>
+    <div class="step fade-in">
+      <div class="step-n">02 / 03</div>
+      <div class="step-title">Know what you need?</div>
+      <div class="step-desc">Click any tool row directly. Each one opens immediately — no login, no loading screen, no friction.</div>
+    </div>
+    <div class="step fade-in">
+      <div class="step-n">03 / 03</div>
+      <div class="step-title">Want to get in touch?</div>
+      <div class="step-desc">Social links and contact options are one scroll down. Or go straight to the portfolio for the full story.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="f-top">
+    <div>
+      <div class="f-brand">SHIROYA<span class="dot">.</span>IN</div>
+      <div class="f-tagline">// vraj's corner of the internet</div>
+    </div>
+    <div class="soc-row">
+      <a class="soc-a" href="https://github.com/" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C8.29 21.556 7.5 21.187 7.5 21.187c-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.76-1.605-2.665-.3-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        GitHub
+      </a>
+      <a class="soc-a" href="https://twitter.com/" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        Twitter
+      </a>
+      <a class="soc-a" href="https://linkedin.com/in/" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a class="soc-a" href="https://instagram.com/" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        Instagram
+      </a>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <span class="f-made">crafted by <strong>VG31</strong></span>
+    <div class="f-live"><div class="dot-live"></div> all systems live</div>
+  </div>
+</footer>
+
+<script>
+// CURSOR
+const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(loop)})();
+
+// MODAL
+const ov=document.getElementById('modal');
+function openModal(){ov.classList.add('on');document.body.style.overflow='hidden';toStep(1,33)}
+function closeModal(){ov.classList.remove('on');document.body.style.overflow=''}
+document.getElementById('mClose').onclick=closeModal;
+ov.addEventListener('click',e=>{if(e.target===ov)closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+function toStep(n,pct){
+  ['ms1','ms2','ms3'].forEach((id,i)=>{document.getElementById(id).className='m-step'+(i+1===n?' on':'')});
+  document.getElementById('mFill').style.width=pct+'%';
+}
+
+const s2={
+  work:{q:"What are you looking for?",h:"// narrow it down",c:[
+    {i:'🚀',l:'Projects & Demos',d:'Real apps, tools & live demos',v:'projects'},
+    {i:'🎨',l:'Design & Visual Work',d:'UI/UX, branding, creative',v:'design'},
+    {i:'📬',l:'Contact or Hire',d:'Reach out, collaborate',v:'contact'},
+    {i:'📋',l:'Everything',d:'Full profile, start to finish',v:'full'},
+  ]},
+  share:{q:"How are you sharing?",h:"// pick your situation",c:[
+    {i:'⬆️',l:'Sending a File',d:'Upload and share a link',v:'send'},
+    {i:'⬇️',l:'Receiving a File',d:'Someone sent you a link',v:'receive'},
+    {i:'⚡',l:'Quick Drop',d:'Instant, no friction',v:'quick'},
+    {i:'🗂️',l:'Multiple Files',d:'Batch upload at once',v:'batch'},
+  ]},
+  pdf:{q:"What's the PDF task?",h:"// pick the right tool",c:[
+    {i:'🔗',l:'Merge PDFs',d:'Combine files into one',v:'merge'},
+    {i:'✂️',l:'Split PDF',d:'Extract specific pages',v:'split'},
+    {i:'🗜️',l:'Compress',d:'Reduce file size',v:'compress'},
+    {i:'🔄',l:'Convert',d:'PDF to/from other formats',v:'convert'},
+  ]},
+  explore:{q:"What interests you most?",h:"// let's find your start point",c:[
+    {i:'👤',l:'About Vraj',d:'Background & story',v:'about'},
+    {i:'🛠️',l:'All the Tools',d:'What lives on this domain',v:'tools'},
+    {i:'💬',l:'Get in Touch',d:'Social & contact links',v:'social'},
+    {i:'🎲',l:'Surprise Me',d:'Pick something random',v:'random'},
+  ]},
+};
+
+const res={
+  projects:{tag:'PORTFOLIO',name:'vraj.shiroya.in',url:'https://vraj.shiroya.in',desc:"All of Vraj's real work — projects with source code, live demos, and the story behind each one.",tips:['Live demos & source code','Tech stack for every project','Full case study context'],link:'https://vraj.shiroya.in'},
+  design:{tag:'PORTFOLIO',name:'vraj.shiroya.in',url:'https://vraj.shiroya.in',desc:'UI systems, visual identity, and design process breakdowns — all in the portfolio.',tips:['UI/UX case studies','Visual design samples','Process & reasoning'],link:'https://vraj.shiroya.in'},
+  contact:{tag:'PORTFOLIO',name:'vraj.shiroya.in',url:'https://vraj.shiroya.in',desc:"Contact form, email, and every platform Vraj is active on — all in one spot.",tips:['Contact form available','Response within 24h','All social links'],link:'https://vraj.shiroya.in'},
+  full:{tag:'PORTFOLIO',name:'vraj.shiroya.in',url:'https://vraj.shiroya.in',desc:'Everything — background, skills, projects, resume download, and contact.',tips:['Bio, skills & experience','Downloadable resume','Projects + contact form'],link:'https://vraj.shiroya.in'},
+  send:{tag:'FILE DROP',name:'drop.shiroya.in',url:'https://drop.shiroya.in',desc:'Upload your file, get a shareable link, send it. Works for any file type — zero sign-up.',tips:['Drag & drop interface','Instant URL','Any file type'],link:'https://drop.shiroya.in'},
+  receive:{tag:'FILE DROP',name:'drop.shiroya.in',url:'https://drop.shiroya.in',desc:"Just open the link they shared — file downloads directly. No login, no friction.",tips:['Open the link','Direct download','No account needed'],link:'https://drop.shiroya.in'},
+  quick:{tag:'FILE DROP',name:'drop.shiroya.in',url:'https://drop.shiroya.in',desc:'Drag in, copy link, done. The fastest path from file to share.',tips:['Zero friction','Link in seconds','Any device'],link:'https://drop.shiroya.in'},
+  batch:{tag:'FILE DROP',name:'drop.shiroya.in',url:'https://drop.shiroya.in',desc:'Select multiple files at once — one link covers everything.',tips:['Multi-file selection','Single shareable link','All files together'],link:'https://drop.shiroya.in'},
+  merge:{tag:'PDF TOOLS',name:'pdf.shiroya.in',url:'https://pdf.shiroya.in',desc:'Combine PDFs into one clean document. Upload, reorder, merge.',tips:['Drag to reorder','No watermarks','Instant download'],link:'https://pdf.shiroya.in'},
+  split:{tag:'PDF TOOLS',name:'pdf.shiroya.in',url:'https://pdf.shiroya.in',desc:'Pull out exactly the pages you need from any PDF.',tips:['Exact page ranges','Multiple outputs','No quality loss'],link:'https://pdf.shiroya.in'},
+  compress:{tag:'PDF TOOLS',name:'pdf.shiroya.in',url:'https://pdf.shiroya.in',desc:'Shrink file size for email or uploads — without sacrificing quality.',tips:['Choose level','Preview first','Works on scans'],link:'https://pdf.shiroya.in'},
+  convert:{tag:'PDF TOOLS',name:'pdf.shiroya.in',url:'https://pdf.shiroya.in',desc:'PDF to Word, images, and back again. All in the browser — fully private.',tips:['PDF to Word/JPG/PNG','Word/Image to PDF','Formatting kept'],link:'https://pdf.shiroya.in'},
+  about:{tag:'PORTFOLIO',name:'vraj.shiroya.in',url:'https://vraj.shiroya.in',desc:"Who Vraj is, what he builds, what he knows — the complete picture.",tips:['Full bio','Skills & stack','Current focus'],link:'https://vraj.shiroya.in'},
+  tools:{tag:'DROP + PDF',name:'drop & pdf',url:'https://drop.shiroya.in',desc:'Two free tools live here — Drop for file sharing and PDF Tools for document work.',tips:['drop.shiroya.in','pdf.shiroya.in','More coming soon'],link:'https://drop.shiroya.in'},
+  social:{tag:'CONNECT',name:'vraj.shiroya.in',url:'https://vraj.shiroya.in',desc:'All social links in the footer, or use the portfolio contact form.',tips:['GitHub — projects','LinkedIn — work','Instagram & Twitter'],link:'https://vraj.shiroya.in'},
+  random:{tag:'SURPRISE',name:'drop.shiroya.in',url:'https://drop.shiroya.in',desc:"You asked for a surprise — here's Drop. Frictionless file sharing you might not have needed until now.",tips:['Bookmark it for later','Drag any file in','No account ever'],link:'https://drop.shiroya.in'},
+};
+
+function toS2(v){
+  const d=s2[v];
+  document.getElementById('s2q').textContent=d.q;
+  document.getElementById('s2h').textContent=d.h;
+  document.getElementById('s2c').innerHTML=d.c.map(c=>
+    `<button class="m-choice" onclick="showRes('${c.v}')"><div class="m-ci">${c.i}</div><div class="m-ct"><strong>${c.l}</strong><span>${c.d}</span></div><span class="m-choice-arrow">→</span></button>`
+  ).join('');
+  toStep(2,66);
+}
+
+function showRes(k){
+  const r=res[k];if(!r)return;
+  document.getElementById('rTag').textContent=r.tag;
+  document.getElementById('rName').textContent=r.name;
+  document.getElementById('rUrl').textContent=r.url;
+  document.getElementById('rDesc').textContent=r.desc;
+  document.getElementById('rTips').innerHTML=r.tips.map(t=>`<div class="m-tip">${t}</div>`).join('');
+  document.getElementById('rLink').href=r.link;
+  toStep(3,100);
+}
+
+// SCROLL REVEAL
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis')}});
+},{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach((el,i)=>{el.style.transitionDelay=(i*0.08)+'s';io.observe(el)});
+
+// THEME TOGGLE
+function applyTheme(dark){
+  document.documentElement.classList.toggle('dark', dark);
+  localStorage.setItem('theme', dark ? 'dark' : 'light');
+}
+
+function toggleTheme(){
+  applyTheme(!document.documentElement.classList.contains('dark'));
+}
+
+// Init: saved preference → system preference
+const saved = localStorage.getItem('theme');
+if(saved) {
+  applyTheme(saved === 'dark');
+} else {
+  applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches);
+}
+</script>
+</body>
+</html>
