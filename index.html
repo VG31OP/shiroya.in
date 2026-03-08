@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>shiroya.in</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -321,9 +321,12 @@
 
     .hero {
       min-height: 100vh;
-      display: flex; flex-direction: column;
-      justify-content: flex-end;
-      padding: 80px 48px 80px;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 80px 48px;
       border-bottom: 1px solid var(--line);
       position: relative;
       overflow: hidden;
@@ -358,30 +361,29 @@
     .hero-title, .hero-bottom { position: relative; z-index: 2; }
 
     .hero-title {
-      margin-bottom: 40px;
+      width: 100%;
+      margin-bottom: 0;
       line-height: 1;
       letter-spacing: -.04em;
     }
 
-    .ht-line1 {
-      font-size: clamp(80px, 17vw, 240px);
+    .ht-line1, .ht-line2 {
       font-weight: 900;
       line-height: .88;
       white-space: nowrap;
       display: block;
-    }
-
-    .ht-line2 {
-      font-size: clamp(80px, 17vw, 240px);
-      font-weight: 900;
-      line-height: .92;
-      white-space: nowrap;
-      display: block;
+      /* font-size set by fitHeroText() JS */
+      font-size: 10vw;
     }
 
     .hero-title .accent { color: var(--green); }
 
     .hero-bottom {
+      position: absolute;
+      bottom: 48px;
+      left: 48px;
+      right: 48px;
+      z-index: 2;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
@@ -889,13 +891,13 @@
     .fade-in { opacity: 0; transform: translateY(16px); transition: opacity .6s, transform .6s; }
     .fade-in.vis { opacity: 1; transform: translateY(0); }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .navbar { padding: 0 24px; }
-      .hero { padding: 80px 24px 72px; }
-      .ht-line1, .ht-line2 { font-size: clamp(64px, 15vw, 140px); }
+      .hero { padding: 60px 24px; }
+      .hero-bottom { left: 24px; right: 24px; bottom: 32px; }
       .tool-row { grid-template-columns: 1fr; padding: 28px 24px; gap: 16px; }
       .tool-num { display: none; }
+      .tool-middle { padding: 0; }
       .tool-right { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
       .tool-row-arrow { display: none; }
       .how { padding: 60px 24px; }
@@ -908,9 +910,84 @@
     }
 
     @media (max-width: 600px) {
-      .nav-links a:not(:last-child) { display: none; }
-      .ht-line1, .ht-line2 { font-size: clamp(52px, 14vw, 80px); }
-      .hero-bottom { flex-direction: column; align-items: flex-start; }
+      /* ── cursor off on touch ── */
+      #cur, #curR { display: none; }
+      * { cursor: auto !important; }
+
+      /* ── navbar ── */
+      .navbar { padding: 0 20px; height: 54px; }
+      .nav-links a { display: none; }
+      .nav-links a:last-child { display: inline-flex; }
+      .theme-toggle { padding: 0 10px 0 8px; font-size: 11px; height: 28px; }
+
+      /* ── hero ── */
+      .hero { padding: 60px 20px; min-height: 100svh; }
+      .hero-bottom { left: 20px; right: 20px; bottom: 24px; flex-direction: column; align-items: flex-start; gap: 16px; }
+      .hero-desc { font-size: 14px; max-width: 100%; }
+      .finder-btn { width: 100%; justify-content: space-between; padding: 16px 20px; font-size: 14px; }
+      .scroll-hint { bottom: 20px; }
+
+      /* ── tools section ── */
+      .tools-head { padding: 48px 20px 32px; gap: 16px; }
+      .tools-head h2 { font-size: 28px; }
+      .tools-head-right p { font-size: 13px; }
+      .tool-row { padding: 24px 20px; gap: 14px; }
+      .tool-name { font-size: clamp(26px, 7vw, 40px); }
+      .tool-desc { font-size: 13px; max-width: 100%; }
+      .tool-tag { font-size: 9px; padding: 2px 7px; }
+      .tool-caps { gap: 5px; }
+      .cap { font-size: 10px; padding: 3px 8px; }
+      .tool-right { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .tool-url { font-size: 10px; }
+      .tool-open { width: 100%; justify-content: center; padding: 13px 16px; font-size: 13px; }
+
+      /* ── how section ── */
+      .how { padding: 48px 20px; }
+      .how h2 { font-size: 26px; margin-bottom: 36px; }
+      .step { padding: 28px 20px; }
+      .step-title { font-size: 16px; }
+      .step-desc { font-size: 12px; }
+
+      /* ── footer ── */
+      footer { padding: 40px 20px 28px; }
+      .f-brand { font-size: 22px; }
+      .f-top { gap: 24px; padding-bottom: 28px; }
+      .soc-row { gap: 8px; }
+      .soc-a { padding: 10px 14px; font-size: 12px; flex: 1; justify-content: center; }
+      .f-bottom { flex-direction: column; align-items: flex-start; gap: 8px; padding-top: 20px; }
+      .f-made, .f-live { font-size: 11px; }
+
+      /* ── modal / finder ── */
+      .overlay { padding: 12px; align-items: flex-end; }
+      .modal { padding: 28px 20px 32px; max-height: 92svh; border-radius: 0; }
+      .m-close { top: 16px; right: 16px; }
+      .m-head { font-size: 18px; }
+      .m-sub  { font-size: 12px; }
+      .m-choice { padding: 14px 16px; }
+      .m-choice strong { font-size: 13px; }
+      .m-choice span   { font-size: 11px; }
+      .go-btn { width: 100%; justify-content: center; padding: 15px; font-size: 14px; }
+      .m-back { font-size: 11px; }
+
+      /* ── floating arcade btn ── */
+      #arcade-btn { width: 44px; height: 44px; font-size: 18px; }
+      div[style*="bottom:28px;right:28px"] { bottom: 20px !important; right: 20px !important; }
+
+      /* ── shimmer off on touch (performance) ── */
+      a::before, button::before { display: none; }
+
+      /* ── game overlays ── */
+      #snake-canvas  { width: min(90vw, 380px) !important; height: min(90vw, 380px) !important; }
+      #flappy-canvas { width: min(85vw, 340px) !important; height: min(113vw, 460px) !important; }
+      #tetris-canvas { width: 160px !important; }
+      #pong-canvas   { width: min(96vw, 560px) !important; height: auto !important; }
+      #tetris-overlay { flex-direction: column; gap: 12px; }
+      #tetris-overlay > div:first-child { display: flex; flex-direction: row; gap: 16px; align-items: center; }
+    }
+
+    /* ── very small phones ── */
+    @media (max-width: 380px) {
+      .tool-name { font-size: 26px; }
     }
   </style>
 </head>
@@ -1293,6 +1370,37 @@ document.querySelectorAll('.fade-in').forEach((el, i) => {
 // ══════════════════════════════════════════════
 // NAVBAR SCROLL SHADOW
 // ══════════════════════════════════════════════
+// ── FIT HERO TEXT ──
+// Measures available width and scales both lines to fill it perfectly
+function fitHeroText(){
+  const hero = document.querySelector('.hero');
+  const line1 = document.querySelector('.ht-line1');
+  const line2 = document.querySelector('.ht-line2');
+  if(!hero || !line1 || !line2) return;
+
+  // Available width = hero width minus horizontal padding
+  const style = getComputedStyle(hero);
+  const pad = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
+  const avail = hero.clientWidth - pad;
+
+  // Binary search for the font size that makes the longest line = avail width
+  let lo = 10, hi = 800, best = 10;
+  line1.style.fontSize = line2.style.fontSize = hi + 'px';
+
+  // The wider of the two lines drives the fit
+  for(let i = 0; i < 24; i++){
+    const mid = (lo + hi) / 2;
+    line1.style.fontSize = line2.style.fontSize = mid + 'px';
+    const w = Math.max(line1.scrollWidth, line2.scrollWidth);
+    if(w <= avail){ best = mid; lo = mid; }
+    else hi = mid;
+  }
+  line1.style.fontSize = line2.style.fontSize = best + 'px';
+}
+
+fitHeroText();
+window.addEventListener('resize', fitHeroText);
+
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
   if(window.scrollY > 80) document.getElementById('scroll-hint')?.classList.add('hidden');
@@ -1599,34 +1707,102 @@ function closeTerminal(){
 
 // ── PAINT MODE ──
 let paintMode=false, isPainting=false, paintCtx;
-const paintColors=['#4ade80','#ff6aff','#4af0ff','#ffb347','#a78bfa','#fff'];
+const paintColors=['#4ade80','#ff6aff','#4af0ff','#ffb347','#a78bfa','#ffffff','#ff5f57','#febc2e'];
 let paintColorIdx=0;
+
+function paintGetPos(e, c){
+  const r=c.getBoundingClientRect();
+  if(e.touches){
+    return { x:(e.touches[0].clientX-r.left)*(c.width/r.width), y:(e.touches[0].clientY-r.top)*(c.height/r.height) };
+  }
+  return { x:(e.clientX-r.left)*(c.width/r.width), y:(e.clientY-r.top)*(c.height/r.height) };
+}
+
+function paintUpdateHUD(){
+  const swatch=document.getElementById('paint-swatch');
+  if(swatch){
+    swatch.style.background=paintColors[paintColorIdx];
+    swatch.style.boxShadow=`0 0 8px 2px ${paintColors[paintColorIdx]}88`;
+  }
+}
+
 function enterPaint(){
   if(paintMode) return;
   paintMode=true;
   const c=document.getElementById('paint-canvas');
+  c.width=window.innerWidth; c.height=window.innerHeight;
   c.style.display='block'; c.style.pointerEvents='all';
   document.getElementById('paint-hud').style.display='flex';
-  c.width=window.innerWidth; c.height=window.innerHeight;
   paintCtx=c.getContext('2d');
   paintCtx.lineCap='round'; paintCtx.lineJoin='round';
-  c.onmousedown=e=>{ isPainting=true; paintCtx.beginPath(); paintCtx.moveTo(e.clientX,e.clientY); };
+  paintUpdateHUD();
+
+  const isMobile=window.innerWidth<=600;
+  const brushSize=isMobile ? 7 : 4;
+
+  // ── Mouse ──
+  c.onmousedown=e=>{
+    isPainting=true;
+    const p=paintGetPos(e,c);
+    paintCtx.beginPath(); paintCtx.moveTo(p.x,p.y);
+  };
   c.onmousemove=e=>{
     if(!isPainting) return;
-    paintCtx.strokeStyle=paintColors[paintColorIdx]; paintCtx.lineWidth=4;
-    paintCtx.shadowColor=paintColors[paintColorIdx]; paintCtx.shadowBlur=8;
-    paintCtx.lineTo(e.clientX,e.clientY); paintCtx.stroke();
-    paintCtx.beginPath(); paintCtx.moveTo(e.clientX,e.clientY);
+    const p=paintGetPos(e,c);
+    paintCtx.strokeStyle=paintColors[paintColorIdx];
+    paintCtx.lineWidth=brushSize;
+    paintCtx.shadowColor=paintColors[paintColorIdx]; paintCtx.shadowBlur=10;
+    paintCtx.lineTo(p.x,p.y); paintCtx.stroke();
+    paintCtx.beginPath(); paintCtx.moveTo(p.x,p.y);
   };
-  c.onmouseup=c.onmouseleave=()=>isPainting=false;
-  c.oncontextmenu=e=>{ e.preventDefault(); paintColorIdx=(paintColorIdx+1)%paintColors.length; };
+  c.onmouseup=c.onmouseleave=()=>{ isPainting=false; };
+  c.oncontextmenu=e=>{ e.preventDefault(); paintColorIdx=(paintColorIdx+1)%paintColors.length; paintUpdateHUD(); };
+
+  // ── Touch ──
+  c.addEventListener('touchstart', e=>{
+    e.preventDefault();
+    isPainting=true;
+    const p=paintGetPos(e,c);
+    paintCtx.beginPath(); paintCtx.moveTo(p.x,p.y);
+  }, {passive:false});
+  c.addEventListener('touchmove', e=>{
+    e.preventDefault();
+    if(!isPainting) return;
+    const p=paintGetPos(e,c);
+    paintCtx.strokeStyle=paintColors[paintColorIdx];
+    paintCtx.lineWidth=brushSize;
+    paintCtx.shadowColor=paintColors[paintColorIdx]; paintCtx.shadowBlur=10;
+    paintCtx.lineTo(p.x,p.y); paintCtx.stroke();
+    paintCtx.beginPath(); paintCtx.moveTo(p.x,p.y);
+  }, {passive:false});
+  c.addEventListener('touchend', ()=>{ isPainting=false; }, {passive:true});
+
+  // ── Resize ──
+  window._paintResize=()=>{
+    if(!paintMode) return;
+    const img=paintCtx.getImageData(0,0,c.width,c.height);
+    c.width=window.innerWidth; c.height=window.innerHeight;
+    paintCtx.lineCap='round'; paintCtx.lineJoin='round';
+    try{ paintCtx.putImageData(img,0,0); }catch(e){}
+  };
+  window.addEventListener('resize', window._paintResize);
 }
-function clearPaint(){ if(paintCtx) paintCtx.clearRect(0,0,window.innerWidth,window.innerHeight); }
+
+function clearPaint(){
+  if(paintCtx) paintCtx.clearRect(0,0,window.innerWidth,window.innerHeight);
+}
+
 function exitPaint(){
   paintMode=false; isPainting=false;
   const c=document.getElementById('paint-canvas');
   c.style.display='none'; c.style.pointerEvents='none';
   document.getElementById('paint-hud').style.display='none';
+  if(window._paintResize) window.removeEventListener('resize', window._paintResize);
+}
+
+function paintCycleColor(){
+  paintColorIdx=(paintColorIdx+1)%paintColors.length;
+  paintUpdateHUD();
 }
 
 // ── STAR WARP ──
@@ -1959,8 +2135,9 @@ function runFlappy(){
   function flap(){ if(!alive&&!started){ started=true; alive=true; } bird.vy=-7; }
 
   window._flappyFlap=flap;
-  // click / space
+  // click / space / touch
   canvas.onclick=flap;
+  canvas.addEventListener('touchstart', e=>{ e.preventDefault(); flap(); }, {passive:false});
 
   function spawnPipe(){
     const top=60+Math.random()*(H-GAP-120);
@@ -2312,6 +2489,14 @@ function runPong(){
   }
   document.addEventListener('keydown',window._pongKeyHandler);
   document.addEventListener('keyup',window._pongKeyHandler);
+  // Touch: drag to move paddle
+  canvas.addEventListener('touchstart', e=>{ started=true; e.preventDefault(); }, {passive:false});
+  canvas.addEventListener('touchmove', e=>{
+    e.preventDefault();
+    const rect=canvas.getBoundingClientRect();
+    const ty=(e.touches[0].clientY-rect.top)*(H/rect.height);
+    p1.y=Math.max(0,Math.min(H-PAD_H, ty-PAD_H/2));
+  }, {passive:false});
   update();
 }
 
@@ -2438,7 +2623,7 @@ function runPong(){
       Tag: <span style="color:#4ade80;">VG31</span> &nbsp;·&nbsp; Trigger: <span id="sc-mode" style="color:#4ade80;">—</span>
     </div>
     <div style="display:flex;gap:10px;flex-wrap:wrap;">
-      <a href="https://github.com/vg31op target="_blank" style="font-size:11px;color:#fff;background:#4ade80;padding:10px 18px;text-decoration:none;font-family:'Epilogue',sans-serif;font-weight:700;">GitHub →</a>
+      <a href="https://github.com/vg31op" target="_blank" style="font-size:11px;color:#fff;background:#4ade80;padding:10px 18px;text-decoration:none;font-family:'Epilogue',sans-serif;font-weight:700;">GitHub →</a>
       <button onclick="closeSecret()" style="font-size:11px;color:#888880;background:none;border:1px solid #333;padding:10px 18px;cursor:none;font-family:'DM Mono',monospace;">close</button>
     </div>
     <div style="position:absolute;top:16px;right:16px;font-size:10px;color:#333;letter-spacing:.1em;">ESC to close</div>
@@ -2473,10 +2658,13 @@ function runPong(){
 </div>
 
 <canvas id="paint-canvas" style="display:none;position:fixed;inset:0;z-index:1800;pointer-events:none;"></canvas>
-<div id="paint-hud" style="display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:1900;font-family:'DM Mono',monospace;font-size:11px;color:#4ade80;background:rgba(0,0,0,0.8);border:1px solid #4ade80;padding:8px 20px;letter-spacing:.1em;gap:16px;align-items:center;">
-  <span>🎨 PAINT MODE — hold & drag · right-click for color</span>
-  <button onclick="clearPaint()" style="color:#888;background:none;border:1px solid #333;padding:3px 10px;cursor:none;font-family:'DM Mono',monospace;font-size:10px;">clear</button>
-  <button onclick="exitPaint()" style="color:#4ade80;background:none;border:1px solid #4ade80;padding:3px 10px;cursor:none;font-family:'DM Mono',monospace;font-size:10px;">exit</button>
+<div id="paint-hud" style="display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:1900;font-family:'DM Mono',monospace;font-size:11px;color:#4ade80;background:rgba(0,0,0,0.88);border:1px solid #4ade80;padding:10px 16px;letter-spacing:.08em;gap:12px;align-items:center;white-space:nowrap;max-width:calc(100vw - 40px);">
+  <span id="paint-swatch" style="width:14px;height:14px;border-radius:50%;background:#4ade80;display:inline-block;flex-shrink:0;transition:background .2s,box-shadow .2s;"></span>
+  <span style="color:#555;font-size:10px;display:none;" class="paint-label-desktop">hold & drag · right-click color</span>
+  <span style="color:#555;font-size:10px;" class="paint-label-mobile">draw · tap color →</span>
+  <button onclick="paintCycleColor()" style="color:#4ade80;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.4);padding:6px 12px;cursor:pointer;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.05em;min-width:44px;min-height:36px;">color</button>
+  <button onclick="clearPaint()" style="color:#888;background:none;border:1px solid #333;padding:6px 12px;cursor:pointer;font-family:'DM Mono',monospace;font-size:10px;min-width:44px;min-height:36px;">clear</button>
+  <button onclick="exitPaint()" style="color:#4ade80;background:none;border:1px solid #4ade80;padding:6px 12px;cursor:pointer;font-family:'DM Mono',monospace;font-size:10px;min-width:44px;min-height:36px;">exit</button>
 </div>
 
 <canvas id="warp-canvas" style="display:none;position:fixed;inset:0;z-index:3500;"></canvas>
@@ -2500,6 +2688,14 @@ function runPong(){
 
 <style>
 .arcade-card:hover { border-color:#4ade80 !important; box-shadow:0 0 28px rgba(74,222,128,0.3) !important; transform:translateY(-3px) scale(1.02) !important; }
+/* paint HUD responsive */
+@media (min-width:601px){
+  .paint-label-desktop { display:inline !important; }
+  .paint-label-mobile  { display:none !important; }
+}
+@media (max-width:600px){
+  #paint-hud { bottom:max(20px, env(safe-area-inset-bottom)); gap:8px; padding:10px 12px; }
+}
 #arcade-btn:hover  { box-shadow:0 0 36px rgba(74,222,128,0.6) !important; transform:scale(1.1) !important; }
 </style>
 
