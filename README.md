@@ -11,7 +11,6 @@
 - **🔒 Privacy First**: Your data never leaves your machine. All processing happens locally (Client-Side).
 - **🚀 High Performance**: Built with Vite and React for snappy, lightning-fast interactions.
 - **🛠️ Integrated Utilities**: A growing collection of tools including file sharing (Drop) and PDF processing.
-- **🎨 Premium UI**: A minimal, "startup-style" interface optimized for focus and speed.
 
 ---
 
@@ -79,17 +78,6 @@ shiroya.in/
 **Your data stays with you.** 
 
 Unlike traditional platforms, Shiroya does not store your files on a server. Every tool—from PDF merging to peer-to-peer sharing—operates locally in your browser or via encrypted direct connections. We do not track personal identities, and we do not sell data.
-
----
-
-## 🚧 Roadmap
-
-- [x] Custom smooth-scrolling engine (Hash-free URLs)
-- [x] Liquid Nebula background & Mouse-glow interactions
-- [x] Responsive "Startup-style" Landing Page
-- [ ] **Image Optimization Tool** (Coming Soon)
-- [ ] **Developer Sandbox** (Coming Soon)
-- [ ] **Global dark/light mode toggle**
 
 ---
 
