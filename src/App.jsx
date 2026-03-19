@@ -16,20 +16,42 @@ const SectionScrollHandler = () => {
     return null;
 }
 
+const PageWrapper = ({ children }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -10 }}
+    transition={{ duration: 0.4, ease: "easeOut" }}
+  >
+    {children}
+  </motion.div>
+)
+
+function AppContent() {
+  const location = useLocation();
+
+  return (
+    <div className="bg-black text-white selection:bg-primary/30 selection:text-primary min-h-screen relative">
+      <AnimatedBackground />
+      <MouseGlow />
+      <SectionScrollHandler />
+      <Navbar />
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
+          <Route path="/privacy" element={<PageWrapper><Privacy /></PageWrapper>} />
+          <Route path="/terms" element={<PageWrapper><Terms /></PageWrapper>} />
+        </Routes>
+      </AnimatePresence>
+      <Footer />
+    </div>
+  )
+}
+
 function App() {
   return (
     <Router>
-      <div className="bg-black text-white selection:bg-primary/30 selection:text-primary min-h-screen relative">
-        <AnimatedBackground />
-        <SectionScrollHandler />
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/terms" element={<Terms />} />
-        </Routes>
-        <Footer />
-      </div>
+      <AppContent />
     </Router>
   )
 }

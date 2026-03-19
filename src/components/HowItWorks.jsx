@@ -8,16 +8,13 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="section-padding py-32 bg-black border-b border-dark-border overflow-hidden">
+    <section className="section-padding py-32 bg-black overflow-hidden">
       <div className="text-center mb-20 animate-fade-in-up">
         <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold mb-6 tracking-tight">How it Works</h2>
         <p className="text-gray-400 max-w-xl mx-auto text-lg">Three simple steps to productivity. No complexity, just speed.</p>
       </div>
       
       <div className="relative grid md:grid-cols-3 gap-12 lg:gap-20 max-w-5xl mx-auto">
-        {/* Connector line for desktop */}
-        <div className="hidden md:block absolute top-[60px] left-[15%] right-[15%] h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent -z-10" />
-        
         {steps.map((step, index) => (
           <div key={index} className="flex flex-col items-center text-center animate-fade-in-up transition-all hover:scale-105" style={{ animationDelay: `${index * 150}ms` }}>
             <div className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-3xl bg-primary/10 border border-primary/20 text-primary font-display font-bold text-2xl mb-8 relative group">

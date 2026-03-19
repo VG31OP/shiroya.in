@@ -6,7 +6,7 @@ const Footer = () => {
   const { goToSection } = useSectionNavigation();
 
   return (
-    <footer id="contact" className="section-padding py-16 bg-black border-t border-dark-border">
+    <footer id="contact" className="section-padding py-16 bg-black">
       <div className="flex flex-col md:flex-row justify-between items-center gap-10 max-w-7xl mx-auto px-6">
         <div className="flex flex-col items-center md:items-start gap-4">
           <Link to="/" className="text-2xl font-display font-bold text-white tracking-tight">

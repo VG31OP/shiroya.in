@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const Features = () => {
   const tools = [
@@ -29,16 +30,26 @@ const Features = () => {
   ];
 
   return (
-    <section id="tools" className="section-padding py-32 bg-dark-surface/30 border-y border-dark-border">
-      <div className="text-center mb-16">
+    <section id="tools" className="section-padding py-32 bg-dark-surface/30">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-16"
+      >
         <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">Powerful Tools, Zero Friction</h2>
         <p className="text-gray-400 max-w-xl mx-auto">Instant access to tools without any setup or logins.</p>
-      </div>
+      </motion.div>
 
       <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {tools.map((tool, index) => (
-          <div
+          <motion.div 
             key={index}
+            initial={{ opacity: 0, scale: 0.9, y: 30 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
             className="glow-card group p-8 rounded-3xl bg-black/40 backdrop-blur-sm"
           >
             <div className="w-12 h-12 flex items-center justify-center rounded-2xl bg-primary/10 mb-6 group-hover:scale-110 transition-transform">
@@ -55,7 +66,7 @@ const Features = () => {
                 {tool.cta}
               </button>
             )}
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

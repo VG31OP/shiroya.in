@@ -4,17 +4,36 @@ import { useSectionNavigation } from '../hooks/useSectionNavigation';
 
 const Navbar = () => {
   const { goToSection } = useSectionNavigation();
+  const [isVisible, setIsVisible] = React.useState(true);
   const [isScrolled, setIsScrolled] = React.useState(false);
+  const lastScrollY = React.useRef(0);
 
   React.useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Detection for background state
+      setIsScrolled(currentScrollY > 20);
+      
+      // Detection for show/hide logic
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setIsVisible(false); // Scrolling down - hide
+      } else {
+        setIsVisible(true);  // Scrolling up - show
+      }
+      
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-black/70 backdrop-blur-xl border-b border-white/10 py-3' : 'bg-transparent py-5'
+    <nav className={`fixed -top-[1px] left-0 right-0 z-50 transform-gpu will-change-transform transition-transform duration-300 ease-in-out py-4 pt-5 ${
+      isVisible ? 'translate-y-0' : '-translate-y-full'
+    } ${
+      isScrolled ? 'bg-black/95 backdrop-blur-md' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <div className="flex items-center gap-2">
