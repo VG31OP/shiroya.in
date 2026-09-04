@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
+import shiroyaLogo from '../assets/shiroya-logo-transparent.png';
 
 const LabNavDock = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -46,7 +47,7 @@ const LabNavDock = () => {
             className="flex items-center gap-2 group"
           >
             <img
-              src="/shiroya-logo-transparent.png"
+              src={shiroyaLogo}
               alt="SHIROYA.in"
               className="h-8 sm:h-9 w-auto object-contain group-hover:scale-105 transition-transform"
             />

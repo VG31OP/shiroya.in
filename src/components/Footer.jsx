@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSectionNavigation } from '../hooks/useSectionNavigation';
+import shiroyaLogo from '../assets/shiroya-logo-transparent.png';
 
 const Footer = () => {
   const { goToSection } = useSectionNavigation();
@@ -9,8 +10,12 @@ const Footer = () => {
     <footer id="contact" className="section-padding py-16 bg-black">
       <div className="flex flex-col md:flex-row justify-between items-center gap-10 max-w-7xl mx-auto px-6">
         <div className="flex flex-col items-center md:items-start gap-4">
-          <Link to="/" className="text-2xl font-display font-bold text-white tracking-tight">
-            shiroya<span className="text-primary">.in</span>
+          <Link to="/" className="flex items-center gap-2 group">
+            <img
+              src={shiroyaLogo}
+              alt="SHIROYA.in"
+              className="h-8 sm:h-9 w-auto object-contain group-hover:scale-105 transition-transform"
+            />
           </Link>
           <p className="text-gray-400 text-sm max-w-sm text-center md:text-left">
             Fast, browser-based tools. No login. No complexity.

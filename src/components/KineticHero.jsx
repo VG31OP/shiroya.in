@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { Terminal, ArrowDownRight, Compass, ShieldCheck, Zap } from 'lucide-react';
+import shiroyaLogo from '../assets/shiroya-logo-transparent.png';
 
 const KineticHero = ({ onExploreClick }) => {
   const mouseX = useMotionValue(0);
@@ -76,7 +77,7 @@ const KineticHero = ({ onExploreClick }) => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              src="/shiroya-logo-transparent.png"
+              src={shiroyaLogo}
               alt="SHIROYA.in"
               className="w-full max-w-xl sm:max-w-2xl h-auto drop-shadow-[0_0_40px_rgba(32,224,112,0.35)] object-contain pointer-events-none mx-auto"
             />
