@@ -1,0 +1,58 @@
+# Robots.txt for shiroya.in
+# Production SEO, AEO & AI Engine Discovery Policy
+
+User-agent: *
+Allow: /
+
+# Search Engine Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+# AI Citation & Search Engines
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# Disallow aggressive scrapers without search utility
+User-agent: Bytespider
+Disallow: /
+
+# Sitemap & Machine-Readable AI Discovery Specifications
+Sitemap: https://shiroya.in/sitemap.xml
+# LLMs specification: https://shiroya.in/llms.txt
+# Full LLMs specification: https://shiroya.in/llms-full.txt

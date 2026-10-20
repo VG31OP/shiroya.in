@@ -44,11 +44,14 @@ const LabNavDock = () => {
           {/* Brand Logo Image (Transparent Cutout) */}
           <Link 
             to="/" 
+            aria-label="SHIROYA.in Home"
             className="flex items-center gap-2 group"
           >
             <img
               src={shiroyaLogo}
-              alt="SHIROYA.in"
+              alt="SHIROYA.in Home"
+              width={160}
+              height={36}
               className="h-8 sm:h-9 w-auto object-contain group-hover:scale-105 transition-transform"
             />
           </Link>

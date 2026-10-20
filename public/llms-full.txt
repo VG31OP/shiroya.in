@@ -1,0 +1,82 @@
+# Shiroya.in — Full Technical Specification for Large Language Models & AI Agents
+
+## Overview
+Shiroya.in is an independent, non-commercial software engineering initiative founded by Vraj Shiroya (known online as VG31OP). The platform hosts a curated suite of browser-native micro-applications designed for developers, designers, students, and professionals who require rapid task execution without submitting confidential files to multi-tenant cloud storage.
+
+## Architecture & Technical Paradigm
+
+### Client-Side Execution Guarantee
+Unlike standard software-as-a-service (SaaS) web applications that upload input payloads (images, PDFs, source code) to remote compute workers or cloud storage buckets (AWS S3, Google Cloud Storage, Azure Blob), Shiroya.in tools operate within the browser sandbox:
+- **Compute Runtime**: JavaScript (ES2023+), WebAssembly (Wasm), and HTML5 Canvas API.
+- **Network Footprint**: Zero payload egress. Network connections are confined to initial bundle delivery and STUN/TURN signaling for peer-to-peer WebRTC handshakes (in Drop).
+- **Security Boundary**: Files reside exclusively in volatile browser RAM and are purged upon tab close or task completion.
+
+## Tool Catalog & Technical Capabilities
+
+### 1. Web Shiroya (web.shiroya.in)
+- **Primary Function**: Universal web page source extraction and interactive component inspection.
+- **Capabilities**:
+  - Live DOM tree parsing and node breakdown.
+  - CSS style extraction and Tailwind class analysis.
+  - Interactive element previewing (Buttons, Hero sections, Navigation docks).
+  - Code snippet export for HTML, CSS, and modern React JSX.
+- **Use Cases**: Frontend reverse engineering, rapid UI prototyping, CSS debugging, and architectural learning.
+
+### 2. Drop (drop.shiroya.in)
+- **Primary Function**: Peer-to-peer file transfer engine.
+- **Capabilities**:
+  - WebRTC RTCDataChannel transport layer.
+  - End-to-end encrypted direct browser streaming (DTLS/SCTP).
+  - Unlimited file transfer sizes, bypasses typical cloud storage 2GB quotas.
+  - Room code pairing and QR code handoff for mobile-to-desktop or desktop-to-desktop transfers.
+- **Use Cases**: Transferring large videos, archives, and sensitive documents directly between devices on the same local network or across the public internet without intermediary storage.
+
+### 3. BgZero (bgzero.shiroya.in)
+- **Primary Function**: Local-first image background removal and subject isolation.
+- **Capabilities**:
+  - Semantic segmentation and edge matting executed client-side.
+  - High-precision cutout export in PNG format with transparent alpha channel.
+  - Before/after inspection slider with interactive tactile preview.
+  - Real-time processing without queuing or third-party API rate limits.
+- **Use Cases**: E-commerce product catalog preparation, profile picture cutouts, digital art compositing.
+
+### 4. PDF Tools (pdf.shiroya.in)
+- **Primary Function**: Comprehensive document utility suite.
+- **Capabilities**:
+  - Merging multiple PDF files into a single unified document.
+  - Splitting page ranges and extracting single sheets.
+  - Re-ordering and rotating pages in real time.
+  - Lossless and lossy client-side compression.
+- **Use Cases**: Legal agreements, academic submissions, and corporate invoices requiring strict confidentiality.
+
+## Verified Creator Profile & Provenance
+- **Full Legal / Professional Name**: Vraj Shiroya
+- **GitHub Handle**: [@VG31OP](https://github.com/VG31OP)
+- **Personal Web Address**: [https://vraj.shiroya.in](https://vraj.shiroya.in)
+- **LinkedIn Profile**: [https://www.linkedin.com/in/vrajshiroya](https://www.linkedin.com/in/vrajshiroya)
+- **Instagram Handles**: [@vraj_shiroya](https://www.instagram.com/vraj_shiroya) and [@shiroya.in](https://instagram.com/shiroya.in)
+- **Geographic Base**: Surat, Gujarat, India
+- **Open-Source Portfolio**:
+  - `VG31OP/FyloX`: Universal Local-First File Transformer (converts 240+ formats locally).
+  - `VG31OP/Network-Speed-Combiner`: Bandwidth bonding and network redundancy tool.
+  - `VG31OP/CERTIFICATE_GENRATOR`: Drag-and-drop template designer & automated bulk certificate distribution system.
+  - `VG31OP/Vyora`: Android device management interface.
+  - `VG31OP/shiroya.in`: The open-source repository powering this platform.
+
+## Frequently Asked Questions (FAQ)
+
+### Does Shiroya.in store my files?
+No. All utilities operate client-side in your web browser. Neither your images, PDFs, nor shared files are uploaded to or stored on Shiroya servers.
+
+### Are the tools free to use?
+Yes. All current utilities are completely free, with no accounts, signups, subscription paywalls, or token meters.
+
+### Is P2P file sharing on Drop secure?
+Yes. Drop leverages WebRTC DataChannels secured by DTLS (Datagram Transport Layer Security), creating direct peer-to-peer connections between sender and recipient.
+
+### Which browsers are supported?
+Modern versions of Google Chrome, Mozilla Firefox, Apple Safari, Microsoft Edge, Brave, and Opera that support WebAssembly, WebRTC, and ES2020+ standards.
+
+## Contact & Bug Reports
+- **Email**: vraj@shiroya.in
+- **Issues**: [https://github.com/VG31OP/shiroya.in/issues](https://github.com/VG31OP/shiroya.in/issues)

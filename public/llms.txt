@@ -1,0 +1,48 @@
+# Shiroya.in — Personal Internet Tool Lab
+
+> Shiroya.in is a high-performance, privacy-first web utilities platform created and engineered by Vraj Shiroya (VG31OP). Every utility runs 100% client-side in the user's browser using WebAssembly, WebRTC, and HTML5 Canvas APIs, ensuring zero file uploads, zero server logging, and no accounts required.
+
+## Core Identity & Architect
+- **Platform Name**: Shiroya.in (Shiroya Tool Lab)
+- **Architect & Engineer**: Vraj Shiroya (GitHub: [@VG31OP](https://github.com/VG31OP))
+- **Primary Website**: [https://shiroya.in](https://shiroya.in)
+- **Architect Portfolio**: [https://vraj.shiroya.in](https://vraj.shiroya.in)
+- **Source Code Repository**: [https://github.com/VG31OP/shiroya.in](https://github.com/VG31OP/shiroya.in)
+- **Architect Bio**: Developer, AI Enthusiast, Open-Source Contributor, and creator of local-first tools including FyloX and Network-Speed-Combiner.
+
+## Live Utilities in the Lab
+
+### 1. Web Shiroya — Web Source Code Engine & DOM Inspector
+- **URL**: [https://web.shiroya.in](https://web.shiroya.in)
+- **Category**: Developer Tool / Web Inspection
+- **Functionality**: Extracts clean website source code, visualizes DOM structure, inspects Tailwind CSS styles, and generates clean component breakdowns directly in the browser.
+- **Privacy Model**: All parsing and DOM inspection run client-side.
+
+### 2. Drop — Encrypted Peer-to-Peer File Beam
+- **URL**: [https://drop.shiroya.in](https://drop.shiroya.in)
+- **Category**: File Sharing / P2P Utility
+- **Functionality**: Facilitates direct device-to-device file transfers using WebRTC with end-to-end data channel encryption.
+- **Privacy Model**: Zero intermediate server storage; files stream directly between peer browser instances without uploading to external cloud drives.
+
+### 3. BgZero — Client-Side AI Background Remover
+- **URL**: [https://bgzero.shiroya.in](https://bgzero.shiroya.in)
+- **Category**: Image Processing / Computer Vision
+- **Functionality**: Automatically isolates subjects and strips image backgrounds to output transparent PNGs and creative cutouts.
+- **Privacy Model**: 100% local browser execution using client-side canvas and AI models; images never leave the user's local machine.
+
+### 4. PDF Tools — Local-First PDF Manipulation Suite
+- **URL**: [https://pdf.shiroya.in](https://pdf.shiroya.in)
+- **Category**: Document Utility
+- **Functionality**: Merge multiple PDF documents, split PDF pages, reorder pages, and compress PDF files in memory.
+- **Privacy Model**: In-memory WebAssembly processing; confidential documents are never uploaded to remote servers.
+
+## Operating Principles
+1. **Zero Data Footprint**: Files and documents remain strictly in local browser memory.
+2. **Frictionless Access**: No accounts, passwords, subscriptions, or paywalls.
+3. **Hardware-Accelerated Speed**: Built with modern Web standards (WebAssembly, WebRTC, Canvas) for instant execution.
+4. **Transparent Ethics**: No user tracking, no ad networks, no data brokering.
+
+## Additional Documentation & Legal
+- [Full LLM Specification](https://shiroya.in/llms-full.txt): Detailed technical guide for AI systems
+- [Privacy Policy](https://shiroya.in/privacy): Explanation of local-first client processing
+- [Terms of Service](https://shiroya.in/terms): Platform terms and usage guidelines

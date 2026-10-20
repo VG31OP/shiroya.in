@@ -1,0 +1,14 @@
+/* TEAM */
+Creator & Lead Engineer: Vraj Shiroya (VG31OP)
+Contact: vraj@shiroya.in
+Twitter/X: https://x.com/vraj_shiroya
+GitHub: https://github.com/VG31OP
+Portfolio: https://vraj.shiroya.in
+Location: Surat, Gujarat, India
+
+/* SITE */
+Standards: HTML5, CSS3, ES2023+, WebAssembly, WebRTC
+Framework: React 19, Vite, Tailwind CSS 4, Framer Motion
+Hosting: Vercel
+Language: English
+Doctype: HTML5

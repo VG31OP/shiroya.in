@@ -122,9 +122,10 @@ const CreatorLab = () => {
             </a>
 
             <a
-              href="https://github.com/vg31op"
+              href="https://github.com/VG31OP"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GitHub Profile (@VG31OP)"
               className="p-3.5 rounded-xl lab-glass border border-white/10 text-gray-300 hover:text-[#20E070] hover:border-[#20E070] hover:shadow-[0_0_15px_rgba(32,224,112,0.25)] transition-all duration-300 transform hover:-translate-y-0.5"
               title="GitHub"
             >
@@ -135,6 +136,7 @@ const CreatorLab = () => {
               href="https://instagram.com/shiroya.in"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Instagram Profile (@shiroya.in)"
               className="p-3.5 rounded-xl lab-glass border border-white/10 text-gray-300 hover:text-[#20E070] hover:border-[#20E070] hover:shadow-[0_0_15px_rgba(32,224,112,0.25)] transition-all duration-300 transform hover:-translate-y-0.5"
               title="Instagram"
             >
@@ -142,9 +144,10 @@ const CreatorLab = () => {
             </a>
 
             <a
-              href="https://linkedin.com/in/vraj-shiroya-70b927287"
+              href="https://www.linkedin.com/in/vrajshiroya"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="LinkedIn Profile (Vraj Shiroya)"
               className="p-3.5 rounded-xl lab-glass border border-white/10 text-gray-300 hover:text-[#20E070] hover:border-[#20E070] hover:shadow-[0_0_15px_rgba(32,224,112,0.25)] transition-all duration-300 transform hover:-translate-y-0.5"
               title="LinkedIn"
             >
@@ -153,6 +156,7 @@ const CreatorLab = () => {
 
             <a
               href="mailto:vraj@shiroya.in"
+              aria-label="Send email to vraj@shiroya.in"
               className="p-3.5 rounded-xl lab-glass border border-white/10 text-gray-300 hover:text-[#20E070] hover:border-[#20E070] hover:shadow-[0_0_15px_rgba(32,224,112,0.25)] transition-all duration-300 transform hover:-translate-y-0.5"
               title="Email Contact"
             >

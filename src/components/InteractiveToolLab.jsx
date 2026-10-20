@@ -691,15 +691,17 @@ const InteractiveToolLab = () => {
                     </span>
                   </div>
 
-                  <a
-                    href={tool.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-4xl sm:text-6xl font-display font-black text-white hover:text-[#20E070] transition-colors tracking-tight flex items-center gap-3 group/link"
-                  >
-                    <span>{tool.domainUrl}</span>
-                    <ArrowUpRight className="w-8 h-8 text-[#20E070] group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
-                  </a>
+                  <h3 className="text-4xl sm:text-6xl font-display font-black text-white hover:text-[#20E070] transition-colors tracking-tight">
+                    <a
+                      href={tool.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 group/link"
+                    >
+                      <span>{tool.domainUrl}</span>
+                      <ArrowUpRight className="w-8 h-8 text-[#20E070] group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
+                    </a>
+                  </h3>
 
                   <p className="text-gray-300 font-sans text-base sm:text-lg leading-relaxed">
                     {tool.description}
@@ -748,15 +750,17 @@ const InteractiveToolLab = () => {
                     </span>
                   </div>
 
-                  <a
-                    href={tool.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-3xl sm:text-5xl font-display font-black text-white hover:text-[#20E070] transition-colors tracking-tight flex items-center gap-2"
-                  >
-                    <span>{tool.domainUrl}</span>
-                    <ArrowUpRight className="w-6 h-6 text-[#20E070]" />
-                  </a>
+                  <h3 className="text-3xl sm:text-5xl font-display font-black text-white hover:text-[#20E070] transition-colors tracking-tight">
+                    <a
+                      href={tool.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2"
+                    >
+                      <span>{tool.domainUrl}</span>
+                      <ArrowUpRight className="w-6 h-6 text-[#20E070]" />
+                    </a>
+                  </h3>
 
                   <p className="text-gray-300 font-sans text-sm sm:text-base leading-relaxed">
                     {tool.description}
@@ -798,15 +802,17 @@ const InteractiveToolLab = () => {
                     </span>
                   </div>
 
-                  <a
-                    href={tool.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-3xl sm:text-4xl font-display font-black text-white hover:text-[#20E070] transition-colors tracking-tight flex items-center gap-2"
-                  >
-                    <span>{tool.domainUrl}</span>
-                    <ArrowUpRight className="w-6 h-6 text-[#20E070]" />
-                  </a>
+                  <h3 className="text-3xl sm:text-4xl font-display font-black text-white hover:text-[#20E070] transition-colors tracking-tight">
+                    <a
+                      href={tool.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2"
+                    >
+                      <span>{tool.domainUrl}</span>
+                      <ArrowUpRight className="w-6 h-6 text-[#20E070]" />
+                    </a>
+                  </h3>
 
                   <p className="text-gray-300 font-sans text-xs sm:text-sm leading-relaxed">
                     {tool.description}
@@ -850,15 +856,17 @@ const InteractiveToolLab = () => {
                     </span>
                   </div>
 
-                  <a
-                    href={tool.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-4xl sm:text-5xl font-display font-black text-white hover:text-[#20E070] transition-colors tracking-tight flex items-center gap-3"
-                  >
-                    <span>{tool.domainUrl}</span>
-                    <ArrowUpRight className="w-7 h-7 text-[#20E070]" />
-                  </a>
+                  <h3 className="text-4xl sm:text-5xl font-display font-black text-white hover:text-[#20E070] transition-colors tracking-tight">
+                    <a
+                      href={tool.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3"
+                    >
+                      <span>{tool.domainUrl}</span>
+                      <ArrowUpRight className="w-7 h-7 text-[#20E070]" />
+                    </a>
+                  </h3>
 
                   <p className="text-gray-300 font-sans text-base leading-relaxed">
                     {tool.description}

@@ -1,15 +1,240 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>shiroya.in | Fast, Simple Tools</title>
+    <title>shiroya.in — Fast, Private Browser Tools & Developer Lab | Vraj Shiroya</title>
+    
+    <!-- Primary SEO Metadata -->
+    <meta name="description" content="Free, private, browser-first tools engineered by Vraj Shiroya (VG31OP). Features Web Shiroya source code engine, Drop encrypted P2P file sharing, BgZero AI background remover, and local PDF tools. 100% client-side with zero cloud uploads." />
+    <meta name="author" content="Vraj Shiroya" />
+    <meta name="creator" content="Vraj Shiroya (VG31OP)" />
+    <meta name="publisher" content="Vraj Shiroya" />
+    <meta name="keywords" content="browser tools, client-side tools, private file sharing, P2P file transfer, background remover, local PDF tools, Web Shiroya, Drop P2P, BgZero, Vraj Shiroya, VG31OP, developer utilities, WebRTC, WebAssembly" />
+    
+    <!-- Crawl & Index Directives -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+    <!-- Open Graph / Facebook / LinkedIn / Discord -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Shiroya.in" />
+    <meta property="og:url" content="https://shiroya.in/" />
+    <meta property="og:title" content="shiroya.in — Fast, Private Browser Tools & Developer Lab" />
+    <meta property="og:description" content="Free, private, browser-first tools engineered by Vraj Shiroya. Zero cloud uploads, no login required. Experience Web Shiroya, Drop P2P, BgZero, and PDF utilities." />
+    <meta property="og:image" content="https://shiroya.in/og-image.png" />
+    <meta property="og:image:secure_url" content="https://shiroya.in/og-image.png" />
+    <meta property="og:image:alt" content="Shiroya.in — Fast, Private Browser Tools Lab" />
+    <meta property="og:image:width" content="956" />
+    <meta property="og:image:height" content="561" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://shiroya.in/" />
+    <meta name="twitter:title" content="shiroya.in — Fast, Private Browser Tools & Developer Lab" />
+    <meta name="twitter:description" content="Free, private, browser-first tools engineered by Vraj Shiroya. Zero cloud uploads, no login required." />
+    <meta name="twitter:image" content="https://shiroya.in/og-image.png" />
+    <meta name="twitter:creator" content="@vraj_shiroya" />
+
+    <!-- Mobile & Browser Display -->
+    <meta name="theme-color" content="#08080A" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <!-- AI & Machine Discovery Specification -->
+    <link rel="alternate" type="text/plain" href="https://shiroya.in/llms.txt" title="LLM Documentation" />
+    <link rel="author" href="https://vraj.shiroya.in" />
+
+    <!-- Typography Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Structured Data (JSON-LD): WebSite, Person, SoftwareApplication Catalog, and FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://shiroya.in/#website",
+          "url": "https://shiroya.in/",
+          "name": "Shiroya.in",
+          "alternateName": ["Shiroya Tool Lab", "Shiroya Tools"],
+          "description": "Fast, private browser-based web tools platform. Zero cloud uploads, zero account friction.",
+          "inLanguage": "en-US",
+          "publisher": {
+            "@id": "https://shiroya.in/#creator"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://shiroya.in/#creator",
+          "name": "Vraj Shiroya",
+          "alternateName": "VG31OP",
+          "jobTitle": "Software Engineer & AI Builder",
+          "url": "https://vraj.shiroya.in",
+          "email": "vraj@shiroya.in",
+          "sameAs": [
+            "https://github.com/VG31OP",
+            "https://www.linkedin.com/in/vrajshiroya",
+            "https://www.instagram.com/vraj_shiroya",
+            "https://instagram.com/shiroya.in",
+            "https://x.com/vraj_shiroya"
+          ],
+          "knowsAbout": [
+            "Full-Stack Web Development",
+            "Client-Side Engineering",
+            "WebAssembly",
+            "WebRTC Peer-to-Peer",
+            "Artificial Intelligence",
+            "Local-First Software Architecture"
+          ]
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://shiroya.in/#tools-catalog",
+          "name": "Shiroya Live Web Utilities Suite",
+          "description": "Collection of 100% client-side privacy-first web utilities.",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@type": "SoftwareApplication",
+                "name": "Web Shiroya",
+                "url": "https://web.shiroya.in",
+                "applicationCategory": "DeveloperApplication",
+                "operatingSystem": "All modern browsers (Chrome, Firefox, Safari, Edge)",
+                "offers": {
+                  "@type": "Offer",
+                  "price": "0",
+                  "priceCurrency": "USD"
+                },
+                "description": "Inspect and extract website source code, live DOM hierarchies, and Tailwind CSS components directly in browser."
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@type": "SoftwareApplication",
+                "name": "Drop",
+                "url": "https://drop.shiroya.in",
+                "applicationCategory": "UtilitiesApplication",
+                "operatingSystem": "All modern browsers",
+                "offers": {
+                  "@type": "Offer",
+                  "price": "0",
+                  "priceCurrency": "USD"
+                },
+                "description": "Peer-to-peer encrypted file sharing using WebRTC RTCDataChannel. Unlimited file sizes, zero server storage."
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "item": {
+                "@type": "SoftwareApplication",
+                "name": "BgZero",
+                "url": "https://bgzero.shiroya.in",
+                "applicationCategory": "GraphicsApplication",
+                "operatingSystem": "All modern browsers",
+                "offers": {
+                  "@type": "Offer",
+                  "price": "0",
+                  "priceCurrency": "USD"
+                },
+                "description": "Instant browser-based AI background remover. Isolates subjects and produces transparent PNGs locally in browser memory."
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "item": {
+                "@type": "SoftwareApplication",
+                "name": "PDF Tools",
+                "url": "https://pdf.shiroya.in",
+                "applicationCategory": "OfficeApplication",
+                "operatingSystem": "All modern browsers",
+                "offers": {
+                  "@type": "Offer",
+                  "price": "0",
+                  "priceCurrency": "USD"
+                },
+                "description": "Merge, split, re-order, and compress PDF documents locally inside the browser with complete data confidentiality."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://shiroya.in/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Does Shiroya.in store any of my personal files or documents?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Shiroya.in is built on a 100% client-side local-first architecture. All image background removal, PDF manipulation, and file transfers execute in your browser's local RAM. Files never touch a Shiroya backend server."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do I need to create an account or sign up to use Shiroya tools?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No account, email, or login is ever required. Every tool is immediately accessible upon visiting its web address."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does Drop P2P file sharing transfer files without server storage?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Drop utilizes WebRTC (Web Real-Time Communication) with DTLS end-to-end encryption. Once a direct peer-to-peer link is established between devices, file data streams directly from the sender's device to the recipient without touching intermediary storage servers."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Who creates and maintains Shiroya.in?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Shiroya.in is built, designed, and maintained by Vraj Shiroya (VG31OP), a software engineer and AI builder based in Surat, Gujarat, India."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
+    <!-- Fallback Content for Non-JavaScript Crawlers & Accessibility -->
+    <noscript>
+      <div style="padding: 2rem; max-width: 800px; margin: 0 auto; font-family: sans-serif; color: #fff; background: #08080A;">
+        <h1>SHIROYA.in — Fast, Private Browser-Based Tools & Developer Lab</h1>
+        <p>Built by <strong>Vraj Shiroya (VG31OP)</strong>. A personal internet tool lab engineered for zero friction, zero accounts, and 100% client-side privacy.</p>
+        
+        <h2>Available Live Utilities:</h2>
+        <ul>
+          <li><strong><a href="https://web.shiroya.in" style="color: #20E070;">Web Shiroya (web.shiroya.in)</a></strong>: Website source code extractor, DOM tree inspector, and Tailwind CSS component breakdown.</li>
+          <li><strong><a href="https://drop.shiroya.in" style="color: #20E070;">Drop (drop.shiroya.in)</a></strong>: Direct peer-to-peer file sharing using WebRTC end-to-end encryption with zero cloud storage.</li>
+          <li><strong><a href="https://bgzero.shiroya.in" style="color: #20E070;">BgZero (bgzero.shiroya.in)</a></strong>: 100% local browser-based AI image background removal and transparent PNG export.</li>
+          <li><strong><a href="https://pdf.shiroya.in" style="color: #20E070;">PDF Tools (pdf.shiroya.in)</a></strong>: In-memory browser PDF merger, splitter, page organizer, and compression utility.</li>
+        </ul>
+
+        <h2>About the Creator:</h2>
+        <p>Vraj Shiroya is a developer, AI enthusiast, and open-source contributor based in Surat, Gujarat, India. Find verified projects on <a href="https://github.com/VG31OP" style="color: #20E070;">GitHub (@VG31OP)</a> and portfolio at <a href="https://vraj.shiroya.in" style="color: #20E070;">vraj.shiroya.in</a>.</p>
+        
+        <h2>Legal:</h2>
+        <p><a href="/privacy" style="color: #20E070;">Privacy Policy</a> | <a href="/terms" style="color: #20E070;">Terms of Service</a> | Contact: vraj@shiroya.in</p>
+      </div>
+    </noscript>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

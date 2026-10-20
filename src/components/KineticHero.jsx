@@ -78,21 +78,24 @@ const KineticHero = ({ onExploreClick }) => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               src={shiroyaLogo}
-              alt="SHIROYA.in"
+              alt="SHIROYA.in — Personal Internet Tool Lab by Vraj Shiroya"
+              width={956}
+              height={561}
+              fetchPriority="high"
               className="w-full max-w-xl sm:max-w-2xl h-auto drop-shadow-[0_0_40px_rgba(32,224,112,0.35)] object-contain pointer-events-none mx-auto"
             />
           </div>
 
-          {/* Subtitle Journey Centered Tagline */}
+          {/* Subtitle Journey Centered Tagline & Semantic Primary Heading */}
           <div className="space-y-6 max-w-2xl mx-auto flex flex-col items-center text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <p className="text-xl sm:text-2xl lg:text-3xl font-display font-light text-gray-300 leading-relaxed text-center">
-                A small corner of the web where <span className="text-white font-medium border-b-2 border-[#20E070]">useful browser tools</span> live & evolve.
-              </p>
+              <h1 className="text-xl sm:text-2xl lg:text-3xl font-display font-light text-gray-300 leading-relaxed text-center">
+                <span className="sr-only">SHIROYA.in — </span>A small corner of the web where <span className="text-white font-medium border-b-2 border-[#20E070]">useful browser tools</span> live & evolve.
+              </h1>
             </motion.div>
 
             <motion.div
