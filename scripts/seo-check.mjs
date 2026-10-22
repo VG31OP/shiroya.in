@@ -3,7 +3,7 @@
 /**
  * Automated SEO, AEO, GEO, and Indexing QA Test Suite for Shiroya.in
  * Validates distribution assets, HTML metadata, JSON-LD schemas, robots.txt,
- * sitemap.xml, llms.txt, Open Graph, and Vercel routing configurations.
+ * sitemap.xml, llms.txt, Open Graph, prerendered routes, and Vercel routing configurations.
  */
 
 import fs from 'fs';
@@ -41,6 +41,8 @@ if (hasVercel) {
     const vercelConfig = JSON.parse(fs.readFileSync(vercelPath, 'utf8'));
     const hasRewrites = Array.isArray(vercelConfig.rewrites) && vercelConfig.rewrites.some(r => r.destination === '/');
     assert(hasRewrites, 'vercel.json includes SPA fallback rewrites (fixing 404s on /privacy and /terms)');
+    assert(vercelConfig.cleanUrls === true, 'vercel.json configures cleanUrls: true for canonical routing');
+    assert(vercelConfig.trailingSlash === false, 'vercel.json configures trailingSlash: false to avoid duplicate content');
     
     const hasSecurityHeaders = Array.isArray(vercelConfig.headers) && vercelConfig.headers.length > 0;
     assert(hasSecurityHeaders, 'vercel.json configures security & caching headers');
@@ -125,7 +127,7 @@ if (hasIndex) {
 
   // Title & Canonical
   assert(html.includes('<title>') && html.includes('shiroya.in'), 'index.html contains descriptive <title>');
-  assert(!html.includes('<link rel="canonical"'), 'index.html has no static canonical link (delegated dynamically to usePageMeta)');
+  assert(html.includes('<link rel="canonical" href="https://shiroya.in/" />'), 'index.html contains correct static canonical link tag');
 
   // Meta Description & Robots
   assert(html.includes('<meta name="description" content="'), 'index.html defines meta description');
@@ -137,8 +139,12 @@ if (hasIndex) {
   assert(html.includes('property="og:image"'), 'Open Graph og:image defined');
   assert(html.includes('name="twitter:card" content="summary_large_image"'), 'Twitter card large image defined');
 
-  // Noscript Crawlable HTML Fallback
+  // Noscript Crawlable HTML Fallback with GitHub Repository Links
   assert(html.includes('<noscript>') && html.includes('<h1>SHIROYA.in'), 'Noscript crawlable HTML outline present for search bots without JS execution');
+  assert(html.includes('github.com/VG31OP/drop'), 'Crawlable link to VG31OP/drop present');
+  assert(html.includes('github.com/VG31OP/BGZero'), 'Crawlable link to VG31OP/BGZero present');
+  assert(html.includes('github.com/VG31OP/web-installer'), 'Crawlable link to VG31OP/web-installer present');
+  assert(html.includes('github.com/VG31OP/shiroya.in'), 'Crawlable link to VG31OP/shiroya.in present');
 
   // JSON-LD Structured Data
   const jsonLdMatch = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
@@ -160,10 +166,45 @@ if (hasIndex) {
         person && Array.isArray(person.sameAs) && person.sameAs.some(url => url.includes('github.com/VG31OP')),
         'Person entity accurately references verified GitHub profile (@VG31OP)'
       );
+
+      const itemList = schemaData['@graph'].find(item => item['@type'] === 'ItemList');
+      const apps = itemList && itemList.itemListElement ? itemList.itemListElement.map(el => el.item) : [];
+      const hasDropRepo = apps.some(app => app.codeRepository === 'https://github.com/VG31OP/drop');
+      const hasBgZeroRepo = apps.some(app => app.codeRepository === 'https://github.com/VG31OP/BGZero');
+      const hasWebInstallerRepo = apps.some(app => app.codeRepository === 'https://github.com/VG31OP/web-installer');
+      assert(hasDropRepo && hasBgZeroRepo && hasWebInstallerRepo, 'Schema SoftwareApplication items link to verified GitHub codeRepository URLs');
     } catch (err) {
       assert(false, 'JSON-LD parses cleanly without syntax errors', err.message);
     }
   }
+}
+
+// 4. Verify Prerendered Static Route Files
+console.log('\n\x1b[1m4. Checking Prerendered Static Routes (/privacy, /terms, /404)\x1b[0m');
+const privacyIndexPath = path.join(DIST_DIR, 'privacy', 'index.html');
+const hasPrivacyHtml = fs.existsSync(privacyIndexPath);
+assert(hasPrivacyHtml, 'dist/privacy/index.html prerendered statically');
+if (hasPrivacyHtml) {
+  const content = fs.readFileSync(privacyIndexPath, 'utf8');
+  assert(content.includes('<link rel="canonical" href="https://shiroya.in/privacy" />'), 'dist/privacy/index.html has correct canonical URL');
+  assert(content.includes('Privacy Policy') && content.includes('Client-Side Execution'), 'dist/privacy/index.html contains crawlable policy text');
+}
+
+const termsIndexPath = path.join(DIST_DIR, 'terms', 'index.html');
+const hasTermsHtml = fs.existsSync(termsIndexPath);
+assert(hasTermsHtml, 'dist/terms/index.html prerendered statically');
+if (hasTermsHtml) {
+  const content = fs.readFileSync(termsIndexPath, 'utf8');
+  assert(content.includes('<link rel="canonical" href="https://shiroya.in/terms" />'), 'dist/terms/index.html has correct canonical URL');
+  assert(content.includes('Terms of Service') && content.includes('Acceptable & Lawful Use'), 'dist/terms/index.html contains crawlable terms text');
+}
+
+const notFoundPath = path.join(DIST_DIR, '404.html');
+const hasNotFoundHtml = fs.existsSync(notFoundPath);
+assert(hasNotFoundHtml, 'dist/404.html generated statically');
+if (hasNotFoundHtml) {
+  const content = fs.readFileSync(notFoundPath, 'utf8');
+  assert(content.includes('noindex'), 'dist/404.html specifies noindex to protect search crawl equity');
 }
 
 // Summary
@@ -174,6 +215,6 @@ console.log('=======================================================\x1b[0m\n');
 if (testsFailed > 0) {
   process.exit(1);
 } else {
-  console.log('\x1b[32m✔ All Technical SEO, AEO, and Discovery QA assertions passed successfully!\x1b[0m\n');
+  console.log('\x1b[32m✔ All Technical SEO, AEO, Prerender, and Discovery QA assertions passed successfully!\x1b[0m\n');
   process.exit(0);
 }

@@ -567,6 +567,7 @@ const InteractiveToolLab = () => {
       layoutType: "hero-wide",
       description: "Paste any website URL to extract its clean source code, inspect interactive DOM components, and study modern web engineering instantly in your browser.",
       url: "https://web.shiroya.in",
+      githubUrl: "https://github.com/VG31OP/web-installer",
       visualComponent: <WebShiroyaObject />
     },
     {
@@ -578,6 +579,7 @@ const InteractiveToolLab = () => {
       layoutType: "split-7",
       description: "Direct P2P file sharing between web browsers using WebRTC end-to-end encryption. Unlimited file sizes with zero cloud storage footprint.",
       url: "https://drop.shiroya.in",
+      githubUrl: "https://github.com/VG31OP/drop",
       visualComponent: <DropObject />
     },
     {
@@ -589,6 +591,7 @@ const InteractiveToolLab = () => {
       layoutType: "split-5",
       description: "Instant browser-based background removal engine. Zero image upload to external servers — fast, private, high precision.",
       url: "https://bgzero.shiroya.in",
+      githubUrl: "https://github.com/VG31OP/BGZero",
       visualComponent: <BgZeroObject />
     },
     {
@@ -600,6 +603,7 @@ const InteractiveToolLab = () => {
       layoutType: "full-wide",
       description: "Merge, split, re-order, and compress PDF documents locally inside your browser canvas with total data privacy.",
       url: "https://pdf.shiroya.in",
+      githubUrl: null,
       visualComponent: <PdfToolsObject />
     }
   ];
@@ -707,15 +711,28 @@ const InteractiveToolLab = () => {
                     {tool.description}
                   </p>
 
-                  <a
-                    href={tool.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 px-7 py-4 rounded-xl bg-[#20E070] text-black font-mono font-bold text-xs uppercase hover:bg-white hover:shadow-[0_0_30px_rgba(32,224,112,0.6)] transition-all duration-300 transform hover:-translate-y-0.5"
-                  >
-                    <span>LAUNCH WEB.SHIROYA.IN</span>
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
+                  <div className="flex flex-wrap items-center gap-3 pt-2">
+                    <a
+                      href={tool.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-3 px-7 py-4 rounded-xl bg-[#20E070] text-black font-mono font-bold text-xs uppercase hover:bg-white hover:shadow-[0_0_30px_rgba(32,224,112,0.6)] transition-all duration-300 transform hover:-translate-y-0.5"
+                    >
+                      <span>LAUNCH WEB.SHIROYA.IN</span>
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                    {tool.githubUrl && (
+                      <a
+                        href={tool.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-4 rounded-xl lab-glass border border-white/10 text-gray-300 hover:text-[#20E070] hover:border-[#20E070] font-mono font-bold text-xs uppercase transition-all duration-300 transform hover:-translate-y-0.5"
+                      >
+                        <Code className="w-4 h-4 text-[#20E070]" />
+                        <span>SOURCE CODE</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
 
                 {/* Right Interactive Object */}
@@ -771,7 +788,7 @@ const InteractiveToolLab = () => {
                   {tool.visualComponent}
                 </div>
 
-                <div className="pt-2">
+                <div className="flex flex-wrap items-center gap-3 pt-2">
                   <a
                     href={tool.url}
                     target="_blank"
@@ -781,6 +798,17 @@ const InteractiveToolLab = () => {
                     <span>OPEN DROP.SHIROYA.IN</span>
                     <ExternalLink className="w-4 h-4" />
                   </a>
+                  {tool.githubUrl && (
+                    <a
+                      href={tool.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl lab-glass border border-white/10 text-gray-300 hover:text-[#20E070] hover:border-[#20E070] font-mono font-bold text-xs uppercase transition-all duration-300"
+                    >
+                      <Code className="w-3.5 h-3.5 text-[#20E070]" />
+                      <span>GITHUB</span>
+                    </a>
+                  )}
                 </div>
               </TactileCard>
             );
@@ -823,7 +851,7 @@ const InteractiveToolLab = () => {
                   {tool.visualComponent}
                 </div>
 
-                <div className="pt-2">
+                <div className="flex flex-wrap items-center gap-3 pt-2">
                   <a
                     href={tool.url}
                     target="_blank"
@@ -833,6 +861,17 @@ const InteractiveToolLab = () => {
                     <span>OPEN BGZERO.SHIROYA.IN</span>
                     <ExternalLink className="w-4 h-4" />
                   </a>
+                  {tool.githubUrl && (
+                    <a
+                      href={tool.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl lab-glass border border-white/10 text-gray-300 hover:text-[#20E070] hover:border-[#20E070] font-mono font-bold text-xs uppercase transition-all duration-300"
+                    >
+                      <Code className="w-3.5 h-3.5 text-[#20E070]" />
+                      <span>GITHUB</span>
+                    </a>
+                  )}
                 </div>
               </TactileCard>
             );

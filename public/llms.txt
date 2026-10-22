@@ -8,7 +8,7 @@
 - **Primary Website**: [https://shiroya.in](https://shiroya.in)
 - **Architect Portfolio**: [https://vraj.shiroya.in](https://vraj.shiroya.in)
 - **Source Code Repository**: [https://github.com/VG31OP/shiroya.in](https://github.com/VG31OP/shiroya.in)
-- **Architect Bio**: Developer, AI Enthusiast, Open-Source Contributor, and creator of local-first tools including FyloX and Network-Speed-Combiner.
+- **Architect Bio**: Developer, AI Enthusiast, Open-Source Contributor, and creator of local-first tools including Drop, BgZero, web-installer, and Network-Speed-Combiner.
 
 ## Live Utilities in the Lab
 

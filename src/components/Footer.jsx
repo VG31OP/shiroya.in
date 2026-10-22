@@ -53,7 +53,8 @@ const Footer = () => {
 
       <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 max-w-7xl mx-auto px-6 text-[10px] text-gray-600 uppercase tracking-[2px]">
         <span>&copy; {new Date().getFullYear()} Shiroya.in</span>
-        <div className="flex gap-6">
+        <div className="flex gap-6 items-center">
+          <a href="https://github.com/VG31OP/shiroya.in" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Source Code</a>
           <Link to="/privacy" className="hover:text-primary transition-colors">Privacy</Link>
           <Link to="/terms" className="hover:text-primary transition-colors">Terms</Link>
         </div>

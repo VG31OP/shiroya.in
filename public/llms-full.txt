@@ -57,10 +57,11 @@ Unlike standard software-as-a-service (SaaS) web applications that upload input 
 - **Instagram Handles**: [@vraj_shiroya](https://www.instagram.com/vraj_shiroya) and [@shiroya.in](https://instagram.com/shiroya.in)
 - **Geographic Base**: Surat, Gujarat, India
 - **Open-Source Portfolio**:
-  - `VG31OP/FyloX`: Universal Local-First File Transformer (converts 240+ formats locally).
+  - `VG31OP/drop`: Peer-to-peer encrypted file sharing web app using WebRTC data channels with zero server storage.
+  - `VG31OP/BGZero`: Client-side AI image background remover and target-size compressor with 100% local processing.
+  - `VG31OP/web-installer`: Self-hosted web utility to crawl, download, and mirror complete websites for offline use.
   - `VG31OP/Network-Speed-Combiner`: Bandwidth bonding and network redundancy tool.
   - `VG31OP/CERTIFICATE_GENRATOR`: Drag-and-drop template designer & automated bulk certificate distribution system.
-  - `VG31OP/Vyora`: Android device management interface.
   - `VG31OP/shiroya.in`: The open-source repository powering this platform.
 
 ## Frequently Asked Questions (FAQ)

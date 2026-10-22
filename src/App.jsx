@@ -5,6 +5,7 @@ import LabNavDock from './components/LabNavDock';
 import Home from './pages/Home';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
+import NotFound from './pages/NotFound';
 import Footer from './components/Footer';
 import LabCanvas from './components/LabCanvas';
 
@@ -36,6 +37,7 @@ function AppContent() {
           <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
           <Route path="/privacy" element={<PageWrapper><Privacy /></PageWrapper>} />
           <Route path="/terms" element={<PageWrapper><Terms /></PageWrapper>} />
+          <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
         </Routes>
       </AnimatePresence>
 

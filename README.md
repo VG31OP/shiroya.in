@@ -73,11 +73,22 @@ shiroya.in/
 
 ---
 
+## 🌐 The Shiroya Tool Lab Ecosystem
+
+| Tool | Live Subdomain | Open-Source Repository | Purpose |
+| --- | --- | --- | --- |
+| **Web Shiroya** | [web.shiroya.in](https://web.shiroya.in) | [VG31OP/web-installer](https://github.com/VG31OP/web-installer) | Source code crawler, asset downloader, and DOM inspector |
+| **Drop** | [drop.shiroya.in](https://drop.shiroya.in) | [VG31OP/drop](https://github.com/VG31OP/drop) | WebRTC peer-to-peer encrypted file sharing |
+| **BgZero** | [bgzero.shiroya.in](https://bgzero.shiroya.in) | [VG31OP/BGZero](https://github.com/VG31OP/BGZero) | Client-side AI image background remover and compressor |
+| **PDF Tools** | [pdf.shiroya.in](https://pdf.shiroya.in) | — | In-memory browser PDF merger and splitter |
+
+---
+
 ## 🔒 Privacy note
 
 **Your data stays with you.** 
 
-Unlike traditional platforms, Shiroya does not store your files on a server. Every tool—from PDF merging to peer-to-peer sharing—operates locally in your browser or via encrypted direct connections. We do not track personal identities, and we do not sell data.
+Unlike traditional platforms, Shiroya does not store your files on a server. Every tool—from PDF manipulation to peer-to-peer sharing—operates locally in your browser or via encrypted direct connections. We do not track personal identities, and we do not sell data.
 
 ---
 
@@ -93,12 +104,17 @@ We love contributions! If you have ideas for new browser-based tools or UI impro
 
 ---
 
-## 📄 License
+## 👨‍💻 Creator & Maintainer
 
-Distributed under the **MIT License**. See `LICENSE` for more information.
+Engineered with precision by **Vraj Shiroya (VG31OP)**:
+- **GitHub**: [@VG31OP](https://github.com/VG31OP)
+- **Live Platform**: [https://shiroya.in](https://shiroya.in)
+- **Portfolio**: [https://vraj.shiroya.in](https://vraj.shiroya.in)
+- **LinkedIn**: [https://www.linkedin.com/in/vrajshiroya](https://www.linkedin.com/in/vrajshiroya)
+- **Email**: [vraj@shiroya.in](mailto:vraj@shiroya.in)
 
 ---
 
-<p align="center">
-  Built with ❤️ by <a href="https://vraj.shiroya.in">Vraj Shiroya</a>
-</p>
+## 📄 License
+
+Distributed under the **MIT License**. See [LICENSE](./LICENSE) for more information.
