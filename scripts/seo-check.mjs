@@ -102,6 +102,12 @@ if (distExists) {
       const catalog = JSON.parse(fs.readFileSync(aiCatalogPath, 'utf8'));
       assert(catalog.publisher && catalog.publisher.name === 'Vraj Shiroya', 'ai-catalog.json documents Vraj Shiroya as publisher');
       assert(Array.isArray(catalog.tools) && catalog.tools.length > 0, 'ai-catalog.json lists tool endpoints');
+      
+      const webShiroya = catalog.tools.find(t => t.id === 'web-shiroya');
+      assert(webShiroya && !webShiroya.outputs.includes('dom_tree') && !webShiroya.outputs.includes('react_components'), 'ai-catalog.json avoids claiming unsupported dom_tree or react_components for Web Shiroya');
+      
+      const speedCombiner = catalog.tools.find(t => t.id === 'network-speed-combiner');
+      assert(speedCombiner && speedCombiner.executionModel === 'desktop-electron' && speedCombiner.outputs.includes('downloaded_file'), 'ai-catalog.json classifies Network-Speed-Combiner as desktop-electron producing downloaded_file');
     } catch (err) {
       assert(false, 'ai-catalog.json parses valid JSON', err.message);
     }
@@ -210,6 +216,7 @@ if (hasAboutHtml) {
   assert(content.includes('About') && content.includes('Vraj Shiroya'), 'dist/about/index.html contains full name heading');
   assert(content.includes('Open-Source Developer') && content.includes('AI Engineer'), 'dist/about/index.html contains professional positioning');
   assert(content.includes('google/artemis') && content.includes('vercel/swr'), 'dist/about/index.html contains verified upstream open-source PR citations');
+  assert(content.includes('ollama/ollama-vscode/pull/91'), 'dist/about/index.html includes Ollama PR #91 citation');
 
   // Verify dedicated ProfilePage schema
   const aboutSchemaMatch = content.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);

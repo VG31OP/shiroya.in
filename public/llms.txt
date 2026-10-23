@@ -1,6 +1,6 @@
 # Shiroya.in — Personal Internet Tool Lab & Professional Dossier
 
-> Shiroya.in is a high-performance web platform and digital tool laboratory created and engineered by Vraj Shiroya (known online as VG31OP). Every utility operates client-side in the user's browser using WebAssembly, WebRTC, and HTML5 Canvas APIs, ensuring zero file uploads, zero server logging, and zero account friction.
+> Shiroya.in is a high-performance web platform and digital tool laboratory created and engineered by Vraj Shiroya (known online as VG31OP). The platform emphasizes private client-side browser execution (via WebAssembly, WebRTC, and Canvas) alongside dedicated developer utilities with transparent operating boundaries.
 
 ## Core Identity & Architect
 - **Full Name**: Vraj Shiroya
@@ -17,19 +17,19 @@
   - Google Gemini Student Ambassador — Google Developer Community
   - Founder & Technical Lead — Orbitra Solution
 
-## Verified Upstream Open-Source Contributions
-- **Google Artemis** (`google/artemis`): Pull Request #186 — `fix(llm): normalize message part order for Vertex AI Gemini tool turns (fixes #156)`
-- **Vercel SWR** (`vercel/swr`): Pull Request #4362 — `fix: avoid redundant _k cache write on mount`
-- **Ollama VS Code** (`ollama/ollama-vscode`): Contributor to local LLM developer tooling
+## Upstream Open-Source Contributions
+- **Google Artemis** (`google/artemis`): Pull Request [#186](https://github.com/google/artemis/pull/186) — `fix(llm): normalize message part order for Vertex AI Gemini tool turns (fixes #156)` (proposed)
+- **Vercel SWR** (`vercel/swr`): Pull Request [#4362](https://github.com/vercel/swr/pull/4362) — `fix: avoid redundant _k cache write on mount` (proposed)
+- **Ollama VS Code** (`ollama/ollama-vscode`): Pull Request [#91](https://github.com/ollama/ollama-vscode/pull/91) — `Show thinking settings in Ollama: Diagnose Models (closes #81)` (merged)
 
 ## Live Utilities in the Lab
 
-### 1. Web Shiroya — Web Source Code Engine & DOM Inspector
+### 1. Web Shiroya — Website Crawler & Asset Archive Downloader
 - **URL**: [https://web.shiroya.in](https://web.shiroya.in)
 - **Repository**: [https://github.com/VG31OP/web-installer](https://github.com/VG31OP/web-installer)
-- **Category**: Developer Tool / Web Inspection
-- **Functionality**: Extracts clean website source code, visualizes DOM structure, inspects Tailwind CSS styles, and generates clean component breakdowns directly in the browser.
-- **Privacy Model**: All parsing and DOM inspection run client-side.
+- **Category**: Developer Tool / Website Downloader
+- **Functionality**: Crawls target websites and packages HTML source code, stylesheets, scripts, and media assets into a downloadable ZIP archive.
+- **Privacy & Execution Model**: URL crawling runs via backend server workers; downloaded assets are written to isolated temporary job directories during archive generation.
 
 ### 2. Drop — Encrypted Peer-to-Peer File Beam
 - **URL**: [https://drop.shiroya.in](https://drop.shiroya.in)
@@ -52,9 +52,9 @@
 - **Privacy Model**: In-memory WebAssembly processing; confidential documents are never uploaded to remote servers.
 
 ## Operating Principles
-1. **Zero Data Footprint**: Files and documents remain strictly in local browser memory.
-2. **Frictionless Access**: No accounts, passwords, subscriptions, or paywalls.
-3. **Hardware-Accelerated Speed**: Built with modern Web standards (WebAssembly, WebRTC, Canvas) for instant execution.
+1. **Zero Data Footprint on Core Tools**: Files and documents processed in Drop, BgZero, and PDF Tools remain strictly in local browser memory.
+2. **Transparent Boundaries**: Server-assisted utilities (Web Shiroya) clearly disclose temporary job directory usage.
+3. **Frictionless Access**: No accounts, passwords, subscriptions, or paywalls.
 4. **Transparent Ethics**: No user tracking, no ad networks, no data brokering.
 
 ## Additional Documentation & Legal

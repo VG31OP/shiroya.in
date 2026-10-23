@@ -31,5 +31,5 @@ Adapted from AgriciDaniel/claude-seo (MIT Licensed) & Google Search Central Guid
 - **Evidence-Based Claims**: Attribute all contributions to verifiable upstream PR numbers (`google/artemis#186`, `vercel/swr#4362`) and live repositories. Never claim unverified certifications.
 
 ## 4. Agentic Browsing & AI Discovery
-- Maintain updated [`public/llms.txt`](file:///e:/Project/shiroya.in/public/llms.txt) and [`public/llms-full.txt`](file:///e:/Project/shiroya.in/public/llms-full.txt).
-- Maintain [`public/ai-catalog.json`](file:///e:/Project/shiroya.in/public/ai-catalog.json) describing machine-usable tools and API/client boundaries.
+- Maintain updated [`public/llms.txt`](../../public/llms.txt) and [`public/llms-full.txt`](../../public/llms-full.txt).
+- Maintain [`public/ai-catalog.json`](../../public/ai-catalog.json) describing machine-usable tools and API/client boundaries.

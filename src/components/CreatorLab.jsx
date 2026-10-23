@@ -50,10 +50,10 @@ const CreatorLab = () => {
     },
     {
       repo: "ollama/ollama-vscode",
-      pr: "Contributor",
-      title: "Local LLM Tooling & Editor Integrations",
-      url: "https://github.com/ollama/ollama-vscode",
-      impact: "Contributed to developer experience tooling for running open-source local LLMs in editor workflows.",
+      pr: "#91",
+      title: "Show thinking settings in Ollama: Diagnose Models (closes #81)",
+      url: "https://github.com/ollama/ollama-vscode/pull/91",
+      impact: "Added thinking settings output to Diagnose Models command and improved long chat stream error handling.",
       tag: "Local AI Tooling"
     }
   ];

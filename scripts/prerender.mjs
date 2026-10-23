@@ -103,11 +103,11 @@ const aboutBody = `
 
   <section style="margin-bottom: 3rem;">
     <h2 style="font-size: 1.6rem; color: #FFFFFF; margin-bottom: 1rem;">1. Verified Open-Source Contributions</h2>
-    <p style="line-height: 1.7; color: #9CA3AF; margin-bottom: 1.25rem;">Real pull requests submitted and accepted in upstream open-source repositories:</p>
+    <p style="line-height: 1.7; color: #9CA3AF; margin-bottom: 1.25rem;">Real pull requests submitted to upstream open-source repositories:</p>
     <ul style="line-height: 1.8; color: #D1D5DB; padding-left: 1.5rem;">
       <li><strong><a href="https://github.com/google/artemis/pull/186" style="color: #20E070;">google/artemis PR #186</a></strong>: Normalized message part order for Vertex AI Gemini tool turns (fixes #156). Complying with Google Vertex AI Gemini conversational turn specifications.</li>
       <li><strong><a href="https://github.com/vercel/swr/pull/4362" style="color: #20E070;">vercel/swr PR #4362</a></strong>: Avoid redundant _k cache write on mount. Improved cache mutation lifecycle in React/Next.js data-fetching runtime.</li>
-      <li><strong><a href="https://github.com/ollama/ollama-vscode" style="color: #20E070;">ollama/ollama-vscode</a></strong>: Contributor to local LLM IDE developer tooling workflows.</li>
+      <li><strong><a href="https://github.com/ollama/ollama-vscode/pull/91" style="color: #20E070;">ollama/ollama-vscode PR #91</a></strong>: Show thinking settings in Ollama: Diagnose Models (closes #81). Displayed thinking settings and improved long chat stream error handling.</li>
     </ul>
     <p style="margin-top: 1rem;"><a href="https://github.com/VG31OP" style="color: #20E070; font-family: monospace;">Explore all open-source contributions by Vraj Shiroya on GitHub (@VG31OP) →</a></p>
   </section>
@@ -127,8 +127,8 @@ const aboutBody = `
     <ul style="line-height: 1.8; color: #D1D5DB; padding-left: 1.5rem;">
       <li><strong><a href="https://drop.shiroya.in" style="color: #20E070;">Drop</a></strong> (<a href="https://github.com/VG31OP/drop" style="color: #20E070;">VG31OP/drop</a>): WebRTC peer-to-peer encrypted file sharing with zero cloud storage.</li>
       <li><strong><a href="https://bgzero.shiroya.in" style="color: #20E070;">BgZero</a></strong> (<a href="https://github.com/VG31OP/BGZero" style="color: #20E070;">VG31OP/BGZero</a>): In-browser AI image background remover and compressor.</li>
-      <li><strong><a href="https://web.shiroya.in" style="color: #20E070;">Web Shiroya</a></strong> (<a href="https://github.com/VG31OP/web-installer" style="color: #20E070;">VG31OP/web-installer</a>): Website source code extractor, DOM inspector, and asset downloader.</li>
-      <li><strong><a href="https://github.com/VG31OP/Network-Speed-Combiner" style="color: #20E070;">Network-Speed-Combiner</a></strong>: Bandwidth bonding and multi-interface network routing tool.</li>
+      <li><strong><a href="https://web.shiroya.in" style="color: #20E070;">Web Shiroya</a></strong> (<a href="https://github.com/VG31OP/web-installer" style="color: #20E070;">VG31OP/web-installer</a>): Self-hosted website crawler and source downloader packaging assets into downloadable ZIP archives.</li>
+      <li><strong><a href="https://github.com/VG31OP/Network-Speed-Combiner" style="color: #20E070;">Network-Speed-Combiner</a></strong>: Desktop download manager splitting file downloads across concurrent network interfaces.</li>
       <li><strong><a href="https://pdf.shiroya.in" style="color: #20E070;">PDF Tools</a></strong>: In-memory browser PDF manipulation suite.</li>
       <li><strong><a href="https://github.com/VG31OP/shiroya.in" style="color: #20E070;">VG31OP/shiroya.in</a></strong>: Platform source code and kinetic UI.</li>
     </ul>

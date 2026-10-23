@@ -36,12 +36,12 @@ const About = () => {
     },
     {
       repo: "ollama/ollama-vscode",
-      prNumber: "Contributor",
-      prTitle: "Local LLM Tooling & Editor Integrations",
-      url: "https://github.com/ollama/ollama-vscode",
-      impact: "Contributed to developer tooling workflows for local machine learning model execution and editor completion.",
+      prNumber: "#91",
+      prTitle: "Show thinking settings in Ollama: Diagnose Models (closes #81)",
+      url: "https://github.com/ollama/ollama-vscode/pull/91",
+      impact: "Added display of thinking settings to Diagnose Models command output and improved long chat stream error handling.",
       tags: ["Ollama", "Local AI", "VS Code Extension", "Developer Tools"],
-      status: "Verified Contributor"
+      status: "Merged Upstream PR"
     }
   ];
 
@@ -69,18 +69,18 @@ const About = () => {
       url: "https://web.shiroya.in",
       repo: "https://github.com/VG31OP/web-installer",
       repoName: "VG31OP/web-installer",
-      category: "Web Engineering & Extraction",
-      description: "Browser-native source code extractor, DOM tree inspector, and Tailwind CSS component breakdown engine designed for reverse engineering and frontend learning.",
-      stack: ["Node.js", "Express", "Socket.io", "wget", "DOM Parser"]
+      category: "Website Downloader & Asset Extractor",
+      description: "Self-hosted web crawler and source downloader that packages complete website HTML, CSS, JavaScript, and assets into downloadable ZIP archives.",
+      stack: ["Node.js", "Express", "Socket.io", "wget"]
     },
     {
       name: "Network-Speed-Combiner",
       url: "https://github.com/VG31OP/Network-Speed-Combiner",
       repo: "https://github.com/VG31OP/Network-Speed-Combiner",
       repoName: "VG31OP/Network-Speed-Combiner",
-      category: "Network Engineering",
-      description: "Bandwidth bonding and multi-interface network routing experiment combining concurrent Wi-Fi, Ethernet, and cellular connections for throughput redundancy.",
-      stack: ["Networking", "Routing", "Socket Programming", "Multi-Path"]
+      category: "Desktop Download Manager & Bonding",
+      description: "Desktop download manager application that splits file downloads into chunks across concurrent network adapters (Wi-Fi, Ethernet, cellular) to accelerate target file assembly.",
+      stack: ["Electron", "Node.js", "Networking", "Socket Programming"]
     },
     {
       name: "PDF Tools",
@@ -263,7 +263,7 @@ const About = () => {
               </h2>
             </div>
             <p className="text-xs sm:text-sm text-gray-400 font-mono">
-              Real pull requests submitted and accepted in upstream open-source codebases.
+              Real pull requests submitted to upstream open-source codebases.
             </p>
           </div>
           <a

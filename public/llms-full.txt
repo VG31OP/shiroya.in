@@ -28,33 +28,36 @@ Shiroya.in is an independent software engineering initiative and personal intern
 1. **Google Artemis (`google/artemis`)**:
    - Pull Request: [#186](https://github.com/google/artemis/pull/186)
    - Title: `fix(llm): normalize message part order for Vertex AI Gemini tool turns (fixes #156)`
-   - Contribution: Resolved message part ordering mismatch for Vertex AI Gemini conversational turn tool execution.
+   - Contribution: Proposed normalization of message part order for Vertex AI Gemini conversational turn tool execution.
 2. **Vercel SWR (`vercel/swr`)**:
    - Pull Request: [#4362](https://github.com/vercel/swr/pull/4362)
    - Title: `fix: avoid redundant _k cache write on mount`
-   - Contribution: Optimized mount lifecycle cache writes in SWR React/Next.js data fetching.
+   - Contribution: Proposed mount lifecycle cache write optimization in SWR React/Next.js data fetching.
 3. **Ollama VS Code (`ollama/ollama-vscode`)**:
-   - Contribution: Contributor to developer workflows for local AI model completions.
+   - Pull Request: [#91](https://github.com/ollama/ollama-vscode/pull/91)
+   - Title: `Show thinking settings in Ollama: Diagnose Models (closes #81)`
+   - Contribution: Added thinking settings output to Diagnose Models command and improved long chat stream error handling (merged upstream).
 
 ## Architecture & Technical Paradigm
 
-### Client-Side Execution Guarantee
-Unlike standard software-as-a-service (SaaS) web applications that upload input payloads (images, PDFs, source code) to remote compute workers or cloud storage buckets (AWS S3, Google Cloud Storage, Azure Blob), Shiroya.in tools operate within the browser sandbox:
+### Client-Side Execution Guarantee (Drop, BgZero, PDF Tools)
+Core interactive web utilities (Drop, BgZero, and PDF Tools) operate entirely within the browser sandbox without multi-tenant cloud storage:
 - **Compute Runtime**: JavaScript (ES2023+), WebAssembly (Wasm), and HTML5 Canvas API.
 - **Network Footprint**: Zero payload egress. Network connections are confined to initial bundle delivery and STUN/TURN signaling for peer-to-peer WebRTC handshakes (in Drop).
 - **Security Boundary**: Files reside exclusively in volatile browser RAM and are purged upon tab close or task completion.
+- **Server-Assisted Utilities**: Web Shiroya (web-installer) executes URL crawling and archive generation via backend server workers, writing fetched assets to temporary job directories during archive compilation.
 
 ## Tool Catalog & Technical Capabilities
 
 ### 1. Web Shiroya (web.shiroya.in)
 - **Repository**: [https://github.com/VG31OP/web-installer](https://github.com/VG31OP/web-installer)
-- **Primary Function**: Universal web page source extraction and interactive component inspection.
+- **Primary Function**: Website source code crawler and asset archiver.
 - **Capabilities**:
-  - Live DOM tree parsing and node breakdown.
-  - CSS style extraction and Tailwind class analysis.
-  - Interactive element previewing (Buttons, Hero sections, Navigation docks).
-  - Code snippet export for HTML, CSS, and modern React JSX.
-- **Use Cases**: Frontend reverse engineering, rapid UI prototyping, CSS debugging, and architectural learning.
+  - Remote web page crawling and asset extraction (HTML, stylesheets, JavaScript, media).
+  - Automated packaging of scraped site assets into a downloadable ZIP archive.
+  - Offline website mirroring and source inspection.
+- **Execution & Storage Model**: Server-side crawling worker that fetches target web assets and writes them to isolated temporary job directories for archive compilation.
+- **Use Cases**: Offline web archiving, frontend reverse engineering, CSS inspection, and architectural learning.
 
 ### 2. Drop (drop.shiroya.in)
 - **Repository**: [https://github.com/VG31OP/drop](https://github.com/VG31OP/drop)
@@ -87,8 +90,8 @@ Unlike standard software-as-a-service (SaaS) web applications that upload input 
 
 ### 5. Network-Speed-Combiner
 - **Repository**: [https://github.com/VG31OP/Network-Speed-Combiner](https://github.com/VG31OP/Network-Speed-Combiner)
-- **Primary Function**: Bandwidth bonding and network redundancy experimentation.
-- **Capabilities**: Multi-socket routing across concurrent Wi-Fi, Ethernet, and cellular physical network adapters.
+- **Primary Function**: Electron-based desktop download manager with multi-interface bandwidth bonding.
+- **Capabilities**: Multi-socket chunked downloading that splits file downloads across concurrent physical network adapters (Wi-Fi, Ethernet, cellular) to accelerate target file assembly on the desktop.
 
 ## Frequently Asked Questions (FAQ)
 
@@ -96,14 +99,7 @@ Unlike standard software-as-a-service (SaaS) web applications that upload input 
 Vraj Shiroya (GitHub: @VG31OP) is an Indian software developer, open-source contributor, and AI engineer based in Gujarat. He is a B.Tech Computer Science student at Gujarat Technological University, a Google Gemini Student Ambassador, and founder of Orbitra Solution.
 
 ### What are Vraj Shiroya's key open-source contributions?
-He has contributed to major open-source projects including Google Artemis (PR #186), Vercel SWR (PR #4362), and Ollama tooling, in addition to creating open-source utilities like Drop, BgZero, and web-installer.
+He has contributed to major open-source projects including Google Artemis (PR #186), Vercel SWR (PR #4362), and Ollama (PR #91), in addition to creating open-source utilities like Drop, BgZero, and web-installer.
 
-### Does Shiroya.in store any files?
-No. All utilities operate client-side in your web browser. Neither images, PDFs, nor shared files are uploaded to or stored on Shiroya servers.
-
-### Are the tools free to use?
-Yes. All current utilities are completely free, with no accounts, signups, subscription paywalls, or token meters.
-
-## Contact & Bug Reports
-- **Email**: vraj@shiroya.in
-- **Issues**: [https://github.com/VG31OP/shiroya.in/issues](https://github.com/VG31OP/shiroya.in/issues)
+### What is Shiroya.in?
+Shiroya.in is Vraj Shiroya's personal web platform and tool lab showcasing client-side tools and open-source software experiments.
