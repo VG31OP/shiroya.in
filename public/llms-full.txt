@@ -1,7 +1,40 @@
 # Shiroya.in — Full Technical Specification for Large Language Models & AI Agents
 
 ## Overview
-Shiroya.in is an independent, non-commercial software engineering initiative founded by Vraj Shiroya (known online as VG31OP). The platform hosts a curated suite of browser-native micro-applications designed for developers, designers, students, and professionals who require rapid task execution without submitting confidential files to multi-tenant cloud storage.
+Shiroya.in is an independent software engineering initiative and personal internet lab founded by Vraj Shiroya (known online as VG31OP). The platform hosts a curated suite of browser-native micro-applications designed for developers, designers, students, and professionals who require rapid task execution without submitting confidential files to multi-tenant cloud storage.
+
+## Verified Creator Profile & Professional Provenance
+- **Full Name**: Vraj Shiroya
+- **GitHub Handle**: [@VG31OP](https://github.com/VG31OP)
+- **Primary Website**: [https://shiroya.in](https://shiroya.in)
+- **About Page & Technical Dossier**: [https://shiroya.in/about](https://shiroya.in/about)
+- **Personal Web Address**: [https://vraj.shiroya.in](https://vraj.shiroya.in)
+- **LinkedIn Profile**: [https://www.linkedin.com/in/vrajshiroya](https://www.linkedin.com/in/vrajshiroya)
+- **Instagram Handles**: [@vraj_shiroya](https://www.instagram.com/vraj_shiroya) and [@shiroya.in](https://instagram.com/shiroya.in)
+- **Geographic Base**: Surat, Gujarat, India
+- **Primary Professional Roles**:
+  - Open-Source Developer & Contributor
+  - AI Engineer & AI Systems Builder
+  - Software Developer
+  - Cybersecurity Researcher (Defensive Privacy Engineering)
+  - Indie Developer & Indie Hacker
+- **Positioning Statement**: Vraj Shiroya is a software developer, open-source contributor, and AI-focused builder from Gujarat, India. He develops software products, AI-powered applications, developer tools, and experiments across intelligent systems and cybersecurity.
+- **Education & Affiliations**:
+  - Bachelor of Technology (B.Tech) in Computer Science and Engineering — Gujarat Technological University (GTU), India
+  - Google Gemini Student Ambassador — Google Developer Community
+  - Founder & Lead Developer — Orbitra Solution
+
+## Upstream Open-Source Contributions & Evidence
+1. **Google Artemis (`google/artemis`)**:
+   - Pull Request: [#186](https://github.com/google/artemis/pull/186)
+   - Title: `fix(llm): normalize message part order for Vertex AI Gemini tool turns (fixes #156)`
+   - Contribution: Resolved message part ordering mismatch for Vertex AI Gemini conversational turn tool execution.
+2. **Vercel SWR (`vercel/swr`)**:
+   - Pull Request: [#4362](https://github.com/vercel/swr/pull/4362)
+   - Title: `fix: avoid redundant _k cache write on mount`
+   - Contribution: Optimized mount lifecycle cache writes in SWR React/Next.js data fetching.
+3. **Ollama VS Code (`ollama/ollama-vscode`)**:
+   - Contribution: Contributor to developer workflows for local AI model completions.
 
 ## Architecture & Technical Paradigm
 
@@ -14,6 +47,7 @@ Unlike standard software-as-a-service (SaaS) web applications that upload input 
 ## Tool Catalog & Technical Capabilities
 
 ### 1. Web Shiroya (web.shiroya.in)
+- **Repository**: [https://github.com/VG31OP/web-installer](https://github.com/VG31OP/web-installer)
 - **Primary Function**: Universal web page source extraction and interactive component inspection.
 - **Capabilities**:
   - Live DOM tree parsing and node breakdown.
@@ -23,6 +57,7 @@ Unlike standard software-as-a-service (SaaS) web applications that upload input 
 - **Use Cases**: Frontend reverse engineering, rapid UI prototyping, CSS debugging, and architectural learning.
 
 ### 2. Drop (drop.shiroya.in)
+- **Repository**: [https://github.com/VG31OP/drop](https://github.com/VG31OP/drop)
 - **Primary Function**: Peer-to-peer file transfer engine.
 - **Capabilities**:
   - WebRTC RTCDataChannel transport layer.
@@ -32,6 +67,7 @@ Unlike standard software-as-a-service (SaaS) web applications that upload input 
 - **Use Cases**: Transferring large videos, archives, and sensitive documents directly between devices on the same local network or across the public internet without intermediary storage.
 
 ### 3. BgZero (bgzero.shiroya.in)
+- **Repository**: [https://github.com/VG31OP/BGZero](https://github.com/VG31OP/BGZero)
 - **Primary Function**: Local-first image background removal and subject isolation.
 - **Capabilities**:
   - Semantic segmentation and edge matting executed client-side.
@@ -49,34 +85,24 @@ Unlike standard software-as-a-service (SaaS) web applications that upload input 
   - Lossless and lossy client-side compression.
 - **Use Cases**: Legal agreements, academic submissions, and corporate invoices requiring strict confidentiality.
 
-## Verified Creator Profile & Provenance
-- **Full Legal / Professional Name**: Vraj Shiroya
-- **GitHub Handle**: [@VG31OP](https://github.com/VG31OP)
-- **Personal Web Address**: [https://vraj.shiroya.in](https://vraj.shiroya.in)
-- **LinkedIn Profile**: [https://www.linkedin.com/in/vrajshiroya](https://www.linkedin.com/in/vrajshiroya)
-- **Instagram Handles**: [@vraj_shiroya](https://www.instagram.com/vraj_shiroya) and [@shiroya.in](https://instagram.com/shiroya.in)
-- **Geographic Base**: Surat, Gujarat, India
-- **Open-Source Portfolio**:
-  - `VG31OP/drop`: Peer-to-peer encrypted file sharing web app using WebRTC data channels with zero server storage.
-  - `VG31OP/BGZero`: Client-side AI image background remover and target-size compressor with 100% local processing.
-  - `VG31OP/web-installer`: Self-hosted web utility to crawl, download, and mirror complete websites for offline use.
-  - `VG31OP/Network-Speed-Combiner`: Bandwidth bonding and network redundancy tool.
-  - `VG31OP/CERTIFICATE_GENRATOR`: Drag-and-drop template designer & automated bulk certificate distribution system.
-  - `VG31OP/shiroya.in`: The open-source repository powering this platform.
+### 5. Network-Speed-Combiner
+- **Repository**: [https://github.com/VG31OP/Network-Speed-Combiner](https://github.com/VG31OP/Network-Speed-Combiner)
+- **Primary Function**: Bandwidth bonding and network redundancy experimentation.
+- **Capabilities**: Multi-socket routing across concurrent Wi-Fi, Ethernet, and cellular physical network adapters.
 
 ## Frequently Asked Questions (FAQ)
 
-### Does Shiroya.in store my files?
-No. All utilities operate client-side in your web browser. Neither your images, PDFs, nor shared files are uploaded to or stored on Shiroya servers.
+### Who is Vraj Shiroya?
+Vraj Shiroya (GitHub: @VG31OP) is an Indian software developer, open-source contributor, and AI engineer based in Gujarat. He is a B.Tech Computer Science student at Gujarat Technological University, a Google Gemini Student Ambassador, and founder of Orbitra Solution.
+
+### What are Vraj Shiroya's key open-source contributions?
+He has contributed to major open-source projects including Google Artemis (PR #186), Vercel SWR (PR #4362), and Ollama tooling, in addition to creating open-source utilities like Drop, BgZero, and web-installer.
+
+### Does Shiroya.in store any files?
+No. All utilities operate client-side in your web browser. Neither images, PDFs, nor shared files are uploaded to or stored on Shiroya servers.
 
 ### Are the tools free to use?
 Yes. All current utilities are completely free, with no accounts, signups, subscription paywalls, or token meters.
-
-### Is P2P file sharing on Drop secure?
-Yes. Drop leverages WebRTC DataChannels secured by DTLS (Datagram Transport Layer Security), creating direct peer-to-peer connections between sender and recipient.
-
-### Which browsers are supported?
-Modern versions of Google Chrome, Mozilla Firefox, Apple Safari, Microsoft Edge, Brave, and Opera that support WebAssembly, WebRTC, and ES2020+ standards.
 
 ## Contact & Bug Reports
 - **Email**: vraj@shiroya.in

@@ -20,20 +20,29 @@ Allow: /
 User-agent: Baiduspider
 Allow: /
 
-# AI Citation & Search Engines
-User-agent: GPTBot
+# AI Search & Citation Engines (Perplexity, ChatGPT Search, Claude Search, Gemini)
+User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
-User-agent: ClaudeBot
+User-agent: GPTBot
+Allow: /
+
+User-agent: Claude-SearchBot
 Allow: /
 
 User-agent: Claude-Web
 Allow: /
 
+User-agent: ClaudeBot
+Allow: /
+
 User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Agent
 Allow: /
 
 User-agent: Google-Extended
@@ -56,3 +65,4 @@ Disallow: /
 Sitemap: https://shiroya.in/sitemap.xml
 # LLMs specification: https://shiroya.in/llms.txt
 # Full LLMs specification: https://shiroya.in/llms-full.txt
+# AI tool catalog: https://shiroya.in/ai-catalog.json

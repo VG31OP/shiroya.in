@@ -6,8 +6,8 @@ import { usePageMeta } from '../hooks/usePageMeta';
 
 const Home = () => {
   usePageMeta({
-    title: "shiroya.in — Fast, Private Browser Tools & Developer Lab | Vraj Shiroya",
-    description: "Free, private, browser-first tools engineered by Vraj Shiroya (VG31OP). Features Web Shiroya source code engine, Drop encrypted P2P file sharing, BgZero AI background remover, and local PDF tools. 100% client-side with zero cloud uploads.",
+    title: "Vraj Shiroya | Open-Source Developer, AI Engineer & Cybersecurity Researcher — shiroya.in",
+    description: "Official website and tool lab of Vraj Shiroya (VG31OP) — Open-Source Developer, AI Engineer, and Cybersecurity Researcher from Gujarat, India. Client-side privacy tools, verified open-source contributions, and AI systems.",
     canonicalUrl: "https://shiroya.in/"
   });
 

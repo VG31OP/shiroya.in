@@ -37,8 +37,10 @@ const LabNavDock = () => {
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className={`pointer-events-auto w-full px-5 py-2.5 rounded-full lab-glass transition-all duration-300 flex items-center justify-between border ${
-            scrolled ? 'border-[#20E070]/40 shadow-[0_10px_30px_rgba(0,0,0,0.8)]' : 'border-white/10'
+          className={`pointer-events-auto w-full px-5 py-2.5 rounded-full transition-all duration-300 flex items-center justify-between border ${
+            scrolled 
+              ? 'lab-nav-dock-scrolled border-[#20E070]/40 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.95),0_0_20px_rgba(32,224,112,0.15)]' 
+              : 'lab-nav-dock border-white/15 shadow-[0_12px_35px_-10px_rgba(0,0,0,0.85)]'
           }`}
         >
           {/* Brand Logo Image (Transparent Cutout) */}
@@ -70,6 +72,12 @@ const LabNavDock = () => {
             >
               [ 02. CREATOR ]
             </button>
+            <Link
+              to="/about"
+              className="px-4 py-1.5 rounded-full hover:text-[#20E070] hover:bg-white/5 transition-colors"
+            >
+              [ 03. ABOUT VRAJ ]
+            </Link>
           </nav>
 
           {/* Direct Fast Jump Tools Trigger */}
@@ -120,7 +128,7 @@ const LabNavDock = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-x-4 top-24 z-40 p-6 rounded-2xl lab-glass border border-[#20E070]/30 space-y-4 md:hidden shadow-2xl"
+            className="fixed inset-x-4 top-24 z-40 p-6 rounded-2xl lab-nav-drawer border border-[#20E070]/40 space-y-4 md:hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95)]"
           >
             <div className="space-y-3 font-mono text-sm">
               <button
@@ -135,6 +143,13 @@ const LabNavDock = () => {
               >
                 02. CREATOR & PHILOSOPHY
               </button>
+              <Link
+                to="/about"
+                onClick={() => setMobileOpen(false)}
+                className="w-full block text-left p-3 rounded-xl bg-white/5 text-white hover:text-[#20E070]"
+              >
+                03. ABOUT VRAJ SHIROYA (DOSSIER)
+              </Link>
             </div>
 
             <div className="pt-4 border-t border-white/10 flex flex-wrap gap-2">

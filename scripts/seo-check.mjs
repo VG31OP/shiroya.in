@@ -65,6 +65,7 @@ if (distExists) {
     const robotsContent = fs.readFileSync(robotsPath, 'utf8');
     assert(robotsContent.includes('Sitemap: https://shiroya.in/sitemap.xml'), 'robots.txt references sitemap.xml');
     assert(robotsContent.includes('GPTBot') && robotsContent.includes('PerplexityBot'), 'robots.txt includes explicit AI crawler directives (GPTBot, PerplexityBot)');
+    assert(robotsContent.includes('OAI-SearchBot') && robotsContent.includes('Claude-SearchBot'), 'robots.txt explicitly allows AI search bots (OAI-SearchBot, Claude-SearchBot)');
   }
 
   // sitemap.xml
@@ -74,6 +75,7 @@ if (distExists) {
   if (hasSitemap) {
     const sitemapContent = fs.readFileSync(sitemapPath, 'utf8');
     assert(sitemapContent.includes('<loc>https://shiroya.in/</loc>'), 'sitemap.xml includes root URL');
+    assert(sitemapContent.includes('<loc>https://shiroya.in/about</loc>'), 'sitemap.xml includes /about');
     assert(sitemapContent.includes('<loc>https://shiroya.in/privacy</loc>'), 'sitemap.xml includes /privacy');
     assert(sitemapContent.includes('<loc>https://shiroya.in/terms</loc>'), 'sitemap.xml includes /terms');
   }
@@ -90,6 +92,20 @@ if (distExists) {
   const llmsFullPath = path.join(DIST_DIR, 'llms-full.txt');
   const hasLlmsFull = fs.existsSync(llmsFullPath);
   assert(hasLlmsFull, 'dist/llms-full.txt exists (deep technical LLM context file)');
+
+  // ai-catalog.json
+  const aiCatalogPath = path.join(DIST_DIR, 'ai-catalog.json');
+  const hasAiCatalog = fs.existsSync(aiCatalogPath);
+  assert(hasAiCatalog, 'dist/ai-catalog.json exists (machine-readable agent catalog)');
+  if (hasAiCatalog) {
+    try {
+      const catalog = JSON.parse(fs.readFileSync(aiCatalogPath, 'utf8'));
+      assert(catalog.publisher && catalog.publisher.name === 'Vraj Shiroya', 'ai-catalog.json documents Vraj Shiroya as publisher');
+      assert(Array.isArray(catalog.tools) && catalog.tools.length > 0, 'ai-catalog.json lists tool endpoints');
+    } catch (err) {
+      assert(false, 'ai-catalog.json parses valid JSON', err.message);
+    }
+  }
 
   // og-image.png (source in public/ and bundle in dist/)
   const publicOgPath = path.join(ROOT_DIR, 'public', 'og-image.png');
@@ -166,6 +182,10 @@ if (hasIndex) {
         person && Array.isArray(person.sameAs) && person.sameAs.some(url => url.includes('github.com/VG31OP')),
         'Person entity accurately references verified GitHub profile (@VG31OP)'
       );
+      assert(
+        person && person.jobTitle && person.jobTitle.includes('Open-Source Developer') && person.jobTitle.includes('AI Engineer'),
+        'Person entity defines primary professional positioning (Open-Source Developer & AI Engineer)'
+      );
 
       const itemList = schemaData['@graph'].find(item => item['@type'] === 'ItemList');
       const apps = itemList && itemList.itemListElement ? itemList.itemListElement.map(el => el.item) : [];
@@ -180,7 +200,33 @@ if (hasIndex) {
 }
 
 // 4. Verify Prerendered Static Route Files
-console.log('\n\x1b[1m4. Checking Prerendered Static Routes (/privacy, /terms, /404)\x1b[0m');
+console.log('\n\x1b[1m4. Checking Prerendered Static Routes (/about, /privacy, /terms, /404)\x1b[0m');
+const aboutIndexPath = path.join(DIST_DIR, 'about', 'index.html');
+const hasAboutHtml = fs.existsSync(aboutIndexPath);
+assert(hasAboutHtml, 'dist/about/index.html prerendered statically');
+if (hasAboutHtml) {
+  const content = fs.readFileSync(aboutIndexPath, 'utf8');
+  assert(content.includes('<link rel="canonical" href="https://shiroya.in/about" />'), 'dist/about/index.html has correct canonical URL');
+  assert(content.includes('About') && content.includes('Vraj Shiroya'), 'dist/about/index.html contains full name heading');
+  assert(content.includes('Open-Source Developer') && content.includes('AI Engineer'), 'dist/about/index.html contains professional positioning');
+  assert(content.includes('google/artemis') && content.includes('vercel/swr'), 'dist/about/index.html contains verified upstream open-source PR citations');
+
+  // Verify dedicated ProfilePage schema
+  const aboutSchemaMatch = content.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  assert(Boolean(aboutSchemaMatch), 'dist/about/index.html contains JSON-LD structured data');
+  if (aboutSchemaMatch) {
+    try {
+      const schemaData = JSON.parse(aboutSchemaMatch[1]);
+      const types = schemaData['@graph'].map(item => item['@type']);
+      assert(types.includes('ProfilePage'), 'dist/about/index.html includes ProfilePage schema');
+      assert(types.includes('BreadcrumbList'), 'dist/about/index.html includes BreadcrumbList schema');
+      assert(types.includes('Person'), 'dist/about/index.html includes Person schema');
+    } catch (err) {
+      assert(false, 'dist/about/index.html JSON-LD parses cleanly', err.message);
+    }
+  }
+}
+
 const privacyIndexPath = path.join(DIST_DIR, 'privacy', 'index.html');
 const hasPrivacyHtml = fs.existsSync(privacyIndexPath);
 assert(hasPrivacyHtml, 'dist/privacy/index.html prerendered statically');

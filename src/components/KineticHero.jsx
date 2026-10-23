@@ -78,7 +78,7 @@ const KineticHero = ({ onExploreClick }) => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               src={shiroyaLogo}
-              alt="SHIROYA.in — Personal Internet Tool Lab by Vraj Shiroya"
+              alt="Vraj Shiroya (VG31OP) — Open-Source Developer, AI Engineer & Cybersecurity Researcher"
               width={956}
               height={561}
               fetchPriority="high"
@@ -87,14 +87,16 @@ const KineticHero = ({ onExploreClick }) => {
           </div>
 
           {/* Subtitle Journey Centered Tagline & Semantic Primary Heading */}
-          <div className="space-y-6 max-w-2xl mx-auto flex flex-col items-center text-center">
+          <div className="space-y-6 max-w-3xl mx-auto flex flex-col items-center text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <h1 className="text-xl sm:text-2xl lg:text-3xl font-display font-light text-gray-300 leading-relaxed text-center">
-                <span className="sr-only">SHIROYA.in — </span>A small corner of the web where <span className="text-white font-medium border-b-2 border-[#20E070]">useful browser tools</span> live & evolve.
+              <h1 className="text-xl sm:text-2xl lg:text-3xl font-display font-light text-gray-200 leading-relaxed text-center">
+                <span className="text-white font-bold block sm:inline">Vraj Shiroya</span>
+                <span className="text-[#20E070] font-normal mx-2 hidden sm:inline">—</span>
+                <span className="text-gray-200 font-medium">Open-Source Developer, AI Engineer &amp; Cybersecurity Researcher</span>
               </h1>
             </motion.div>
 
@@ -104,17 +106,40 @@ const KineticHero = ({ onExploreClick }) => {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="flex flex-col items-center justify-center gap-5 text-center"
             >
-              <p className="text-xs sm:text-sm text-gray-400 font-mono leading-relaxed max-w-md text-center">
-                No accounts. No trackers. Pure client-side utilities engineered for instant productivity.
+              <p className="text-xs sm:text-sm text-gray-300 font-sans leading-relaxed max-w-2xl text-center">
+                Vraj Shiroya is a software developer, open-source contributor, and AI-focused builder from Gujarat, India. He develops software products, AI-powered applications, developer tools, and experiments across intelligent systems and cybersecurity.
               </p>
               
-              <button
-                onClick={onExploreClick}
-                className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#20E070] text-black font-display font-bold text-sm hover:bg-white hover:shadow-[0_0_35px_rgba(32,224,112,0.6)] transition-all duration-300 cursor-pointer active:scale-95 shadow-xl"
-              >
-                <span>EXPLORE TOOL LAB</span>
-                <ArrowDownRight className="w-4 h-4 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform" />
-              </button>
+              <div className="flex flex-wrap items-center justify-center gap-4">
+                <button
+                  onClick={onExploreClick}
+                  className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#20E070] text-black font-display font-bold text-sm hover:bg-white hover:shadow-[0_0_35px_rgba(32,224,112,0.6)] transition-all duration-300 cursor-pointer active:scale-95 shadow-xl"
+                >
+                  <span>EXPLORE TOOL LAB</span>
+                  <ArrowDownRight className="w-4 h-4 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform" />
+                </button>
+
+                <a
+                  href="/about"
+                  className="group relative inline-flex items-center gap-2 px-7 py-4 rounded-full lab-glass border border-white/20 text-white font-display font-bold text-sm hover:border-[#20E070] hover:text-[#20E070] transition-all duration-300"
+                >
+                  <span>ABOUT VRAJ SHIROYA</span>
+                  <span className="text-[#20E070] group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+              </div>
+
+              {/* Verified Identity Tags */}
+              <div className="flex flex-wrap items-center justify-center gap-2 pt-1 text-[11px] font-mono text-gray-400">
+                <a href="https://github.com/VG31OP" target="_blank" rel="noopener noreferrer" className="hover:text-[#20E070] transition-colors">
+                  GitHub: @VG31OP
+                </a>
+                <span>•</span>
+                <span className="text-gray-300">Google Artemis PR #186</span>
+                <span>•</span>
+                <span className="text-gray-300">Vercel SWR PR #4362</span>
+                <span>•</span>
+                <span className="text-[#20E070]">Google Gemini Ambassador</span>
+              </div>
             </motion.div>
           </div>
         </motion.div>

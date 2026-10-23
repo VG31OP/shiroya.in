@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "Shiroya Tool Lab",
+  "version": "2.5.0",
+  "description": "Fast, private browser-based utilities platform built by Vraj Shiroya (VG31OP). 100% client-side execution with zero cloud storage.",
+  "canonicalUrl": "https://shiroya.in",
+  "developer": {
+    "name": "Vraj Shiroya",
+    "handle": "VG31OP",
+    "website": "https://vraj.shiroya.in",
+    "github": "https://github.com/VG31OP",
+    "linkedin": "https://www.linkedin.com/in/vrajshiroya",
+    "about": "https://shiroya.in/about"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Vraj Shiroya",
+    "url": "https://shiroya.in/about"
+  },
+  "capabilities": {
+    "executionModel": "client-side-in-browser",
+    "serverStorage": false,
+    "userRegistration": false,
+    "telemetry": false
+  },
+  "tools": [
+    {
+      "id": "web-shiroya",
+      "name": "Web Shiroya",
+      "url": "https://web.shiroya.in",
+      "codeRepository": "https://github.com/VG31OP/web-installer",
+      "category": "developer-tools",
+      "description": "Website source code extractor, DOM tree hierarchy inspector, and Tailwind CSS component breakdown engine.",
+      "inputs": ["target_url"],
+      "outputs": ["html", "css", "dom_tree", "react_components"],
+      "privacy": "In-browser DOM parsing without intermediary logging."
+    },
+    {
+      "id": "drop",
+      "name": "Drop",
+      "url": "https://drop.shiroya.in",
+      "codeRepository": "https://github.com/VG31OP/drop",
+      "category": "file-transfer",
+      "description": "Encrypted peer-to-peer file transfer engine using WebRTC RTCDataChannel with DTLS encryption.",
+      "inputs": ["files_or_directories"],
+      "outputs": ["direct_p2p_stream"],
+      "privacy": "Zero cloud storage; files stream directly between peer browser instances."
+    },
+    {
+      "id": "bgzero",
+      "name": "BgZero",
+      "url": "https://bgzero.shiroya.in",
+      "codeRepository": "https://github.com/VG31OP/BGZero",
+      "category": "computer-vision",
+      "description": "Client-side AI image background remover and transparent PNG export utility.",
+      "inputs": ["image_file"],
+      "outputs": ["transparent_png", "subject_cutout"],
+      "privacy": "100% local browser execution using client-side canvas and vision models."
+    },
+    {
+      "id": "pdf-tools",
+      "name": "PDF Tools",
+      "url": "https://pdf.shiroya.in",
+      "category": "document-processing",
+      "description": "In-memory browser PDF merger, splitter, page organizer, and compression utility.",
+      "inputs": ["pdf_documents"],
+      "outputs": ["merged_pdf", "split_pdf", "compressed_pdf"],
+      "privacy": "In-memory WebAssembly processing; confidential documents are never uploaded to remote servers."
+    },
+    {
+      "id": "network-speed-combiner",
+      "name": "Network-Speed-Combiner",
+      "codeRepository": "https://github.com/VG31OP/Network-Speed-Combiner",
+      "category": "network-engineering",
+      "description": "Bandwidth bonding and multi-interface network routing experiment combining concurrent physical connections.",
+      "inputs": ["network_interfaces"],
+      "outputs": ["aggregated_throughput_route"],
+      "privacy": "Local socket orchestration without third-party proxying."
+    }
+  ]
+}

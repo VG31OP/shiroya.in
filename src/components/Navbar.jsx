@@ -33,7 +33,7 @@ const Navbar = () => {
     <nav className={`fixed -top-[1px] left-0 right-0 z-50 transform-gpu will-change-transform transition-transform duration-300 ease-in-out py-4 pt-5 ${
       isVisible ? 'translate-y-0' : '-translate-y-full'
     } ${
-      isScrolled ? 'bg-black/95 backdrop-blur-md' : 'bg-transparent'
+      isScrolled ? 'bg-black/95 backdrop-blur-xl border-b border-white/10' : 'bg-black/85 backdrop-blur-lg'
     }`}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <div className="flex items-center gap-2">

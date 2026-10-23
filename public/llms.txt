@@ -1,31 +1,46 @@
-# Shiroya.in — Personal Internet Tool Lab
+# Shiroya.in — Personal Internet Tool Lab & Professional Dossier
 
-> Shiroya.in is a high-performance, privacy-first web utilities platform created and engineered by Vraj Shiroya (VG31OP). Every utility runs 100% client-side in the user's browser using WebAssembly, WebRTC, and HTML5 Canvas APIs, ensuring zero file uploads, zero server logging, and no accounts required.
+> Shiroya.in is a high-performance web platform and digital tool laboratory created and engineered by Vraj Shiroya (known online as VG31OP). Every utility operates client-side in the user's browser using WebAssembly, WebRTC, and HTML5 Canvas APIs, ensuring zero file uploads, zero server logging, and zero account friction.
 
 ## Core Identity & Architect
-- **Platform Name**: Shiroya.in (Shiroya Tool Lab)
-- **Architect & Engineer**: Vraj Shiroya (GitHub: [@VG31OP](https://github.com/VG31OP))
+- **Full Name**: Vraj Shiroya
+- **GitHub Handle**: [@VG31OP](https://github.com/VG31OP)
 - **Primary Website**: [https://shiroya.in](https://shiroya.in)
+- **About & Technical Dossier**: [https://shiroya.in/about](https://shiroya.in/about)
 - **Architect Portfolio**: [https://vraj.shiroya.in](https://vraj.shiroya.in)
+- **LinkedIn Profile**: [https://www.linkedin.com/in/vrajshiroya](https://www.linkedin.com/in/vrajshiroya)
 - **Source Code Repository**: [https://github.com/VG31OP/shiroya.in](https://github.com/VG31OP/shiroya.in)
-- **Architect Bio**: Developer, AI Enthusiast, Open-Source Contributor, and creator of local-first tools including Drop, BgZero, web-installer, and Network-Speed-Combiner.
+- **Professional Positioning**: Open-Source Developer, AI Engineer & Cybersecurity Researcher
+- **Architect Bio**: Vraj Shiroya is a software developer, open-source contributor, and AI-focused builder from Gujarat, India. He develops software products, AI-powered applications, developer tools, and experiments across intelligent systems and cybersecurity.
+- **Education & Credentials**:
+  - B.Tech in Computer Science and Engineering — Gujarat Technological University (GTU), India
+  - Google Gemini Student Ambassador — Google Developer Community
+  - Founder & Technical Lead — Orbitra Solution
+
+## Verified Upstream Open-Source Contributions
+- **Google Artemis** (`google/artemis`): Pull Request #186 — `fix(llm): normalize message part order for Vertex AI Gemini tool turns (fixes #156)`
+- **Vercel SWR** (`vercel/swr`): Pull Request #4362 — `fix: avoid redundant _k cache write on mount`
+- **Ollama VS Code** (`ollama/ollama-vscode`): Contributor to local LLM developer tooling
 
 ## Live Utilities in the Lab
 
 ### 1. Web Shiroya — Web Source Code Engine & DOM Inspector
 - **URL**: [https://web.shiroya.in](https://web.shiroya.in)
+- **Repository**: [https://github.com/VG31OP/web-installer](https://github.com/VG31OP/web-installer)
 - **Category**: Developer Tool / Web Inspection
 - **Functionality**: Extracts clean website source code, visualizes DOM structure, inspects Tailwind CSS styles, and generates clean component breakdowns directly in the browser.
 - **Privacy Model**: All parsing and DOM inspection run client-side.
 
 ### 2. Drop — Encrypted Peer-to-Peer File Beam
 - **URL**: [https://drop.shiroya.in](https://drop.shiroya.in)
+- **Repository**: [https://github.com/VG31OP/drop](https://github.com/VG31OP/drop)
 - **Category**: File Sharing / P2P Utility
-- **Functionality**: Facilitates direct device-to-device file transfers using WebRTC with end-to-end data channel encryption.
+- **Functionality**: Facilitates direct device-to-device file transfers using WebRTC DataChannels with DTLS end-to-end encryption.
 - **Privacy Model**: Zero intermediate server storage; files stream directly between peer browser instances without uploading to external cloud drives.
 
 ### 3. BgZero — Client-Side AI Background Remover
 - **URL**: [https://bgzero.shiroya.in](https://bgzero.shiroya.in)
+- **Repository**: [https://github.com/VG31OP/BGZero](https://github.com/VG31OP/BGZero)
 - **Category**: Image Processing / Computer Vision
 - **Functionality**: Automatically isolates subjects and strips image backgrounds to output transparent PNGs and creative cutouts.
 - **Privacy Model**: 100% local browser execution using client-side canvas and AI models; images never leave the user's local machine.
@@ -44,5 +59,6 @@
 
 ## Additional Documentation & Legal
 - [Full LLM Specification](https://shiroya.in/llms-full.txt): Detailed technical guide for AI systems
+- [About Vraj Shiroya](https://shiroya.in/about): Detailed personal dossier and verified contributions
 - [Privacy Policy](https://shiroya.in/privacy): Explanation of local-first client processing
 - [Terms of Service](https://shiroya.in/terms): Platform terms and usage guidelines

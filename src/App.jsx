@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { motion, AnimatePresence } from 'framer-motion';
 import LabNavDock from './components/LabNavDock';
 import Home from './pages/Home';
+import About from './pages/About';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import NotFound from './pages/NotFound';
@@ -35,6 +36,7 @@ function AppContent() {
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
+          <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
           <Route path="/privacy" element={<PageWrapper><Privacy /></PageWrapper>} />
           <Route path="/terms" element={<PageWrapper><Terms /></PageWrapper>} />
           <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
