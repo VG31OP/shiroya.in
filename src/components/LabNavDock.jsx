@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { useSectionNavigation } from '../hooks/useSectionNavigation';
 import shiroyaLogo from '../assets/shiroya-logo-transparent.png';
 
 const LabNavDock = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const { goToSection } = useSectionNavigation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,16 +19,9 @@ const LabNavDock = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (id) => {
+  const handleSectionClick = (id) => {
     setMobileOpen(false);
-    if (location.pathname !== '/') {
-      window.location.href = `/#${id}`;
-      return;
-    }
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    goToSection(id);
   };
 
   return (
@@ -59,24 +54,22 @@ const LabNavDock = () => {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 font-mono text-xs text-gray-300">
+          <nav className="hidden md:flex items-center gap-2 font-mono text-xs text-gray-300">
             <button
-              onClick={() => scrollToSection('tools')}
+              onClick={() => handleSectionClick('tools')}
               className="px-4 py-1.5 rounded-full hover:text-[#20E070] hover:bg-white/5 transition-colors cursor-pointer"
             >
               [ 01. TOOL LAB ]
             </button>
-            <button
-              onClick={() => scrollToSection('creator')}
-              className="px-4 py-1.5 rounded-full hover:text-[#20E070] hover:bg-white/5 transition-colors cursor-pointer"
-            >
-              [ 02. CREATOR ]
-            </button>
             <Link
               to="/about"
-              className="px-4 py-1.5 rounded-full hover:text-[#20E070] hover:bg-white/5 transition-colors"
+              className={`px-4 py-1.5 rounded-full transition-colors ${
+                location.pathname === '/about'
+                  ? 'text-[#20E070] bg-[#20E070]/10 border border-[#20E070]/30 font-bold'
+                  : 'hover:text-[#20E070] hover:bg-white/5'
+              }`}
             >
-              [ 03. ABOUT VRAJ ]
+              [ 02. ABOUT VRAJ ]
             </Link>
           </nav>
 
@@ -132,23 +125,21 @@ const LabNavDock = () => {
           >
             <div className="space-y-3 font-mono text-sm">
               <button
-                onClick={() => scrollToSection('tools')}
+                onClick={() => handleSectionClick('tools')}
                 className="w-full text-left p-3 rounded-xl bg-white/5 text-white hover:text-[#20E070]"
               >
                 01. INTERACTIVE TOOL LAB
               </button>
-              <button
-                onClick={() => scrollToSection('creator')}
-                className="w-full text-left p-3 rounded-xl bg-white/5 text-white hover:text-[#20E070]"
-              >
-                02. CREATOR & PHILOSOPHY
-              </button>
               <Link
                 to="/about"
                 onClick={() => setMobileOpen(false)}
-                className="w-full block text-left p-3 rounded-xl bg-white/5 text-white hover:text-[#20E070]"
+                className={`w-full block text-left p-3 rounded-xl transition-colors ${
+                  location.pathname === '/about'
+                    ? 'bg-[#20E070]/15 border border-[#20E070]/40 text-[#20E070] font-bold'
+                    : 'bg-white/5 text-white hover:text-[#20E070]'
+                }`}
               >
-                03. ABOUT VRAJ SHIROYA (DOSSIER)
+                02. ABOUT VRAJ SHIROYA (DOSSIER)
               </Link>
             </div>
 
