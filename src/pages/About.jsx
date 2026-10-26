@@ -93,7 +93,7 @@ const About = () => {
     },
     {
       name: "Shiroya.in Platform",
-      url: "https://shiroya.in",
+      url: "https://shiroya.in/",
       repo: "https://github.com/VG31OP/shiroya.in",
       repoName: "VG31OP/shiroya.in",
       category: "Personal Brand & Tool Lab",

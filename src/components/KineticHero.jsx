@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { Terminal, ArrowDownRight, Compass, ShieldCheck, Zap } from 'lucide-react';
 import shiroyaLogo from '../assets/shiroya-logo-transparent.png';
@@ -112,6 +113,7 @@ const KineticHero = ({ onExploreClick }) => {
               
               <div className="flex flex-wrap items-center justify-center gap-4">
                 <button
+                  type="button"
                   onClick={onExploreClick}
                   className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#20E070] text-black font-display font-bold text-sm hover:bg-white hover:shadow-[0_0_35px_rgba(32,224,112,0.6)] transition-all duration-300 cursor-pointer active:scale-95 shadow-xl"
                 >
@@ -119,13 +121,13 @@ const KineticHero = ({ onExploreClick }) => {
                   <ArrowDownRight className="w-4 h-4 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform" />
                 </button>
 
-                <a
-                  href="/about"
+                <Link
+                  to="/about"
                   className="group relative inline-flex items-center gap-2 px-7 py-4 rounded-full lab-glass border border-white/20 text-white font-display font-bold text-sm hover:border-[#20E070] hover:text-[#20E070] transition-all duration-300"
                 >
                   <span>ABOUT VRAJ SHIROYA</span>
                   <span className="text-[#20E070] group-hover:translate-x-1 transition-transform">→</span>
-                </a>
+                </Link>
               </div>
 
               {/* Verified Identity Tags */}

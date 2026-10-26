@@ -7,7 +7,8 @@ const NotFound = () => {
   usePageMeta({
     title: "404 — Page Not Found | shiroya.in",
     description: "The requested tool or page could not be located in Shiroya Tool Lab.",
-    canonicalUrl: "https://shiroya.in/404"
+    canonicalUrl: null,
+    robots: "noindex, nofollow"
   });
 
   return (

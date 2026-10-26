@@ -100,6 +100,7 @@ if (distExists) {
   if (hasAiCatalog) {
     try {
       const catalog = JSON.parse(fs.readFileSync(aiCatalogPath, 'utf8'));
+      assert(catalog.canonicalUrl === 'https://shiroya.in/', 'ai-catalog.json canonicalUrl matches canonical homepage with trailing slash');
       assert(catalog.publisher && catalog.publisher.name === 'Vraj Shiroya', 'ai-catalog.json documents Vraj Shiroya as publisher');
       assert(Array.isArray(catalog.tools) && catalog.tools.length > 0, 'ai-catalog.json lists tool endpoints');
       
@@ -237,20 +238,26 @@ if (hasAboutHtml) {
 const privacyIndexPath = path.join(DIST_DIR, 'privacy', 'index.html');
 const hasPrivacyHtml = fs.existsSync(privacyIndexPath);
 assert(hasPrivacyHtml, 'dist/privacy/index.html prerendered statically');
+assert(fs.existsSync(path.join(DIST_DIR, 'privacy.html')), 'dist/privacy.html generated for cleanUrls');
 if (hasPrivacyHtml) {
   const content = fs.readFileSync(privacyIndexPath, 'utf8');
   assert(content.includes('<link rel="canonical" href="https://shiroya.in/privacy" />'), 'dist/privacy/index.html has correct canonical URL');
   assert(content.includes('Privacy Policy') && content.includes('Client-Side Execution'), 'dist/privacy/index.html contains crawlable policy text');
+  assert(content.includes('BreadcrumbList') && content.includes('Privacy Policy'), 'dist/privacy/index.html includes dedicated BreadcrumbList schema');
 }
 
 const termsIndexPath = path.join(DIST_DIR, 'terms', 'index.html');
 const hasTermsHtml = fs.existsSync(termsIndexPath);
 assert(hasTermsHtml, 'dist/terms/index.html prerendered statically');
+assert(fs.existsSync(path.join(DIST_DIR, 'terms.html')), 'dist/terms.html generated for cleanUrls');
 if (hasTermsHtml) {
   const content = fs.readFileSync(termsIndexPath, 'utf8');
   assert(content.includes('<link rel="canonical" href="https://shiroya.in/terms" />'), 'dist/terms/index.html has correct canonical URL');
   assert(content.includes('Terms of Service') && content.includes('Acceptable & Lawful Use'), 'dist/terms/index.html contains crawlable terms text');
+  assert(content.includes('BreadcrumbList') && content.includes('Terms of Service'), 'dist/terms/index.html includes dedicated BreadcrumbList schema');
 }
+
+assert(fs.existsSync(path.join(DIST_DIR, 'about.html')), 'dist/about.html generated for cleanUrls');
 
 const notFoundPath = path.join(DIST_DIR, '404.html');
 const hasNotFoundHtml = fs.existsSync(notFoundPath);
@@ -258,6 +265,8 @@ assert(hasNotFoundHtml, 'dist/404.html generated statically');
 if (hasNotFoundHtml) {
   const content = fs.readFileSync(notFoundPath, 'utf8');
   assert(content.includes('noindex'), 'dist/404.html specifies noindex to protect search crawl equity');
+  assert(!content.includes('<link rel="canonical"'), 'dist/404.html omits canonical tag to prevent index pollution');
+  assert(!content.includes('application/ld+json'), 'dist/404.html omits JSON-LD structured data');
 }
 
 // Summary

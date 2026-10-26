@@ -15,8 +15,15 @@ const LabNavDock = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
     };
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setMobileOpen(false);
+    };
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   const handleSectionClick = (id) => {
@@ -56,6 +63,7 @@ const LabNavDock = () => {
           {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center gap-2 font-mono text-xs text-gray-300">
             <button
+              type="button"
               onClick={() => handleSectionClick('tools')}
               className="px-4 py-1.5 rounded-full hover:text-[#20E070] hover:bg-white/5 transition-colors cursor-pointer"
             >
@@ -106,10 +114,13 @@ const LabNavDock = () => {
 
           {/* Mobile Menu Toggle button */}
           <button
+            type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-white hover:text-[#20E070] focus:outline-none"
+            aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={mobileOpen}
+            className="md:hidden p-2 text-white hover:text-[#20E070] focus:outline-none cursor-pointer"
           >
-            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileOpen ? <X className="w-5 h-5" aria-hidden="true" /> : <Menu className="w-5 h-5" aria-hidden="true" />}
           </button>
         </motion.div>
       </header>
@@ -125,8 +136,9 @@ const LabNavDock = () => {
           >
             <div className="space-y-3 font-mono text-sm">
               <button
+                type="button"
                 onClick={() => handleSectionClick('tools')}
-                className="w-full text-left p-3 rounded-xl bg-white/5 text-white hover:text-[#20E070]"
+                className="w-full text-left p-3 rounded-xl bg-white/5 text-white hover:text-[#20E070] cursor-pointer"
               >
                 01. INTERACTIVE TOOL LAB
               </button>

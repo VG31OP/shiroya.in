@@ -12,10 +12,20 @@ const LabCanvas = () => {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
+    const prefersReducedMotion = typeof window !== 'undefined' && 
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     const handleResize = () => {
       if (!canvas) return;
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].x = Math.min(particles[i].x, width);
+        particles[i].y = Math.min(particles[i].y, height);
+      }
+      if (prefersReducedMotion) {
+        renderFrame();
+      }
     };
     window.addEventListener('resize', handleResize);
 
@@ -56,11 +66,7 @@ const LabCanvas = () => {
       });
     }
 
-    const render = () => {
-      // Lerp mouse
-      mouse.x += (mouse.targetX - mouse.x) * 0.05;
-      mouse.y += (mouse.targetY - mouse.y) * 0.05;
-
+    const renderFrame = () => {
       ctx.clearRect(0, 0, width, height);
 
       // Render subtle background grid connections around mouse
@@ -81,37 +87,16 @@ const LabCanvas = () => {
         ctx.fill();
       }
 
-      // Update and draw particles
+      // Draw particles
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
 
-        p.x += p.vx;
-        p.y += p.vy;
-
-        // Bounce boundaries
-        if (p.x < 0 || p.x > width) p.vx *= -1;
-        if (p.y < 0 || p.y > height) p.vy *= -1;
-
-        // Magnetic attraction to cursor
-        if (mouse.active) {
-          const dx = mouse.x - p.x;
-          const dy = mouse.y - p.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 180 && dist > 10) {
-            const force = (180 - dist) / 180;
-            p.x += (dx / dist) * force * 0.8;
-            p.y += (dy / dist) * force * 0.8;
-          }
-        }
-
-        // Draw particle
         ctx.fillStyle = p.color;
         ctx.globalAlpha = p.baseAlpha;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fill();
 
-        // Connect nearby particles
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
           const dx = p.x - p2.x;
@@ -130,12 +115,44 @@ const LabCanvas = () => {
           }
         }
       }
-
       ctx.globalAlpha = 1.0;
+    };
+
+    const render = () => {
+      // Lerp mouse
+      mouse.x += (mouse.targetX - mouse.x) * 0.05;
+      mouse.y += (mouse.targetY - mouse.y) * 0.05;
+
+      // Update particle positions
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+
+        if (mouse.active) {
+          const dx = mouse.x - p.x;
+          const dy = mouse.y - p.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 180 && dist > 10) {
+            const force = (180 - dist) / 180;
+            p.x += (dx / dist) * force * 0.8;
+            p.y += (dy / dist) * force * 0.8;
+          }
+        }
+      }
+
+      renderFrame();
       animationFrameId = requestAnimationFrame(render);
     };
 
-    render();
+    if (prefersReducedMotion) {
+      renderFrame();
+    } else {
+      render();
+    }
 
     return () => {
       window.removeEventListener('resize', handleResize);

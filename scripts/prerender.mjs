@@ -54,6 +54,10 @@ function generatePageHtml({ title, description, canonicalUrl, robots, bodyHtml, 
       /<meta name="googlebot" content=".*?" \/>/,
       `<meta name="googlebot" content="${robots}" />`
     );
+    html = html.replace(
+      /<meta name="bingbot" content=".*?" \/>/,
+      `<meta name="bingbot" content="${robots}" />`
+    );
   }
 
   // Replace OG / Twitter Tags
@@ -73,6 +77,9 @@ function generatePageHtml({ title, description, canonicalUrl, robots, bodyHtml, 
       /<script type="application\/ld\+json">[\s\S]*?<\/script>/,
       `<script type="application/ld+json">\n${jsonLdString}\n    </script>`
     );
+  } else if (jsonLd === false || jsonLd === null) {
+    // Strip homepage schema from error / non-entity pages
+    html = html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/, '');
   }
 
   // Inject prerendered semantic body inside #root
@@ -237,7 +244,8 @@ const aboutHtml = generatePageHtml({
 const aboutDir = path.join(DIST_DIR, 'about');
 if (!fs.existsSync(aboutDir)) fs.mkdirSync(aboutDir, { recursive: true });
 fs.writeFileSync(path.join(aboutDir, 'index.html'), aboutHtml, 'utf8');
-console.log('✔ Prerendered dist/about/index.html');
+fs.writeFileSync(path.join(DIST_DIR, 'about.html'), aboutHtml, 'utf8');
+console.log('✔ Prerendered dist/about/index.html & dist/about.html');
 
 // 1. Generate /privacy
 const privacyBody = `
@@ -274,17 +282,56 @@ const privacyBody = `
 </main>
 `;
 
+const privacyJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://shiroya.in/privacy#webpage",
+      "url": "https://shiroya.in/privacy",
+      "name": "Privacy Policy | shiroya.in — Zero Cloud Storage & Client-Side Privacy",
+      "description": "Privacy policy for Shiroya.in and its browser utilities (Web Shiroya, Drop, BgZero, PDF Tools). 100% local client-side processing with zero server storage.",
+      "isPartOf": {
+        "@id": "https://shiroya.in/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://shiroya.in/privacy#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://shiroya.in/privacy#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://shiroya.in/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Privacy Policy",
+          "item": "https://shiroya.in/privacy"
+        }
+      ]
+    }
+  ]
+};
+
 const privacyHtml = generatePageHtml({
   title: 'Privacy Policy | shiroya.in — Zero Cloud Storage & Client-Side Privacy',
   description: 'Privacy policy for Shiroya.in and its browser utilities (Web Shiroya, Drop, BgZero, PDF Tools). 100% local client-side processing with zero server storage.',
   canonicalUrl: 'https://shiroya.in/privacy',
-  bodyHtml: privacyBody
+  bodyHtml: privacyBody,
+  jsonLd: privacyJsonLd
 });
 
 const privacyDir = path.join(DIST_DIR, 'privacy');
 if (!fs.existsSync(privacyDir)) fs.mkdirSync(privacyDir, { recursive: true });
 fs.writeFileSync(path.join(privacyDir, 'index.html'), privacyHtml, 'utf8');
-console.log('✔ Prerendered dist/privacy/index.html');
+fs.writeFileSync(path.join(DIST_DIR, 'privacy.html'), privacyHtml, 'utf8');
+console.log('✔ Prerendered dist/privacy/index.html & dist/privacy.html');
 
 // 2. Generate /terms
 const termsBody = `
@@ -321,17 +368,56 @@ const termsBody = `
 </main>
 `;
 
+const termsJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://shiroya.in/terms#webpage",
+      "url": "https://shiroya.in/terms",
+      "name": "Terms of Service | shiroya.in — Fast Browser Tools",
+      "description": "Terms of Service and acceptable use conditions for Shiroya.in client-side web utilities and developer tools.",
+      "isPartOf": {
+        "@id": "https://shiroya.in/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://shiroya.in/terms#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://shiroya.in/terms#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://shiroya.in/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Terms of Service",
+          "item": "https://shiroya.in/terms"
+        }
+      ]
+    }
+  ]
+};
+
 const termsHtml = generatePageHtml({
   title: 'Terms of Service | shiroya.in — Fast Browser Tools',
   description: 'Terms of Service and acceptable use conditions for Shiroya.in client-side web utilities and developer tools.',
   canonicalUrl: 'https://shiroya.in/terms',
-  bodyHtml: termsBody
+  bodyHtml: termsBody,
+  jsonLd: termsJsonLd
 });
 
 const termsDir = path.join(DIST_DIR, 'terms');
 if (!fs.existsSync(termsDir)) fs.mkdirSync(termsDir, { recursive: true });
 fs.writeFileSync(path.join(termsDir, 'index.html'), termsHtml, 'utf8');
-console.log('✔ Prerendered dist/terms/index.html');
+fs.writeFileSync(path.join(DIST_DIR, 'terms.html'), termsHtml, 'utf8');
+console.log('✔ Prerendered dist/terms/index.html & dist/terms.html');
 
 // 3. Generate /404.html
 const notFoundBody = `
@@ -348,6 +434,7 @@ const notFoundHtml = generatePageHtml({
   description: 'The requested tool or page could not be located in Shiroya Tool Lab.',
   canonicalUrl: null,
   robots: 'noindex, nofollow',
+  jsonLd: null,
   bodyHtml: notFoundBody
 });
 

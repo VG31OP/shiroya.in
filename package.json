@@ -5,9 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host",
-    "build": "vite build && node scripts/prerender.mjs && node scripts/seo-check.mjs",
+    "build": "vite build && node scripts/prerender.mjs && node scripts/seo-check.mjs && node scripts/unit-test.mjs",
     "prerender": "node scripts/prerender.mjs",
+    "test": "node scripts/seo-check.mjs && node scripts/unit-test.mjs",
     "test:seo": "node scripts/seo-check.mjs",
+    "test:unit": "node scripts/unit-test.mjs",
     "lint": "eslint .",
     "preview": "vite preview --host"
   },

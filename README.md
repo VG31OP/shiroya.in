@@ -54,6 +54,12 @@
    npm run build
    ```
 
+5. **Run test & QA suite**
+   ```bash
+   npm test
+   npm run lint
+   ```
+
 ---
 
 ## 📁 Project Structure

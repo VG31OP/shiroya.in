@@ -633,6 +633,7 @@ const InteractiveToolLab = () => {
           {/* Integrated Status Filter Pills */}
           <div className="flex items-center gap-2 p-1 rounded-xl lab-glass border border-white/10">
             <button
+              type="button"
               onClick={() => setFilter('all')}
               className={`px-4 py-1.5 rounded-lg font-mono text-xs font-bold transition-all cursor-pointer ${
                 filter === 'all'
@@ -643,6 +644,7 @@ const InteractiveToolLab = () => {
               ALL TOOLS ({liveTools.length})
             </button>
             <button
+              type="button"
               onClick={() => setFilter('highlights')}
               className={`px-4 py-1.5 rounded-lg font-mono text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 filter === 'highlights'
@@ -650,7 +652,7 @@ const InteractiveToolLab = () => {
                   : 'text-gray-400 hover:text-white'
               }`}
             >
-              <Star className="w-3.5 h-3.5 fill-current" />
+              <Star className="w-3.5 h-3.5 fill-current" aria-hidden="true" />
               <span>MAIN HIGHLIGHTS (2)</span>
             </button>
           </div>
