@@ -190,8 +190,8 @@ if (hasIndex) {
         'Person entity accurately references verified GitHub profile (@VG31OP)'
       );
       assert(
-        person && person.jobTitle && person.jobTitle.includes('Open-Source Developer') && person.jobTitle.includes('AI Engineer'),
-        'Person entity defines primary professional positioning (Open-Source Developer & AI Engineer)'
+        person && person.jobTitle && (person.jobTitle.includes('DevOps') || person.jobTitle.includes('Open-Source Developer')),
+        'Person entity defines primary professional positioning (DevOps & Cloud Infrastructure / Open-Source Developer)'
       );
 
       const itemList = schemaData['@graph'].find(item => item['@type'] === 'ItemList');

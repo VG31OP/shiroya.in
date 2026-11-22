@@ -98,8 +98,8 @@ const aboutBody = `
   <header style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 2rem; margin-bottom: 3rem;">
     <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; background: rgba(32,224,112,0.1); border: 1px solid rgba(32,224,112,0.4); color: #20E070; font-family: monospace; font-size: 0.75rem; margin-bottom: 1rem;">ACTIVE DEVELOPER // GUJARAT, INDIA • GITHUB: @VG31OP</span>
     <h1 style="font-size: 2.75rem; font-weight: 900; color: #FFFFFF; margin-bottom: 0.5rem; line-height: 1.2;">About <span style="color: #20E070;">Vraj Shiroya</span></h1>
-    <p style="font-size: 1.35rem; color: #D1D5DB; margin-bottom: 1.5rem; font-weight: 300;">Open-Source Developer, AI Engineer &amp; Cybersecurity Researcher</p>
-    <p style="line-height: 1.8; font-size: 1.1rem; color: #9CA3AF; margin-bottom: 1.5rem;">Vraj Shiroya is a software developer, open-source contributor, and AI-focused builder from Gujarat, India. He develops software products, AI-powered applications, developer tools, and experiments across intelligent systems and cybersecurity.</p>
+    <p style="font-size: 1.35rem; color: #D1D5DB; margin-bottom: 1.5rem; font-weight: 300;">DevOps &amp; Cloud Infrastructure Engineer, Open-Source Developer, AI Engineer &amp; Cybersecurity Researcher</p>
+    <p style="line-height: 1.8; font-size: 1.1rem; color: #9CA3AF; margin-bottom: 1.5rem;">Vraj Shiroya (VG31OP) is a DevOps &amp; Cloud Infrastructure Engineer, open-source contributor, and AI-focused builder from Gujarat, India. He develops cloud systems, CI/CD automation pipelines, client-side tools, and intelligent applications.</p>
     
     <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem;">
       <a href="https://github.com/VG31OP" style="display: inline-block; padding: 0.65rem 1.25rem; background: #20E070; color: #000; font-weight: 700; font-family: monospace; font-size: 0.8rem; border-radius: 0.5rem; text-decoration: none;">Vraj Shiroya on GitHub</a>
@@ -164,8 +164,8 @@ const aboutJsonLd = {
       "@type": "ProfilePage",
       "@id": "https://shiroya.in/about#webpage",
       "url": "https://shiroya.in/about",
-      "name": "About Vraj Shiroya | Open-Source Developer & AI Engineer",
-      "description": "Official profile and technical dossier of Vraj Shiroya (VG31OP) — Open-Source Developer, AI Engineer, and Cybersecurity Researcher from Gujarat, India.",
+      "name": "About Vraj Shiroya | DevOps Engineer & Open-Source Builder",
+      "description": "Official profile and technical dossier of Vraj Shiroya (VG31OP) — DevOps & Cloud Infrastructure Engineer, AI builder, and cybersecurity researcher from Gujarat, India.",
       "mainEntity": {
         "@id": "https://shiroya.in/#creator"
       },
@@ -196,9 +196,9 @@ const aboutJsonLd = {
       "@id": "https://shiroya.in/#creator",
       "name": "Vraj Shiroya",
       "alternateName": ["VG31OP", "Vraj", "Shiroya"],
-      "jobTitle": "Open-Source Developer, AI Engineer & Cybersecurity Researcher",
-      "description": "Vraj Shiroya is a software developer, open-source contributor, and AI-focused builder from Gujarat, India. He develops software products, AI-powered applications, developer tools, and experiments across intelligent systems and cybersecurity.",
-      "url": "https://shiroya.in/about",
+      "jobTitle": "DevOps & Cloud Infrastructure Engineer, AI Systems & Security Researcher",
+      "description": "Vraj Shiroya is a DevOps & Cloud Infrastructure Engineer, software developer, open-source contributor, and AI-focused builder from Gujarat, India. He develops cloud systems, CI/CD automation pipelines, client-side tools, and intelligent systems.",
+      "url": "https://vraj.shiroya.in/",
       "email": "vraj@shiroya.in",
       "gender": "https://schema.org/Male",
       "nationality": {
@@ -218,6 +218,11 @@ const aboutJsonLd = {
         "https://instagram.com/shiroya.in"
       ],
       "knowsAbout": [
+        "DevOps",
+        "Cloud Infrastructure",
+        "CI/CD Automation",
+        "Docker",
+        "Linux Administration",
         "Open-Source Software Development",
         "Artificial Intelligence",
         "AI Systems Architecture",
@@ -234,8 +239,8 @@ const aboutJsonLd = {
 };
 
 const aboutHtml = generatePageHtml({
-  title: 'About Vraj Shiroya | Open-Source Developer & AI Engineer',
-  description: 'Official profile and technical dossier of Vraj Shiroya (VG31OP) — Open-Source Developer, AI Engineer, and Cybersecurity Researcher from Gujarat, India. Verified contributions to Google Artemis, Vercel SWR, and client-side privacy tools.',
+  title: 'About Vraj Shiroya | DevOps Engineer & Open-Source Builder',
+  description: 'Official profile and technical dossier of Vraj Shiroya (VG31OP) — DevOps & Cloud Infrastructure Engineer, AI builder, and cybersecurity researcher from Gujarat, India. Verified contributions to Google Artemis, Vercel SWR, and client-side privacy tools.',
   canonicalUrl: 'https://shiroya.in/about',
   bodyHtml: aboutBody,
   jsonLd: aboutJsonLd

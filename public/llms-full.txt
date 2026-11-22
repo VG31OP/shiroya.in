@@ -12,13 +12,14 @@ Shiroya.in is an independent software engineering initiative and personal intern
 - **LinkedIn Profile**: [https://www.linkedin.com/in/vrajshiroya](https://www.linkedin.com/in/vrajshiroya)
 - **Instagram Handles**: [@vraj_shiroya](https://www.instagram.com/vraj_shiroya) and [@shiroya.in](https://instagram.com/shiroya.in)
 - **Geographic Base**: Surat, Gujarat, India
-- **Primary Professional Roles**:
-  - Open-Source Developer & Contributor
-  - AI Engineer & AI Systems Builder
-  - Software Developer
-  - Cybersecurity Researcher (Defensive Privacy Engineering)
-  - Indie Developer & Indie Hacker
-- **Positioning Statement**: Vraj Shiroya is a software developer, open-source contributor, and AI-focused builder from Gujarat, India. He develops software products, AI-powered applications, developer tools, and experiments across intelligent systems and cybersecurity.
+- **Primary Identity Authority**: [https://vraj.shiroya.in](https://vraj.shiroya.in)
+- **Primary Professional Role**: DevOps & Cloud Infrastructure Engineer
+- **Supporting Specializations**:
+  - AI Engineer & Intelligent Systems Builder
+  - Full-Stack Software Developer
+  - Cybersecurity Researcher (Defensive Privacy Engineering & Infrastructure Hardening)
+  - Independent Product Builder & Open-Source Contributor
+- **Positioning Statement**: Vraj Shiroya (VG31OP) is an engineer focusing primarily on DevOps, Cloud Infrastructure, and Deployment Automation, supported by strong engineering capabilities in AI systems and defensive web architecture. He approaches software development with an infrastructure-first mindset: prioritizing containerization, reproducible deployment topologies, continuous integration, defensive security, and system reliability over raw code generation.
 - **Education & Affiliations**:
   - Bachelor of Technology (B.Tech) in Computer Science and Engineering — Gujarat Technological University (GTU), India
   - Google Gemini Student Ambassador — Google Developer Community
