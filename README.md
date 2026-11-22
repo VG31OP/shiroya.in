@@ -86,7 +86,7 @@ shiroya.in/
 | **Web Shiroya** | [web.shiroya.in](https://web.shiroya.in) | [VG31OP/web-installer](https://github.com/VG31OP/web-installer) | Source code crawler, asset downloader, and DOM inspector |
 | **Drop** | [drop.shiroya.in](https://drop.shiroya.in) | [VG31OP/drop](https://github.com/VG31OP/drop) | WebRTC peer-to-peer encrypted file sharing |
 | **BgZero** | [bgzero.shiroya.in](https://bgzero.shiroya.in) | [VG31OP/BGZero](https://github.com/VG31OP/BGZero) | Client-side AI image background remover and compressor |
-| **PDF Tools** | [pdf.shiroya.in](https://pdf.shiroya.in) | — | In-memory browser PDF merger and splitter |
+| **Certificate Generator** | [certificate.shiroya.in](https://certificate.shiroya.in) | [VG31OP/CERTIFICATE_GENRATOR](https://github.com/VG31OP/CERTIFICATE_GENRATOR) | Automated bulk certificate generator & SMTP email distributor |
 
 ---
 

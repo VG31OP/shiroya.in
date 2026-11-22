@@ -136,7 +136,7 @@ const aboutBody = `
       <li><strong><a href="https://bgzero.shiroya.in" style="color: #20E070;">BgZero</a></strong> (<a href="https://github.com/VG31OP/BGZero" style="color: #20E070;">VG31OP/BGZero</a>): In-browser AI image background remover and compressor.</li>
       <li><strong><a href="https://web.shiroya.in" style="color: #20E070;">Web Shiroya</a></strong> (<a href="https://github.com/VG31OP/web-installer" style="color: #20E070;">VG31OP/web-installer</a>): Self-hosted website crawler and source downloader packaging assets into downloadable ZIP archives.</li>
       <li><strong><a href="https://github.com/VG31OP/Network-Speed-Combiner" style="color: #20E070;">Network-Speed-Combiner</a></strong>: Desktop download manager splitting file downloads across concurrent network interfaces.</li>
-      <li><strong><a href="https://pdf.shiroya.in" style="color: #20E070;">PDF Tools</a></strong>: In-memory browser PDF manipulation suite.</li>
+      <li><strong><a href="https://certificate.shiroya.in" style="color: #20E070;">Certificate Generator</a></strong> (<a href="https://github.com/VG31OP/CERTIFICATE_GENRATOR" style="color: #20E070;">VG31OP/CERTIFICATE_GENRATOR</a>): Automated bulk certificate generator and SMTP email distribution system.</li>
       <li><strong><a href="https://github.com/VG31OP/shiroya.in" style="color: #20E070;">VG31OP/shiroya.in</a></strong>: Platform source code and kinetic UI.</li>
     </ul>
   </section>
@@ -260,7 +260,7 @@ const privacyBody = `
   
   <section style="margin-bottom: 2rem;">
     <h2 style="font-size: 1.5rem; color: #FFFFFF; margin-bottom: 0.75rem;">1. Privacy by Design: Client-Side Execution</h2>
-    <p style="line-height: 1.7;">At Shiroya.in, we believe privacy should be an architectural guarantee rather than a corporate promise. All core tools—including <strong>Web Shiroya</strong> (source code inspection), <strong>Drop</strong> (P2P file transfer), <strong>BgZero</strong> (AI background removal), and <strong>PDF Tools</strong> (document manipulation)—operate entirely in your web browser using HTML5 Canvas, WebAssembly, and WebRTC APIs. We do not store, copy, upload, or process your files or media on remote servers.</p>
+    <p style="line-height: 1.7;">At Shiroya.in, we believe privacy should be an architectural guarantee rather than a corporate promise. All core tools—including <strong>Web Shiroya</strong> (source code inspection), <strong>Drop</strong> (P2P file transfer), <strong>BgZero</strong> (AI background removal), and <strong>Certificate Generator</strong> (bulk credential creator)—operate client-side in your web browser using HTML5 Canvas, WebAssembly, and WebRTC APIs. We do not store, copy, upload, or process your files or media on remote servers.</p>
   </section>
 
   <section style="margin-bottom: 2rem;">
@@ -295,7 +295,7 @@ const privacyJsonLd = {
       "@id": "https://shiroya.in/privacy#webpage",
       "url": "https://shiroya.in/privacy",
       "name": "Privacy Policy | shiroya.in — Zero Cloud Storage & Client-Side Privacy",
-      "description": "Privacy policy for Shiroya.in and its browser utilities (Web Shiroya, Drop, BgZero, PDF Tools). 100% local client-side processing with zero server storage.",
+      "description": "Privacy policy for Shiroya.in and its browser utilities (Web Shiroya, Drop, BgZero, Certificate Generator). 100% local client-side processing with zero server storage.",
       "isPartOf": {
         "@id": "https://shiroya.in/#website"
       },
@@ -326,7 +326,7 @@ const privacyJsonLd = {
 
 const privacyHtml = generatePageHtml({
   title: 'Privacy Policy | shiroya.in — Zero Cloud Storage & Client-Side Privacy',
-  description: 'Privacy policy for Shiroya.in and its browser utilities (Web Shiroya, Drop, BgZero, PDF Tools). 100% local client-side processing with zero server storage.',
+  description: 'Privacy policy for Shiroya.in and its browser utilities (Web Shiroya, Drop, BgZero, Certificate Generator). 100% local client-side processing with zero server storage.',
   canonicalUrl: 'https://shiroya.in/privacy',
   bodyHtml: privacyBody,
   jsonLd: privacyJsonLd

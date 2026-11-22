@@ -4,7 +4,7 @@ import {
   ExternalLink, ArrowRightLeft, FileCheck, Sparkles, SlidersHorizontal, 
   Zap, Code, Globe, Terminal, FileCode, CheckCircle2, Eye, Copy, 
   RefreshCw, Star, UploadCloud, Check, ShieldCheck, Download, Layers, Play,
-  FileText, Scissors, Minimize2, Image, MoveRight, ArrowUpRight, Radio
+  FileText, Scissors, Minimize2, Image, MoveRight, ArrowUpRight, Radio, Award, Mail
 } from 'lucide-react';
 
 /* --- TACTILE 3D CARD CONTAINER WITH CURSOR PARALLAX --- */
@@ -256,120 +256,168 @@ const DropObject = () => {
 };
 
 /* ============================================================================
-   TOOL VISUAL OBJECT 3: PDF TOOLS (PDF → MERGE / SPLIT / COMPRESS)
+   TOOL VISUAL OBJECT 3: CERTIFICATE GENERATOR (EXCEL / CSV → TEMPLATE → BULK DISPATCH)
    ============================================================================ */
-const PdfToolsObject = () => {
-  const [mode, setMode] = useState('merge'); // merge | split | compress
-  const [compressionRatio, setCompressionRatio] = useState(45);
+const CertificateGeneratorObject = () => {
+  const [activeRecipient, setActiveRecipient] = useState(0);
+  const [dispatchMode, setDispatchMode] = useState('canvas'); // canvas | csv | smtp
+
+  const sampleRecipients = [
+    { name: 'Sarah Jenkins', role: 'AI Systems Architect', id: 'VG-2026-CERT-0104', certType: 'EXCELLENCE' },
+    { name: 'Alexei Volkov', role: 'Cloud Security Lead', id: 'VG-2026-CERT-0105', certType: 'LEADERSHIP' },
+    { name: 'Priya Sharma', role: 'DevOps Engineer', id: 'VG-2026-CERT-0106', certType: 'INNOVATION' }
+  ];
+
+  const recipient = sampleRecipients[activeRecipient];
 
   return (
     <div className="space-y-3">
       {/* Concept Pipeline Header */}
       <div className="flex items-center justify-between text-xs font-mono border-b border-white/10 pb-2.5">
         <div className="flex items-center gap-2 text-gray-300">
-          <FileText className="w-3.5 h-3.5 text-[#20E070]" />
-          <span className="font-bold">PDF</span>
+          <Award className="w-3.5 h-3.5 text-[#20E070]" />
+          <span className="font-bold">EXCEL/CSV</span>
           <MoveRight className="w-3 h-3 text-[#20E070]" />
-          <span className="text-[#20E070] font-bold uppercase">{mode.toUpperCase()}</span>
+          <span className="font-bold text-white">TEMPLATE CANVAS</span>
+          <MoveRight className="w-3 h-3 text-[#20E070]" />
+          <span className="text-[#20E070] font-bold">SMTP DISPATCH</span>
         </div>
-        <span className="text-[10px] font-mono text-gray-400">ZERO SERVER UPLOAD</span>
+        <span className="text-[10px] font-mono text-[#20E070] bg-[#0B3D25] px-2 py-0.5 rounded border border-[#20E070]/30 font-bold uppercase">
+          BULK MAILER
+        </span>
       </div>
 
-      {/* Mode Action Buttons */}
+      {/* Mode Action Tabs */}
       <div className="flex gap-2">
         <button
-          onClick={() => setMode('merge')}
+          type="button"
+          onClick={() => setDispatchMode('canvas')}
           className={`flex-1 py-1.5 px-3 rounded-lg font-mono text-xs font-bold border transition-all cursor-pointer ${
-            mode === 'merge' ? 'border-[#20E070] bg-[#20E070] text-black shadow-[0_0_15px_#20E070]' : 'border-white/10 text-gray-300 bg-black/40 hover:text-white'
+            dispatchMode === 'canvas' ? 'border-[#20E070] bg-[#20E070] text-black shadow-[0_0_15px_#20E070]' : 'border-white/10 text-gray-300 bg-black/40 hover:text-white'
           }`}
         >
-          MERGE
+          LIVE CANVAS
         </button>
         <button
-          onClick={() => setMode('split')}
+          type="button"
+          onClick={() => setDispatchMode('csv')}
           className={`flex-1 py-1.5 px-3 rounded-lg font-mono text-xs font-bold border transition-all cursor-pointer ${
-            mode === 'split' ? 'border-[#20E070] bg-[#20E070] text-black shadow-[0_0_15px_#20E070]' : 'border-white/10 text-gray-300 bg-black/40 hover:text-white'
+            dispatchMode === 'csv' ? 'border-[#20E070] bg-[#20E070] text-black shadow-[0_0_15px_#20E070]' : 'border-white/10 text-gray-300 bg-black/40 hover:text-white'
           }`}
         >
-          SPLIT
+          DATA ROSTER
         </button>
         <button
-          onClick={() => setMode('compress')}
+          type="button"
+          onClick={() => setDispatchMode('smtp')}
           className={`flex-1 py-1.5 px-3 rounded-lg font-mono text-xs font-bold border transition-all cursor-pointer ${
-            mode === 'compress' ? 'border-[#20E070] bg-[#20E070] text-black shadow-[0_0_15px_#20E070]' : 'border-white/10 text-gray-300 bg-black/40 hover:text-white'
+            dispatchMode === 'smtp' ? 'border-[#20E070] bg-[#20E070] text-black shadow-[0_0_15px_#20E070]' : 'border-white/10 text-gray-300 bg-black/40 hover:text-white'
           }`}
         >
-          COMPRESS
+          SMTP BULK
         </button>
       </div>
 
-      {/* Page Transformation Canvas */}
-      <div className="p-5 rounded-2xl bg-[#090C11] border border-white/10 h-52 flex flex-col justify-between relative overflow-hidden">
-        {/* Dynamic Paper Stacking State Visualizer */}
-        <div className="relative my-auto h-32 flex items-center justify-center">
-          {mode === 'merge' && (
-            <div className="relative flex items-center justify-center">
-              <motion.div
-                initial={{ x: -60, rotate: -12 }}
-                animate={{ x: -15, rotate: -4 }}
-                className="w-24 h-32 rounded-lg bg-slate-900 border border-white/20 p-2.5 space-y-1.5 shadow-lg"
-              >
-                <div className="w-8 h-1 bg-[#20E070] rounded" />
-                <div className="w-full h-1 bg-white/20 rounded" />
-                <div className="w-3/4 h-1 bg-white/20 rounded" />
-                <div className="text-[8px] font-mono text-gray-500 pt-6">PART_1.PDF</div>
-              </motion.div>
-
-              <motion.div
-                initial={{ x: 60, rotate: 12 }}
-                animate={{ x: 15, rotate: 4 }}
-                className="w-24 h-32 rounded-lg bg-slate-800 border-2 border-[#20E070] p-2.5 space-y-1.5 shadow-[0_0_25px_rgba(32,224,112,0.3)] z-10"
-              >
-                <div className="w-10 h-1 bg-[#20E070] rounded" />
-                <div className="w-full h-1 bg-white/30 rounded" />
-                <div className="w-5/6 h-1 bg-white/30 rounded" />
-                <div className="text-[8px] font-mono text-[#20E070] pt-6 font-bold">COMBINED.PDF</div>
-              </motion.div>
-            </div>
-          )}
-
-          {mode === 'split' && (
-            <div className="flex items-center gap-6">
-              <motion.div initial={{ scale: 0.9 }} animate={{ x: -20, rotate: -8 }} className="w-20 h-28 rounded-lg bg-slate-900 border border-[#20E070] p-2 space-y-1">
-                <div className="w-6 h-1 bg-[#20E070] rounded" />
-                <div className="w-full h-1 bg-white/20 rounded" />
-                <div className="text-[7px] font-mono text-[#20E070] pt-4">PAGE 1</div>
-              </motion.div>
-
-              <div className="text-[#20E070] font-mono font-bold text-xs">✂️ SPLIT</div>
-
-              <motion.div initial={{ scale: 0.9 }} animate={{ x: 20, rotate: 8 }} className="w-20 h-28 rounded-lg bg-slate-900 border border-[#20E070] p-2 space-y-1">
-                <div className="w-6 h-1 bg-[#20E070] rounded" />
-                <div className="w-full h-1 bg-white/20 rounded" />
-                <div className="text-[7px] font-mono text-[#20E070] pt-4">PAGE 2</div>
-              </motion.div>
-            </div>
-          )}
-
-          {mode === 'compress' && (
-            <div className="w-full space-y-3 px-4">
-              <div className="flex justify-between text-xs font-mono text-gray-300">
-                <span>COMPRESSION RATIO:</span>
-                <span className="text-[#20E070] font-bold">-{compressionRatio}% (-5.4 MB)</span>
+      {/* Dynamic Certificate Studio Preview */}
+      <div className="p-4 sm:p-5 rounded-2xl bg-[#090C11] border border-white/10 min-h-52 flex flex-col justify-between relative overflow-hidden">
+        {dispatchMode === 'canvas' && (
+          <div className="relative my-auto flex flex-col items-center justify-center">
+            {/* Visual Certificate Card */}
+            <motion.div
+              key={recipient.id}
+              initial={{ opacity: 0.8, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="w-full max-w-md p-4 rounded-xl bg-gradient-to-br from-[#0c1511] via-[#080d0a] to-[#040605] border-2 border-[#20E070]/60 shadow-[0_0_30px_rgba(32,224,112,0.2)] space-y-2.5 relative"
+            >
+              {/* Luxury Gold/Emerald Badge */}
+              <div className="flex items-center justify-between border-b border-[#20E070]/30 pb-2">
+                <div className="flex items-center gap-1.5 text-[#20E070]">
+                  <Award className="w-4 h-4 text-[#20E070]" />
+                  <span className="text-[10px] font-mono font-bold tracking-widest uppercase">VG LUXURY TEMPLATE</span>
+                </div>
+                <span className="text-[9px] font-mono text-amber-300/90 font-bold bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/30">
+                  20+ FONTS
+                </span>
               </div>
-              <input
-                type="range"
-                min="10"
-                max="85"
-                value={compressionRatio}
-                onChange={(e) => setCompressionRatio(e.target.value)}
-                className="w-full accent-[#20E070] cursor-pointer"
-              />
-              <div className="text-[10px] font-mono text-gray-400 text-center">
-                ORIGINAL: 12.0 MB → OPTIMIZED: {(12 * (1 - compressionRatio / 100)).toFixed(1)} MB
+
+              {/* Recipient Details */}
+              <div className="text-center py-1 space-y-1">
+                <div className="text-[9px] font-mono text-gray-400 uppercase tracking-wider">CERTIFICATE OF {recipient.certType}</div>
+                <div className="text-base sm:text-lg font-display font-black text-white tracking-wide">
+                  {recipient.name}
+                </div>
+                <div className="text-[11px] font-mono text-[#20E070]">
+                  {recipient.role}
+                </div>
+              </div>
+
+              {/* Certificate Footer */}
+              <div className="flex items-center justify-between pt-2 border-t border-white/10 text-[9px] font-mono text-gray-500">
+                <span>SER: {recipient.id}</span>
+                <span className="text-[#20E070]/80">HIGH-RES PNG / ZIP</span>
+              </div>
+            </motion.div>
+          </div>
+        )}
+
+        {dispatchMode === 'csv' && (
+          <div className="space-y-2 py-2">
+            <div className="text-[11px] font-mono text-gray-400 flex items-center justify-between border-b border-white/10 pb-1.5">
+              <span>EXCEL / CSV IMPORTED COLUMNS</span>
+              <span className="text-[#20E070] font-bold">3 DETECTED</span>
+            </div>
+            <div className="space-y-1.5 font-mono text-[10px]">
+              {['{{Recipient_Name}} → Column A (String)', '{{Designation_Role}} → Column B (String)', '{{Email_Address}} → Column C (Email)'].map((col, idx) => (
+                <div key={idx} className="p-2 rounded bg-black/60 border border-white/10 text-gray-300 flex items-center justify-between">
+                  <span className="text-[#20E070]">{col.split(' → ')[0]}</span>
+                  <span className="text-gray-500">{col.split(' → ')[1]}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {dispatchMode === 'smtp' && (
+          <div className="space-y-3 py-1">
+            <div className="flex items-center justify-between text-xs font-mono text-gray-300">
+              <span>BATCH SMTP DELIVERY PIPELINE</span>
+              <span className="text-[#20E070] font-bold">1,250 QUEUED</span>
+            </div>
+            <div className="p-2.5 rounded-lg bg-black/70 border border-[#20E070]/30 space-y-1.5 font-mono text-[10px]">
+              <div className="flex justify-between text-gray-400">
+                <span>CONDUIT STATUS:</span>
+                <span className="text-[#20E070] font-bold">AUTHENTICATED (SSL/TLS)</span>
+              </div>
+              <div className="flex justify-between text-gray-400">
+                <span>ATTACHMENT ENGINE:</span>
+                <span className="text-white">LOSSLESS HIGH-RES PNG</span>
               </div>
             </div>
-          )}
+            <div className="text-[10px] font-mono text-gray-500 text-center">
+              ZERO TRACKING // IN-MEMORY RENDERING & DIRECT DISPATCH
+            </div>
+          </div>
+        )}
+
+        {/* Recipient Stepper Bar */}
+        <div className="flex items-center justify-between pt-3 border-t border-white/10 text-[10px] font-mono text-gray-400">
+          <span className="text-gray-500">SAMPLE RECIPIENTS:</span>
+          <div className="flex gap-1.5">
+            {sampleRecipients.map((s, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => setActiveRecipient(idx)}
+                className={`px-2 py-0.5 rounded border transition-colors cursor-pointer ${
+                  activeRecipient === idx
+                    ? 'border-[#20E070] text-[#20E070] bg-[#20E070]/10 font-bold'
+                    : 'border-white/10 text-gray-400 hover:text-white'
+                }`}
+              >
+                {s.name.split(' ')[0]}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -596,15 +644,15 @@ const InteractiveToolLab = () => {
     },
     {
       id: "04",
-      name: "PDF TOOLS",
-      domainUrl: "pdf.shiroya.in",
-      category: "DOCUMENT UTILITY",
+      name: "CERTIFICATE GENERATOR",
+      domainUrl: "certificate.shiroya.in",
+      category: "BULK CERTIFICATE MAILER",
       isHighlight: false,
       layoutType: "full-wide",
-      description: "Merge, split, re-order, and compress PDF documents locally inside your browser canvas with total data privacy.",
-      url: "https://pdf.shiroya.in",
-      githubUrl: null,
-      visualComponent: <PdfToolsObject />
+      description: "Automated bulk certificate generator & SMTP email distribution system. Design on an interactive canvas, import Excel/CSV recipient rosters, preview live credentials, and distribute high-res credentials via SMTP.",
+      url: "https://certificate.shiroya.in",
+      githubUrl: "https://github.com/VG31OP/CERTIFICATE_GENRATOR",
+      visualComponent: <CertificateGeneratorObject />
     }
   ];
 
@@ -880,7 +928,7 @@ const InteractiveToolLab = () => {
           })()}
         </div>
 
-        {/* TOOL 04: PDF TOOLS (FULL WIDE 12-COL EDITORIAL CARD) */}
+        {/* TOOL 04: CERTIFICATE GENERATOR (FULL WIDE 12-COL EDITORIAL CARD) */}
         {displayedTools.some(t => t.id === "04") && (() => {
           const tool = liveTools.find(t => t.id === "04");
           return (
@@ -913,15 +961,28 @@ const InteractiveToolLab = () => {
                     {tool.description}
                   </p>
 
-                  <a
-                    href={tool.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-white/10 text-white font-mono font-bold text-xs uppercase hover:bg-[#20E070] hover:text-black transition-all duration-300 border border-white/10 hover:border-[#20E070]"
-                  >
-                    <span>OPEN PDF.SHIROYA.IN</span>
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
+                  <div className="flex flex-wrap items-center gap-3 pt-2">
+                    <a
+                      href={tool.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-white/10 text-white font-mono font-bold text-xs uppercase hover:bg-[#20E070] hover:text-black transition-all duration-300 border border-white/10 hover:border-[#20E070]"
+                    >
+                      <span>OPEN CERTIFICATE.SHIROYA.IN</span>
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                    {tool.githubUrl && (
+                      <a
+                        href={tool.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl lab-glass border border-white/10 text-gray-300 hover:text-[#20E070] hover:border-[#20E070] font-mono font-bold text-xs uppercase transition-all duration-300"
+                      >
+                        <Code className="w-4 h-4 text-[#20E070]" />
+                        <span>SOURCE CODE</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
 
                 {/* Right Visual Object */}

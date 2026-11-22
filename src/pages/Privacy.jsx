@@ -4,7 +4,7 @@ import { usePageMeta } from '../hooks/usePageMeta';
 const Privacy = () => {
     usePageMeta({
         title: "Privacy Policy | shiroya.in — Zero Cloud Storage & Client-Side Privacy",
-        description: "Privacy policy for Shiroya.in and its browser utilities (Web Shiroya, Drop, BgZero, PDF Tools). 100% local client-side processing with zero server storage.",
+        description: "Privacy policy for Shiroya.in and its browser utilities (Web Shiroya, Drop, BgZero, Certificate Generator). 100% local client-side processing with zero server storage.",
         canonicalUrl: "https://shiroya.in/privacy"
     });
 
@@ -16,7 +16,7 @@ const Privacy = () => {
                 
                 <div>
                     <h2 className="text-2xl font-display font-bold text-white mb-3">1. Privacy by Design: Client-Side Execution</h2>
-                    <p>At Shiroya.in, we believe privacy should be an architectural guarantee rather than a corporate promise. All core tools—including <strong>Web Shiroya</strong> (source code inspection), <strong>Drop</strong> (P2P file transfer), <strong>BgZero</strong> (AI background removal), and <strong>PDF Tools</strong> (document manipulation)—operate entirely in your web browser using HTML5 Canvas, WebAssembly, and WebRTC APIs. We do not store, copy, upload, or process your files or media on remote servers.</p>
+                    <p>At Shiroya.in, we believe privacy should be an architectural guarantee rather than a corporate promise. All core tools—including <strong>Web Shiroya</strong> (source code inspection), <strong>Drop</strong> (P2P file transfer), <strong>BgZero</strong> (AI background removal), and <strong>Certificate Generator</strong> (bulk credential creator)—operate client-side in your web browser using HTML5 Canvas, WebAssembly, and WebRTC APIs. We do not store, copy, upload, or process your files or media on remote servers.</p>
                 </div>
 
                 <div>

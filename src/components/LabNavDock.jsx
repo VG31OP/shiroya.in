@@ -102,12 +102,12 @@ const LabNavDock = () => {
               <ArrowUpRight className="w-3 h-3 text-[#20E070]" />
             </a>
             <a
-              href="https://pdf.shiroya.in"
+              href="https://certificate.shiroya.in"
               target="_blank"
               rel="noopener noreferrer"
               className="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-[#20E070] hover:text-[#20E070] text-xs font-mono text-gray-300 transition-colors flex items-center gap-1"
             >
-              <span>PDF</span>
+              <span>CERT</span>
               <ArrowUpRight className="w-3 h-3 text-[#20E070]" />
             </a>
           </div>

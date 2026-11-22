@@ -47,14 +47,15 @@
 - **Functionality**: Automatically isolates subjects and strips image backgrounds to output transparent PNGs and creative cutouts.
 - **Privacy Model**: 100% local browser execution using client-side canvas and AI models; images never leave the user's local machine.
 
-### 4. PDF Tools — Local-First PDF Manipulation Suite
-- **URL**: [https://pdf.shiroya.in](https://pdf.shiroya.in)
-- **Category**: Document Utility
-- **Functionality**: Merge multiple PDF documents, split PDF pages, reorder pages, and compress PDF files in memory.
-- **Privacy Model**: In-memory WebAssembly processing; confidential documents are never uploaded to remote servers.
+### 4. Certificate Generator — Bulk Credential & SMTP Mailer
+- **URL**: [https://certificate.shiroya.in](https://certificate.shiroya.in)
+- **Repository**: [https://github.com/VG31OP/CERTIFICATE_GENRATOR](https://github.com/VG31OP/CERTIFICATE_GENRATOR)
+- **Category**: Business Automation / Document Generation
+- **Functionality**: Design certificates on an interactive canvas, import Excel/CSV recipient rosters, preview live credentials, and distribute high-res PNG/ZIP credentials via SMTP.
+- **Privacy Model**: Client-side template design and local certificate generation with optional direct SMTP credentials dispatch.
 
 ## Operating Principles
-1. **Zero Data Footprint on Core Tools**: Files and documents processed in Drop, BgZero, and PDF Tools remain strictly in local browser memory.
+1. **Zero Data Footprint on Core Tools**: Files and documents processed in Drop, BgZero, and Certificate Generator remain strictly in local browser memory unless user-initiated SMTP dispatch is triggered.
 2. **Transparent Boundaries**: Server-assisted utilities (Web Shiroya) clearly disclose temporary job directory usage.
 3. **Frictionless Access**: No accounts, passwords, subscriptions, or paywalls.
 4. **Transparent Ethics**: No user tracking, no ad networks, no data brokering.

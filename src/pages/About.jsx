@@ -83,13 +83,13 @@ const About = () => {
       stack: ["Electron", "Node.js", "Networking", "Socket Programming"]
     },
     {
-      name: "PDF Tools",
-      url: "https://pdf.shiroya.in",
-      repo: "https://github.com/VG31OP/shiroya.in",
-      repoName: "VG31OP/shiroya.in",
-      category: "Document Security & Privacy",
-      description: "In-memory browser PDF merger, splitter, page organizer, and compression utility keeping sensitive legal and academic documents strictly on the client device.",
-      stack: ["WebAssembly", "JavaScript", "PDF.js", "Client RAM"]
+      name: "Certificate Generator",
+      url: "https://certificate.shiroya.in",
+      repo: "https://github.com/VG31OP/CERTIFICATE_GENRATOR",
+      repoName: "VG31OP/CERTIFICATE_GENRATOR",
+      category: "Automated Bulk Credential & Mailer",
+      description: "Automated bulk certificate generator and SMTP email distribution system with interactive drag-and-drop template designer, Excel/CSV ingestion, and high-resolution export.",
+      stack: ["React", "Node.js", "Canvas API", "SMTP", "Excel/CSV"]
     },
     {
       name: "Shiroya.in Platform",

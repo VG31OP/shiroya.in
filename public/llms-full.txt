@@ -41,8 +41,8 @@ Shiroya.in is an independent software engineering initiative and personal intern
 
 ## Architecture & Technical Paradigm
 
-### Client-Side Execution Guarantee (Drop, BgZero, PDF Tools)
-Core interactive web utilities (Drop, BgZero, and PDF Tools) operate entirely within the browser sandbox without multi-tenant cloud storage:
+### Client-Side Execution Guarantee (Drop, BgZero, Certificate Generator)
+Core interactive web utilities (Drop, BgZero, and Certificate Generator) operate entirely within the browser sandbox without multi-tenant cloud storage:
 - **Compute Runtime**: JavaScript (ES2023+), WebAssembly (Wasm), and HTML5 Canvas API.
 - **Network Footprint**: Zero payload egress. Network connections are confined to initial bundle delivery and STUN/TURN signaling for peer-to-peer WebRTC handshakes (in Drop).
 - **Security Boundary**: Files reside exclusively in volatile browser RAM and are purged upon tab close or task completion.
@@ -80,14 +80,16 @@ Core interactive web utilities (Drop, BgZero, and PDF Tools) operate entirely wi
   - Real-time processing without queuing or third-party API rate limits.
 - **Use Cases**: E-commerce product catalog preparation, profile picture cutouts, digital art compositing.
 
-### 4. PDF Tools (pdf.shiroya.in)
-- **Primary Function**: Comprehensive document utility suite.
+### 4. Certificate Generator (certificate.shiroya.in)
+- **Repository**: [https://github.com/VG31OP/CERTIFICATE_GENRATOR](https://github.com/VG31OP/CERTIFICATE_GENRATOR)
+- **Primary Function**: Automated bulk certificate generator and SMTP email distribution system.
 - **Capabilities**:
-  - Merging multiple PDF files into a single unified document.
-  - Splitting page ranges and extracting single sheets.
-  - Re-ordering and rotating pages in real time.
-  - Lossless and lossy client-side compression.
-- **Use Cases**: Legal agreements, academic submissions, and corporate invoices requiring strict confidentiality.
+  - Interactive drag-and-drop certificate template designer.
+  - Excel and CSV data ingestion mapping custom column fields.
+  - Live dynamic recipient stepper and per-row typography fine-tuning.
+  - High-resolution batch PNG export and ZIP archive compilation.
+  - Automated bulk email delivery via authenticated SMTP.
+- **Use Cases**: Hackathons, university workshops, enterprise training programs, and event credential distribution.
 
 ### 5. Network-Speed-Combiner
 - **Repository**: [https://github.com/VG31OP/Network-Speed-Combiner](https://github.com/VG31OP/Network-Speed-Combiner)

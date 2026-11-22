@@ -59,15 +59,16 @@
       "privacy": "100% local browser execution using client-side canvas and vision models."
     },
     {
-      "id": "pdf-tools",
-      "name": "PDF Tools",
-      "url": "https://pdf.shiroya.in",
-      "category": "document-processing",
-      "executionModel": "client-side-in-browser",
-      "description": "In-memory browser PDF merger, splitter, page organizer, and compression utility.",
-      "inputs": ["pdf_documents"],
-      "outputs": ["merged_pdf", "split_pdf", "compressed_pdf"],
-      "privacy": "In-memory WebAssembly processing; confidential documents are never uploaded to remote servers."
+      "id": "certificate-generator",
+      "name": "Certificate Generator",
+      "url": "https://certificate.shiroya.in",
+      "codeRepository": "https://github.com/VG31OP/CERTIFICATE_GENRATOR",
+      "category": "business-automation",
+      "executionModel": "web-application",
+      "description": "Automated bulk certificate generator and SMTP email distribution system with drag-and-drop template designer and Excel/CSV data import.",
+      "inputs": ["template_image", "recipient_excel_csv"],
+      "outputs": ["certificate_png", "bulk_certificates_zip", "smtp_dispatch"],
+      "privacy": "Client-side template design and local certificate generation with optional direct SMTP credentials dispatch."
     },
     {
       "id": "network-speed-combiner",
