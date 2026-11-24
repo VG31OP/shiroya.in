@@ -634,10 +634,10 @@ const InteractiveToolLab = () => {
       id: "03",
       name: "BGZERO",
       domainUrl: "bgzero.shiroya.in",
-      category: "AI IMAGE CUTOUT",
+      category: "FREE AI BACKGROUND REMOVER",
       isHighlight: false,
       layoutType: "split-5",
-      description: "Instant browser-based background removal engine. Zero image upload to external servers — fast, private, high precision.",
+      description: "Free in-browser AI background remover. Instant subject cutout & transparent PNG export with zero cloud uploads and full HD resolution.",
       url: "https://bgzero.shiroya.in",
       githubUrl: "https://github.com/VG31OP/BGZero",
       visualComponent: <BgZeroObject />
