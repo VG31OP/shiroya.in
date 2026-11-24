@@ -1,10 +1,17 @@
-# Robots.txt for shiroya.in
+# ==============================================================================
+# Robots.txt for Shiroya.in (https://shiroya.in)
 # Production SEO, AEO & AI Engine Discovery Policy
+# ==============================================================================
 
+# 1. Global Crawler Baseline
 User-agent: *
 Allow: /
+Allow: /sitemap.xml
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /ai-catalog.json
 
-# Search Engine Crawlers
+# 2. Traditional Search Engine Crawlers
 User-agent: Googlebot
 Allow: /
 
@@ -14,54 +21,82 @@ Allow: /
 User-agent: DuckDuckBot
 Allow: /
 
+User-agent: BraveBot
+Allow: /
+
 User-agent: YandexBot
 Allow: /
 
 User-agent: Baiduspider
 Allow: /
 
-# AI Search & Citation Engines (Perplexity, ChatGPT Search, Claude Search, Gemini)
+User-agent: Slurp
+Allow: /
+
+User-agent: Qwantify
+Allow: /
+
+# 3. AI Search & Answer Engine Retrieval Crawlers (Explicitly Allowed)
+# Real-time search retrieval for ChatGPT Search
 User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
+# General OpenAI Retrieval & Scraper
 User-agent: GPTBot
 Allow: /
 
+# Real-time search retrieval for Claude / Anthropic
 User-agent: Claude-SearchBot
 Allow: /
 
 User-agent: Claude-Web
 Allow: /
 
+# Anthropic General Retrieval
 User-agent: ClaudeBot
 Allow: /
 
+# Perplexity AI Answer Engine Retrieval
 User-agent: PerplexityBot
+Allow: /
+
+# Google Gemini & Multimodal Agent Crawlers
+User-agent: Google-Extended
 Allow: /
 
 User-agent: Google-Agent
 Allow: /
 
-User-agent: Google-Extended
+# Apple Intelligence & Spotlight Web Search
+User-agent: Applebot
 Allow: /
 
 User-agent: Applebot-Extended
 Allow: /
 
+# Meta AI Search Retrieval
 User-agent: Meta-ExternalAgent
 Allow: /
 
+# You.com AI Search
+User-agent: YouBot
+Allow: /
+
+# Cohere AI
 User-agent: cohere-ai
 Allow: /
 
-# Disallow aggressive scrapers without search utility
+# 4. Protection Against Content Scraping Farms Without Discovery Value
 User-agent: Bytespider
 Disallow: /
 
-# Sitemap & Machine-Readable AI Discovery Specifications
+User-agent: CCBot
+Disallow: /
+
+# 5. Sitemap & Machine-Readable AI Discovery Specifications
 Sitemap: https://shiroya.in/sitemap.xml
 # LLMs specification: https://shiroya.in/llms.txt
 # Full LLMs specification: https://shiroya.in/llms-full.txt
